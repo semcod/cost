@@ -1,0 +1,204 @@
+"""CLI for AI Cost Tracker with liteLLM integration."""
+
+import os
+from pathlib import Path
+from typing import Optional
+
+import typer
+import pandas as pd
+import git
+from dotenv import load_dotenv
+
+from .calculator import batch_calculate_costs, ai_cost
+from .git_parser import parse_commits, get_repo_name
+from .models import DEFAULT_MODEL, DEFAULT_OPENROUTER_API_KEY, get_litellm_model_name
+
+# Load .env for CLI defaults
+load_dotenv()
+
+
+app = typer.Typer(help="AI Cost Tracker - Zero-config AI cost calculator per commit/model")
+
+
+def version_callback(value: bool):
+    if value:
+        typer.echo("ai-cost-tracker 0.1.0")
+        raise typer.Exit()
+
+
+@app.callback()
+def callback(
+    version: Optional[bool] = typer.Option(
+        None, "--version", "-v", callback=version_callback, is_eager=True
+    ),
+):
+    pass
+
+
+@app.command()
+def analyze(
+    repo: Path = typer.Argument(..., help="Path to git repository"),
+    model: str = typer.Option(
+        os.getenv("PFIX_MODEL", "openrouter/qwen/qwen3-coder-next"),
+        "--model", "-m",
+        help="AI model to use (default from .env PFIX_MODEL)"
+    ),
+    api_key: str = typer.Option(
+        os.getenv("OPENROUTER_API_KEY", ""),
+        "--api-key",
+        help="OpenRouter API key (default from .env OPENROUTER_API_KEY)"
+    ),
+    saas_token: str = typer.Option("", "--saas-token", help="SaaS subscription token (optional)"),
+    mode: str = typer.Option("auto", "--mode", help="Calculation mode: auto, byok, local, saas"),
+    max_commits: int = typer.Option(100, "--max-commits", "-n", help="Max commits to analyze"),
+    output: Path = typer.Option(Path("ai_costs.csv"), "--output", "-o", help="Output CSV file"),
+    ai_only: bool = typer.Option(True, "--ai-only/--all", help="Only analyze commits with [ai:] tag"),
+    saas_url: str = typer.Option("https://your-saas.com/api/cost", "--saas-url", help="SaaS API endpoint"),
+):
+    """Analyze AI costs for git commits with liteLLM support.
+
+    **Three usage modes (zero config required):**
+
+    1. **BYOK** (Bring Your Own Key) - `aicost --repo . --api-key sk-or-v1-...`
+       Use your own OpenRouter API key, calculate real costs with liteLLM
+
+    2. **Local** - `aicost --repo . --mode local`
+       No API key needed, estimate based on diff size
+
+    3. **SaaS** - `aicost --repo . --saas-token your-token`
+       Managed via subscription, billing tracked externally
+
+    **Configuration via .env file:**
+    ```
+    OPENROUTER_API_KEY=sk-or-v1-...
+    PFIX_MODEL=openrouter/qwen/qwen3-coder-next
+    ```
+    """
+    if not repo.exists():
+        typer.echo(f"❌ Repository not found: {repo}", err=True)
+        raise typer.Exit(1)
+    
+    try:
+        git_repo = git.Repo(repo)
+    except git.InvalidGitRepositoryError:
+        typer.echo(f"❌ Not a git repository: {repo}", err=True)
+        raise typer.Exit(1)
+    
+    # Determine mode
+    effective_mode = mode
+    if mode == "auto":
+        if saas_token:
+            effective_mode = "saas"
+        elif api_key:
+            effective_mode = "byok"
+        else:
+            effective_mode = "local"
+
+    # Convert to liteLLM format
+    litellm_model = get_litellm_model_name(model)
+
+    # Pass appropriate credentials
+    use_saas = effective_mode == "saas"
+    effective_api_key = api_key if not use_saas else None
+    effective_saas_token = saas_token if use_saas else None
+    
+    typer.echo(f"🔍 Analyzing {max_commits} commits from {get_repo_name(git_repo)}...")
+    typer.echo(f"🤖 Model: {litellm_model} | Mode: {effective_mode}")
+    
+    # Parse commits
+    commits_data = parse_commits(str(repo), max_count=max_commits, ai_only=ai_only)
+    
+    if not commits_data:
+        typer.echo("⚠️  No commits found. Use --all to analyze all commits.")
+        raise typer.Exit(0)
+    
+    # Calculate costs
+    results = batch_calculate_costs(
+        commits_data,
+        model=litellm_model,
+        api_key=effective_api_key,
+        saas_token=effective_saas_token
+    )
+    
+    summary = results["summary"]
+    
+    # Output results
+    typer.echo()
+    typer.echo("=" * 50)
+    typer.echo(f"📊 AI COST ANALYSIS - {litellm_model}")
+    typer.echo("=" * 50)
+    typer.echo(f"   Commits analyzed: {summary['total_commits']}")
+    typer.echo(f"   Total cost:       {summary['total_cost_formatted']}")
+    typer.echo(f"   Hours saved:      {summary['total_hours_saved']:.1f}h")
+    typer.echo(f"   Value generated:  ${summary['total_value_generated']:.2f}")
+    typer.echo(f"   ROI:              {summary['average_roi']}")
+    typer.echo("=" * 50)
+    
+    # Export to CSV
+    df = pd.DataFrame(results["commits"])
+    df.to_csv(output, index=False)
+    typer.echo(f"📁 Results saved to: {output}")
+    
+    # Show sample
+    if len(results["commits"]) > 0:
+        typer.echo()
+        typer.echo("💡 Recent AI commits:")
+        for c in results["commits"][:5]:
+            msg = c["commit_message"][:40].replace("\n", " ")
+            typer.echo(f"   {c['commit_hash']} | {c['cost_formatted']} | {msg}")
+
+
+@app.command()
+def estimate(
+    diff_file: Path = typer.Argument(..., help="Path to diff file or '-' for stdin"),
+    model: str = typer.Option(
+        os.getenv("PFIX_MODEL", "openrouter/qwen/qwen3-coder-next"),
+        "--model", "-m",
+        help="AI model to use (default from .env PFIX_MODEL)"
+    ),
+):
+    """Estimate cost for a single diff using liteLLM token counting."""
+    if str(diff_file) == "-":
+        import sys
+        diff_content = sys.stdin.read()
+    else:
+        if not diff_file.exists():
+            typer.echo(f"❌ File not found: {diff_file}", err=True)
+            raise typer.Exit(1)
+        diff_content = diff_file.read_text()
+    
+    litellm_model = get_litellm_model_name(model)
+    result = ai_cost(diff_content, model=litellm_model)
+    
+    typer.echo()
+    typer.echo(f"💰 Estimated cost: {result['cost_formatted']}")
+    typer.echo(f"🤖 Model: {litellm_model}")
+    typer.echo(f"📊 Tokens: {result['tokens']['total']:,} (in: {result['tokens']['input']:,}, out: {result['tokens']['output']:,})")
+    typer.echo(f"⚡ ROI: {result['roi_formatted']}")
+
+
+@app.command()
+def init(
+    force: bool = typer.Option(False, "--force", help="Overwrite existing .env file"),
+):
+    """Initialize .env configuration file."""
+    env_path = Path(".env")
+
+    if env_path.exists() and not force:
+        typer.echo("⚠️  .env file already exists. Use --force to overwrite.")
+        raise typer.Exit(1)
+
+    env_content = """# Required: OpenRouter API key (https://openrouter.ai/keys)
+OPENROUTER_API_KEY=
+PFIX_MODEL=openrouter/qwen/qwen3-coder-next
+"""
+    env_path.write_text(env_content)
+    typer.echo("✅ Created .env file. Edit it to add your OpenRouter API key.")
+
+
+def main():
+    app()
+
+
+if __name__ == "__main__":
+    main()

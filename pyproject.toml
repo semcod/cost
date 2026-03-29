@@ -1,0 +1,31 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "ai-cost-tracker"
+version = "0.1.1"
+description = "Zero-config AI cost calculator per commit/model with liteLLM"
+readme = "README.md"
+license = "Apache-2.0"
+authors = [
+    {name = "Your Name", email = "you@example.com"},
+    {name = "Tom Sapletta", email = "tom@sapletta.com"},
+]
+packages = [{include = "ai_cost_tracker", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+gitpython = "^3.1"
+pandas = "^2.0"
+typer = "^0.12"
+httpx = "^0.27"
+litellm = "^1.0"
+python-dotenv = "^1.0"
+
+[tool.poetry.scripts]
+aicost = "ai_cost_tracker.cli:main"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+black = "^24.0"

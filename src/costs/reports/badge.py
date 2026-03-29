@@ -36,9 +36,6 @@ def update_readme_badge(repo_path: Path, results: Dict[str, Any]) -> bool:
     human_hours = calculate_human_time(all_commits)
     human_cost = human_hours * 100  # $100/hour rate
     
-    # Calculate ROI
-    roi = (human_cost / total_cost) if total_cost > 0 else 0
-    
     # Create badge lines with standout colors
     pypi_badge = "![PyPI](https://img.shields.io/badge/pypi-costs-blue)"
     version_badge = "![Version](https://img.shields.io/badge/version-0.1.31-blue)"
@@ -48,19 +45,17 @@ def update_readme_badge(repo_path: Path, results: Dict[str, Any]) -> bool:
     human_time_badge = f"![Human Time](https://img.shields.io/badge/Human%20Time-{human_hours:.1f}h-blue)"
     model_badge = f"![Model](https://img.shields.io/badge/Model-{model.replace('/', '%2F').replace('-', '--')}-lightgrey)"
     
+    # Fix URL generation for OpenRouter
+    model_url_path = model.replace("openrouter/", "")
     badge_section = f"""## AI Cost Tracking
 
 {pypi_badge} {version_badge} {python_badge} {license_badge}
 {cost_badge} {human_time_badge} {model_badge}
 
-This project uses AI-generated code.
-
-**Costs:**
 - 🤖 **LLM usage:** {summary['total_cost_formatted']} ({summary['total_commits']} commits)
 - 👤 **Human dev:** ~${human_cost:.0f} ({human_hours:.1f}h @ $100/h, 30min dedup)
-- 📊 **ROI:** {roi:.0f}x savings vs full manual
 
-Generated on {datetime.now().strftime("%Y-%m-%d")} using [{model}](https://openrouter.ai/models/{model})
+Generated on {datetime.now().strftime("%Y-%m-%d")} using [{model}](https://openrouter.ai/{model_url_path})
 
 ---
 

@@ -42,7 +42,6 @@ def generate_markdown_report(results: Dict[str, Any], output_path: Path) -> str:
 | **Average per Commit** | ${avg_cost_per_commit:.4f} |
 | **Hours Saved** | {summary["total_hours_saved"]:.1f}h |
 | **Value Generated** | ${summary["total_value_generated"]:.2f} |
-| **ROI** | {summary["average_roi"]} |
 
 ## Cost Visualizations
 

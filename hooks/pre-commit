@@ -6,18 +6,18 @@
 PROJECT_ROOT=$(git rev-parse --show-toplevel)
 cd "$PROJECT_ROOT"
 
-# Check if aicost is installed (global or in venv)
-AICOST_CMD=""
-if command -v aicost &> /dev/null; then
-    AICOST_CMD="aicost"
-elif [ -f "$PROJECT_ROOT/.venv/bin/aicost" ]; then
-    AICOST_CMD="$PROJECT_ROOT/.venv/bin/aicost"
-elif [ -f "$PROJECT_ROOT/venv/bin/aicost" ]; then
-    AICOST_CMD="$PROJECT_ROOT/venv/bin/aicost"
+# Check if costs is installed (global or in venv)
+COSTS_CMD=""
+if command -v costs &> /dev/null; then
+    COSTS_CMD="costs"
+elif [ -f "$PROJECT_ROOT/.venv/bin/costs" ]; then
+    COSTS_CMD="$PROJECT_ROOT/.venv/bin/costs"
+elif [ -f "$PROJECT_ROOT/venv/bin/costs" ]; then
+    COSTS_CMD="$PROJECT_ROOT/venv/bin/costs"
 fi
 
-if [ -z "$AICOST_CMD" ]; then
-    echo "⚠️  'aicost' not found. Install with: pip install -e ."
+if [ -z "$COSTS_CMD" ]; then
+    echo "⚠️  'costs' not found. Install with: pip install -e ."
     exit 0
 fi
 
@@ -26,7 +26,7 @@ if [ -f "pyproject.toml" ] && grep -q "\[tool.costs\]" pyproject.toml; then
     echo "🤖 Updating AI cost badge..."
     
     # Run auto-badge
-    $AICOST_CMD auto-badge --repo . --quiet 2>/dev/null || $AICOST_CMD auto-badge --repo .
+    $COSTS_CMD auto-badge --repo . --quiet 2>/dev/null || $COSTS_CMD auto-badge --repo .
     
     # Check if README was modified
     if git diff --quiet README.md 2>/dev/null; then

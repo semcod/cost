@@ -17,11 +17,11 @@ This project tracks its own AI development costs.
 **Development Stats:**
 - 📝 **18 commits** across **1 day** of active development
 - ⏱️ **~6 hours** estimated development time (accounting for overlapping work)
-- 💰 **AI Cost:** Analyze with `aicost auto-badge --repo .`
+- 💰 **AI Cost:** Analyze with `costs auto-badge --repo .`
 
 ```bash
 pip install costs
-aicost auto-badge --repo .
+costs auto-badge --repo .
 ```
 
 ![AI Cost for costs](https://img.shields.io/badge/AI%20Cost-Analyze%20with%20costs-blue)
@@ -52,7 +52,7 @@ pip install costs
 ### 1. Initialize Configuration
 
 ```bash
-aicost init
+costs init
 # Edit .env file to add your OpenRouter API key
 echo "OPENROUTER_API_KEY=YOUR_KEY" >> .env
 ```
@@ -61,10 +61,10 @@ echo "OPENROUTER_API_KEY=YOUR_KEY" >> .env
 
 ```bash
 # Uses defaults from .env (Claude 4 Sonnet)
-aicost analyze --repo .
+costs analyze --repo .
 
 # Or specify directly
-aicost analyze --repo . --model anthropic/claude-4-sonnet --api-key YOUR_KEY
+costs analyze --repo . --model anthropic/claude-4-sonnet --api-key YOUR_KEY
 ```
 
 ## Configuration
@@ -80,7 +80,7 @@ PFIX_MODEL=anthropic/claude-4-sonnet
 Or use the built-in init command:
 
 ```bash
-aicost init
+costs init
 ```
 
 ## Three Usage Options (Zero Config Required)
@@ -91,10 +91,10 @@ Use your own API key via OpenRouter. Costs calculated locally with real provider
 
 ```bash
 # With OpenRouter key (default from .env)
-aicost analyze --repo .
+costs analyze --repo .
 
 # Explicit key
-aicost analyze --repo . --api-key YOUR_KEY
+costs analyze --repo . --api-key YOUR_KEY
 ```
 
 **Supported models via liteLLM:**
@@ -111,7 +111,7 @@ aicost analyze --repo . --api-key YOUR_KEY
 No API key needed. Estimates based on diff size using local pricing.
 
 ```bash
-aicost --repo . --mode local
+costs --repo . --mode local
 ```
 
 **Estimation formula:** `diff_chars / 4 * 0.0001$/M tokens`
@@ -122,13 +122,13 @@ Analyze commits for specific time periods:
 
 ```bash
 # Analyze specific day
-aicost analyze --repo . --date 2024-03-15
+costs analyze --repo . --date 2024-03-15
 
 # Analyze date range
-aicost analyze --repo . --since 2024-01-01 --until 2024-03-31
+costs analyze --repo . --since 2024-01-01 --until 2024-03-31
 
 # Analyze all commits since repository creation
-aicost analyze --repo . --full-history
+costs analyze --repo . --full-history
 ```
 
 ## Badge Generation
@@ -137,10 +137,10 @@ Generate and update cost badges in your README:
 
 ```bash
 # Generate badge based on pyproject.toml configuration
-aicost auto-badge --repo .
+costs auto-badge --repo .
 
 # Or manually
-aicost badge --repo . --model anthropic/claude-4-sonnet
+costs badge --repo . --model anthropic/claude-4-sonnet
 ```
 
 This adds a badge section to README showing total cost, AI commits, and model used.
@@ -149,13 +149,13 @@ This adds a badge section to README showing total cost, AI commits, and model us
 
 ```bash
 # Generate markdown report with charts
-aicost report --repo . --format markdown
+costs report --repo . --format markdown
 
 # Generate HTML report
-aicost report --repo . --format html
+costs report --repo . --format html
 
 # Generate both and update README
-aicost report --repo . --format both --update-readme
+costs report --repo . --format both --update-readme
 ```
 
 ## How It Works
@@ -177,32 +177,32 @@ aicost report --repo . --format both --update-readme
 Enterprise managed solution with dashboard and invoicing.
 
 ```bash
-aicost --repo . --saas-token PLACEHOLDER
+costs --repo . --saas-token PLACEHOLDER
 ```
 
 ## Usage Examples
 
 ```bash
 # Initialize .env config
-aicost init
+costs init
 
 # Analyze last 50 commits (uses .env defaults)
-aicost analyze --repo . -n 50
+costs analyze --repo . -n 50
 
 # Use specific model via liteLLM
-aicost analyze --repo . --model anthropic/claude-3.5-sonnet
+costs analyze --repo . --model anthropic/claude-3.5-sonnet
 
 # Analyze all commits (not just AI-tagged)
-aicost analyze --repo . --all
+costs analyze --repo . --all
 
 # Export to custom file
-aicost analyze --repo . --output my_costs.csv
+costs analyze --repo . --output my_costs.csv
 
 # Estimate single diff
-aicost estimate my_changes.patch
+costs estimate my_changes.patch
 
 # Read diff from stdin
-git diff HEAD~1 | aicost estimate -
+git diff HEAD~1 | costs estimate -
 ```
 
 ## Tagging AI Commits
@@ -279,7 +279,7 @@ git commit -m "[ai:anthropic/claude-3.5-sonnet] Add payment integration"
 poetry install
 
 # Run CLI
-poetry run aicost analyze --repo ..
+poetry run costs analyze --repo ..
 
 # Publish to PyPI
 poetry publish --build
@@ -318,8 +318,8 @@ bash project.sh
 ```
 
 The hook will:
-1. Detect `aicost` in global PATH or virtualenv
-2. Run `aicost auto-badge` if `[tool.costs]` is configured in `pyproject.toml`
+1. Detect `costs` in global PATH or virtualenv
+2. Run `costs auto-badge` if `[tool.costs]` is configured in `pyproject.toml`
 3. Stage updated README.md (interactive prompt in terminal)
 
 ### Pytest Integration
@@ -332,7 +332,7 @@ pytest tests/test_cost.py -v
 
 # Test will:
 # - Check if [tool.costs] is configured
-# - Run aicost auto-badge
+# - Run costs auto-badge
 # - Verify badge was updated
 ```
 
@@ -349,13 +349,13 @@ The repository includes a workflow that runs on push/PR:
 
 | Command | Description |
 |---------|-------------|
-| `aicost init` | Initialize `.env` configuration |
-| `aicost analyze` | Analyze repository commits |
-| `aicost stats` | Show repository statistics |
-| `aicost report` | Generate markdown/HTML reports |
-| `aicost badge` | Generate cost badge |
-| `aicost auto-badge` | Auto-generate badge from pyproject.toml |
-| `aicost estimate` | Estimate cost for single diff |
+| `costs init` | Initialize `.env` configuration |
+| `costs analyze` | Analyze repository commits |
+| `costs stats` | Show repository statistics |
+| `costs report` | Generate markdown/HTML reports |
+| `costs badge` | Generate cost badge |
+| `costs auto-badge` | Auto-generate badge from pyproject.toml |
+| `costs estimate` | Estimate cost for single diff |
 
 📖 **Automatic Badge Generation**: See [docs/AUTO_BADGE.md](docs/AUTO_BADGE.md) for GitHub Actions, pre-commit hooks, and CI/CD integration.
 

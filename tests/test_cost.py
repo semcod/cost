@@ -34,19 +34,19 @@ def test_aicost_auto_badge():
         print("⚠️  [tool.costs] not configured, skipping auto-badge test")
         return
 
-    # Find aicost command
-    aicost_cmd = None
-    for cmd in ["aicost", str(repo_root / ".venv" / "bin" / "aicost"),
-                str(repo_root / "venv" / "bin" / "aicost")]:
+    # Find costs command
+    costs_cmd = None
+    for cmd in ["costs", str(repo_root / ".venv" / "bin" / "costs"),
+                str(repo_root / "venv" / "bin" / "costs")]:
         result = subprocess.run(
             ["which", cmd] if "/" not in cmd else ["test", "-f", cmd],
             capture_output=True, shell=False if "/" not in cmd else True
         )
         if result.returncode == 0 or Path(cmd).exists():
-            aicost_cmd = cmd
+            costs_cmd = cmd
             break
 
-    if not aicost_cmd:
+    if not costs_cmd:
         # Try to use python -m
         result = subprocess.run(
             [sys.executable, "-m", "src.costs.cli", "auto-badge", "--repo", str(repo_root)],
@@ -56,14 +56,14 @@ def test_aicost_auto_badge():
         )
     else:
         result = subprocess.run(
-            [aicost_cmd, "auto-badge", "--repo", str(repo_root)],
+            [costs_cmd, "auto-badge", "--repo", str(repo_root)],
             cwd=str(repo_root),
             capture_output=True,
             text=True
         )
 
     # Command should succeed (exit code 0) or exit with 0 if no AI commits
-    assert result.returncode in [0], f"aicost auto-badge failed: {result.stderr}"
+    assert result.returncode in [0], f"costs auto-badge failed: {result.stderr}"
 
     # Verify README.md exists and potentially has badge
     readme_path = repo_root / "README.md"

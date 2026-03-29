@@ -74,7 +74,7 @@ repos:
     hooks:
       - id: ai-cost-badge
         name: Update AI Cost Badge
-        entry: aicost auto-badge --repo . --quiet
+        entry: costs auto-badge --repo . --quiet
         language: system
         pass_filenames: false
         always_run: true
@@ -91,7 +91,7 @@ Updates badge immediately after each commit with `[ai:]` tag.
 #!/bin/bash
 if git log -1 --pretty=%B | grep -q '\[ai:'; then
     echo "🤖 AI commit detected, updating badge..."
-    aicost auto-badge --repo . --quiet
+    costs auto-badge --repo . --quiet
     git add README.md
     git commit --amend --no-edit
 fi
@@ -105,7 +105,7 @@ fi
 
 ```toml
 [tool.poe.tasks]
-badge = "aicost auto-badge --repo ."
+badge = "costs auto-badge --repo ."
 pre_build = ["badge", "build"]
 ```
 
@@ -114,8 +114,8 @@ pre_build = ["badge", "build"]
 ```json
 {
   "scripts": {
-    "postbuild": "aicost auto-badge --repo .",
-    "badge": "aicost auto-badge --repo ."
+    "postbuild": "costs auto-badge --repo .",
+    "badge": "costs auto-badge --repo ."
   }
 }
 ```
@@ -125,7 +125,7 @@ pre_build = ["badge", "build"]
 ```makefile
 .PHONY: badge
 badge:
-	aicost auto-badge --repo .
+	costs auto-badge --repo .
 
 build: badge
 	python -m build
@@ -146,7 +146,7 @@ Add to `.vscode/tasks.json`:
     {
       "label": "Update AI Cost Badge",
       "type": "shell",
-      "command": "aicost auto-badge --repo .",
+      "command": "costs auto-badge --repo .",
       "problemMatcher": []
     }
   ]
@@ -284,7 +284,7 @@ In GitHub repository settings:
 ### Step 5: Initial badge generation
 
 ```bash
-aicost auto-badge --repo .
+costs auto-badge --repo .
 git add README.md
 git commit -m "docs: add AI cost tracking badge"
 ```

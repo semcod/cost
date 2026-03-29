@@ -1,6 +1,6 @@
 # AI Cost Tracker
 
-[![PyPI version](https://badge.fury.io/py/ai-cost-tracker.svg)](https://pypi.org/project/ai-cost-tracker/)
+[![PyPI version](https://badge.fury.io/py/costs.svg)](https://pypi.org/project/costs/)
 
 **Zero-config AI cost calculator per commit/model with liteLLM integration.**
 
@@ -9,15 +9,18 @@ Track AI usage costs across your git commits with three flexible usage modes - n
 ## Features
 
 - **liteLLM Integration** - Support for 100+ AI providers via liteLLM
-- **OpenRouter Default** - Pre-configured for OpenRouter with Qwen models
+- **Default: Claude 4 Sonnet** - Pre-configured with Anthropic's latest model
 - **Zero Config** - Works out of the box, reads from `.env` file
 - **Smart Token Estimation** - Accurate cost calculation using liteLLM tokenizers
 - **ROI Calculation** - Track value generated vs AI costs
+- **Date Filtering** - Analyze specific days, date ranges, or full history
+- **Auto Badges** - Automatically generate and update cost badges in README
+- **Rich Reports** - Markdown and HTML reports with visualizations
 
 ## Installation
 
 ```bash
-pip install ai-cost-tracker
+pip install costs
 ```
 
 ## Quick Start
@@ -33,11 +36,11 @@ echo "OPENROUTER_API_KEY=YOUR_KEY" >> .env
 ### 2. Run Analysis
 
 ```bash
-# Uses defaults from .env (OpenRouter + Qwen)
+# Uses defaults from .env (Claude 4 Sonnet)
 aicost analyze --repo .
 
 # Or specify directly
-aicost analyze --repo . --model openrouter/qwen/qwen3-coder-next --api-key YOUR_KEY
+aicost analyze --repo . --model anthropic/claude-4-sonnet --api-key YOUR_KEY
 ```
 
 ## Configuration
@@ -47,7 +50,7 @@ Create a `.env` file in your project root:
 ```bash
 # Required: OpenRouter API key (https://openrouter.ai/keys)
 OPENROUTER_API_KEY=YOUR_KEY
-PFIX_MODEL=openrouter/qwen/qwen3-coder-next
+PFIX_MODEL=anthropic/claude-4-sonnet
 ```
 
 Or use the built-in init command:
@@ -71,11 +74,12 @@ aicost analyze --repo . --api-key YOUR_KEY
 ```
 
 **Supported models via liteLLM:**
-- `openrouter/qwen/qwen3-coder-next` (default)
-- `openrouter/qwen/qwen3-coder`
+- `anthropic/claude-4-sonnet` (default)
 - `anthropic/claude-3.5-sonnet`
+- `anthropic/claude-3.5-haiku`
 - `openai/gpt-4o`
-- `ollama/llama2` (local)
+- `openai/gpt-4o-mini`
+- `openrouter/qwen/qwen3-coder-next`
 - 100+ more via liteLLM
 
 ### Option 2: Local/Ollama - Zero API Costs
@@ -87,6 +91,48 @@ aicost --repo . --mode local
 ```
 
 **Estimation formula:** `diff_chars / 4 * 0.0001$/M tokens`
+
+## Date Filtering
+
+Analyze commits for specific time periods:
+
+```bash
+# Analyze specific day
+aicost analyze --repo . --date 2024-03-15
+
+# Analyze date range
+aicost analyze --repo . --since 2024-01-01 --until 2024-03-31
+
+# Analyze all commits since repository creation
+aicost analyze --repo . --full-history
+```
+
+## Badge Generation
+
+Generate and update cost badges in your README:
+
+```bash
+# Generate badge based on pyproject.toml configuration
+aicost auto-badge --repo .
+
+# Or manually
+aicost badge --repo . --model anthropic/claude-4-sonnet
+```
+
+This adds a badge section to README showing total cost, AI commits, and model used.
+
+### Report Generation
+
+```bash
+# Generate markdown report with charts
+aicost report --repo . --format markdown
+
+# Generate HTML report
+aicost report --repo . --format html
+
+# Generate both and update README
+aicost report --repo . --format both --update-readme
+```
 
 ## How It Works
 
@@ -148,22 +194,22 @@ git commit -m "[ai:anthropic/claude-3.5-sonnet] Add payment integration"
 
 ```
 🔍 Analyzing 100 commits from my-project...
-🤖 Model: openrouter/qwen/qwen3-coder-next | Mode: byok
+🤖 Model: anthropic/claude-4-sonnet | Mode: byok
 
 ==================================================
-📊 AI COST ANALYSIS - openrouter/qwen/qwen3-coder-next
+📊 AI COST ANALYSIS - anthropic/claude-4-sonnet
 ==================================================
    Commits analyzed: 42
-   Total cost:       $0.3245
+   Total cost:       $12.34
    Hours saved:      15.3h
    Value generated:  $1530.00
-   ROI:              4718x
+   ROI:              124x
 ==================================================
 📁 Results saved to: ai_costs.csv
 
 💡 Recent AI commits:
-   a1b2c3d4 | $0.0089 | [ai:qwen3-coder-next] Refactor...
-   e5f6g7h8 | $0.0121 | [ai:claude-3.5-sonnet] Add feature...
+   a1b2c3d4 | $0.32 | [ai:claude-4-sonnet] Refactor...
+   e5f6g7h8 | $0.45 | [ai:claude-4-sonnet] Add feature...
 ```
 
 ## CSV Export Format
@@ -187,12 +233,12 @@ git commit -m "[ai:anthropic/claude-3.5-sonnet] Add payment integration"
 
 | Model | Input | Output |
 |-------|-------|--------|
-| openrouter/qwen/qwen3-coder-next | $0.50/M | $1.50/M |
-| openrouter/qwen/qwen2.5-coder | $0.30/M | $1.00/M |
+| anthropic/claude-4-sonnet | $3/M | $15/M |
 | anthropic/claude-3.5-sonnet | $3/M | $15/M |
 | anthropic/claude-3.5-haiku | $0.8/M | $4/M |
 | openai/gpt-4o | $5/M | $15/M |
 | openai/gpt-4o-mini | $0.15/M | $0.6/M |
+| openrouter/qwen/qwen3-coder-next | $0.50/M | $1.50/M |
 | ollama/* | ~$0.0001/M | ~$0.0001/M |
 
 ## Business Model
@@ -215,12 +261,39 @@ poetry run aicost analyze --repo ..
 poetry publish --build
 ```
 
+## PHP Badge Service
+
+Standalone PHP service for generating badges:
+
+```bash
+cd services/badge-service
+composer install
+php -S localhost:8080
+```
+
+Generate badges via API:
+```bash
+curl "http://localhost:8080/badge.php?cost=12.34&model=claude-4&commits=42"
+```
+
+## CLI Commands
+
+| Command | Description |
+|---------|-------------|
+| `aicost init` | Initialize `.env` configuration |
+| `aicost analyze` | Analyze repository commits |
+| `aicost stats` | Show repository statistics |
+| `aicost report` | Generate markdown/HTML reports |
+| `aicost badge` | Generate cost badge |
+| `aicost auto-badge` | Auto-generate badge from pyproject.toml |
+| `aicost estimate` | Estimate cost for single diff |
+
 ## Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `OPENROUTER_API_KEY` | OpenRouter API key | (required for BYOK) |
-| `PFIX_MODEL` | Default model for calculations | `openrouter/qwen/qwen3-coder-next` |
+| `PFIX_MODEL` | Default model for calculations | `anthropic/claude-4-sonnet` |
 
 ## License
 

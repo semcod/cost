@@ -6,7 +6,7 @@
 - **Primary Language**: python
 - **Languages**: python: 6, php: 2, shell: 1
 - **Analysis Mode**: static
-- **Total Functions**: 35
+- **Total Functions**: 41
 - **Total Classes**: 0
 - **Modules**: 9
 - **Entry Points**: 14
@@ -14,11 +14,11 @@
 ## Architecture by Module
 
 ### src.costs.cli
-- **Functions**: 10
+- **Functions**: 14
 - **File**: `cli.py`
 
 ### src.costs.git_parser
-- **Functions**: 8
+- **Functions**: 9
 - **File**: `git_parser.py`
 
 ### src.costs.reports
@@ -45,28 +45,24 @@
 
 Main execution flows into the system:
 
-### src.costs.cli.analyze
-> Analyze AI costs for git commits with liteLLM support.
-
-**Three usage modes (zero config required):**
-
-1. **BYOK** (Bring Your Own Key) - `aicost --re
-- **Calls**: app.command, typer.Argument, typer.Option, typer.Option, typer.Option, typer.Option, typer.Option, typer.Option
-
 ### src.costs.cli.auto_badge
 > Auto-generate badge based on pyproject.toml [tool.costs] configuration.
 
 This command reads configuration from pyproject.toml and automatically
 genera
-- **Calls**: app.command, typer.Option, tool_config.get, tool_config.get, tool_config.get, typer.echo, typer.echo, src.costs.git_parser.parse_commits
+- **Calls**: app.command, typer.Option, typer.Option, tool_config.get, tool_config.get, tool_config.get, typer.echo, typer.echo
 
 ### src.costs.cli.report
 > Generate cost reports with visualizations.
 - **Calls**: app.command, typer.Argument, typer.Option, typer.Option, typer.Option, typer.Option, typer.echo, typer.echo
 
+### src.costs.cli.analyze
+> Analyze AI costs for git commits with liteLLM support.
+- **Calls**: app.command, typer.Argument, typer.Option, typer.Option, typer.Option, typer.Option, typer.Option, typer.Option
+
 ### src.costs.cli.badge
 > Generate or update cost badge in README.md.
-- **Calls**: app.command, typer.Argument, typer.Option, typer.echo, src.costs.git_parser.parse_commits, src.costs.calculator.batch_calculate_costs, src.costs.reports.update_readme_badge, os.getenv
+- **Calls**: app.command, typer.Argument, typer.Option, typer.Option, typer.echo, src.costs.git_parser.parse_commits, src.costs.calculator.batch_calculate_costs, src.costs.reports.update_readme_badge
 
 ### src.costs.cli.stats
 > Show repository statistics including commit history.
@@ -83,48 +79,46 @@ genera
 > Initialize .env configuration file.
 - **Calls**: app.command, typer.Option, Path, env_path.write_text, typer.echo, env_path.exists, typer.echo, typer.Exit
 
+### src.costs.git_parser.extract_ai_tag
+> Extract AI tag from commit message.
+- **Calls**: re.search, match.group
+
 ### src.costs.cli.version_callback
 - **Calls**: typer.echo, typer.Exit
 
 ### src.costs.cli.callback
 - **Calls**: app.callback, typer.Option
 
-### src.costs.git_parser.extract_ai_tag
-> Extract AI tag from commit message.
-- **Calls**: re.search, match.group
-
 ### src.costs.cli.main
 - **Calls**: app
 
-### project.install_hook
-
 ### src.costs.models.get_openrouter_headers
 > Get headers for OpenRouter API calls.
+
+### project.install_hook
 
 ## Process Flows
 
 Key execution flows identified:
 
-### Flow 1: analyze
-```
-analyze [src.costs.cli]
-```
-
-### Flow 2: auto_badge
+### Flow 1: auto_badge
 ```
 auto_badge [src.costs.cli]
 ```
 
-### Flow 3: report
+### Flow 2: report
 ```
 report [src.costs.cli]
+```
+
+### Flow 3: analyze
+```
+analyze [src.costs.cli]
 ```
 
 ### Flow 4: badge
 ```
 badge [src.costs.cli]
-  └─ →> parse_commits
-      └─> get_commit_diff
 ```
 
 ### Flow 5: stats
@@ -154,67 +148,69 @@ handleApiRequest [services.badge-service.badge]
 init [src.costs.cli]
 ```
 
-### Flow 9: version_callback
+### Flow 9: extract_ai_tag
 ```
-version_callback [src.costs.cli]
+extract_ai_tag [src.costs.git_parser]
 ```
 
-### Flow 10: callback
+### Flow 10: version_callback
 ```
-callback [src.costs.cli]
+version_callback [src.costs.cli]
 ```
 
 ## Data Transformation Functions
 
 Key functions that process and transform data:
 
+### src.costs.git_parser._parse_date_args
+> Parse various date argument formats into standard date objects.
+- **Output to**: isinstance, None.date, isinstance, isinstance, src.costs.git_parser.get_first_commit_date
+
 ### src.costs.git_parser.parse_commits
 > Parse commits from repository with date filtering.
-
-Args:
-    repo_path: Path to git repository
-    
-- **Output to**: git.Repo, repo.iter_commits, isinstance, src.costs.git_parser.get_commit_diff, commits.append
+- **Output to**: git.Repo, src.costs.git_parser._parse_date_args, repo.iter_commits, src.costs.git_parser.get_commit_diff, commits.append
 
 ## Public API Surface
 
 Functions exposed as public API (no underscore prefix):
 
-- `src.costs.cli.analyze` - 56 calls
-- `src.costs.cli.auto_badge` - 40 calls
+- `src.costs.cli.auto_badge` - 42 calls
 - `src.costs.cli.report` - 39 calls
-- `src.costs.cli.badge` - 20 calls
-- `src.costs.git_parser.parse_commits` - 20 calls
+- `src.costs.cli.analyze` - 31 calls
+- `src.costs.cli.badge` - 22 calls
+- `src.costs.reports.update_readme_badge` - 18 calls
 - `src.costs.cli.stats` - 18 calls
 - `src.costs.cli.estimate` - 17 calls
 - `src.costs.reports.generate_markdown_report` - 16 calls
 - `src.costs.reports.generate_html_report` - 14 calls
 - `services.badge-service.badge.handleApiRequest` - 14 calls
-- `src.costs.reports.update_readme_badge` - 13 calls
 - `src.costs.calculator.ai_cost` - 11 calls
-- `services.badge-service.badge.analyzeRepository` - 9 calls
-- `src.costs.cli.init` - 8 calls
-- `src.costs.calculator.batch_calculate_costs` - 8 calls
-- `src.costs.git_parser.get_commit_diff` - 8 calls
-- `src.costs.git_parser.get_repo_stats` - 7 calls
-- `services.badge-service.badge.generateBadge` - 5 calls
-- `src.costs.git_parser.get_first_commit_date` - 5 calls
 - `src.costs.calculator.calculate_roi` - 4 calls
+- `src.costs.reports.calculate_human_time` - 9 calls
+- `services.badge-service.badge.analyzeRepository` - 9 calls
+- `src.costs.git_parser.get_commit_diff` - 8 calls
+- `src.costs.calculator.batch_calculate_costs` - 8 calls
+- `src.costs.cli.init` - 8 calls
+- `src.costs.git_parser.parse_commits` - 7 calls
+- `src.costs.git_parser.get_repo_stats` - 7 calls
+- `src.costs.git_parser.get_first_commit_date` - 5 calls
+- `services.badge-service.badge.generateBadge` - 5 calls
 - `src.costs.git_parser.get_repo_name` - 4 calls
+- `src.costs.calculator.calculate_roi` - 4 calls
 - `src.costs.models.get_model_price` - 3 calls
-- `src.costs.cli.version_callback` - 2 calls
-- `src.costs.cli.callback` - 2 calls
-- `src.costs.calculator.estimate_tokens` - 2 calls
-- `src.costs.calculator.calculate_cost` - 2 calls
 - `src.costs.git_parser.is_ai_commit` - 2 calls
 - `src.costs.git_parser.extract_ai_tag` - 2 calls
-- `src.costs.cli.main` - 1 calls
+- `src.costs.calculator.estimate_tokens` - 2 calls
+- `src.costs.calculator.calculate_cost` - 2 calls
+- `src.costs.cli.version_callback` - 2 calls
+- `src.costs.cli.callback` - 2 calls
 - `src.costs.git_parser.is_commit_in_date_range` - 1 calls
+- `src.costs.cli.main` - 1 calls
+- `src.costs.models.get_openrouter_headers` - 0 calls
+- `src.costs.models.get_litellm_model_name` - 0 calls
 - `src.costs.reports.get_cost_color` - 0 calls
 - `services.badge-service.badge.determineColor` - 0 calls
 - `project.install_hook` - 0 calls
-- `src.costs.models.get_openrouter_headers` - 0 calls
-- `src.costs.models.get_litellm_model_name` - 0 calls
 
 ## System Interactions
 
@@ -222,20 +218,19 @@ How components interact:
 
 ```mermaid
 graph TD
-    analyze --> command
-    analyze --> Argument
-    analyze --> Option
     auto_badge --> command
     auto_badge --> Option
     auto_badge --> get
     report --> command
     report --> Argument
     report --> Option
+    analyze --> command
+    analyze --> Argument
+    analyze --> Option
     badge --> command
     badge --> Argument
     badge --> Option
     badge --> echo
-    badge --> parse_commits
     stats --> command
     stats --> Argument
     stats --> get_repo_stats
@@ -252,6 +247,7 @@ graph TD
     handleApiRequest --> generateBadge
     init --> command
     init --> Option
+    init --> Path
 ```
 
 ## Reverse Engineering Guidelines

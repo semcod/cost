@@ -1,7 +1,7 @@
 <!-- code2docs:start --># cost
 
-![version](https://img.shields.io/badge/version-0.1.0-blue) ![python](https://img.shields.io/badge/python-%3E%3D3.9-blue) ![coverage](https://img.shields.io/badge/coverage-unknown-lightgrey) ![functions](https://img.shields.io/badge/functions-35-green)
-> **35** functions | **0** classes | **9** files | CC̄ = 5.4
+![version](https://img.shields.io/badge/version-0.1.0-blue) ![python](https://img.shields.io/badge/python-%3E%3D3.9-blue) ![coverage](https://img.shields.io/badge/coverage-unknown-lightgrey) ![functions](https://img.shields.io/badge/functions-41-green)
+> **41** functions | **0** classes | **9** files | CC̄ = 5.0
 
 > Auto-generated project documentation from source code analysis.
 
@@ -141,16 +141,15 @@ Content outside the markers is preserved when regenerating. Enable this with `sy
 
 ```
 cost/
-    ├── costs/        ├── reports        ├── git_parser        ├── badge        ├── index├── project        ├── calculator        ├── cli        ├── models```
+    ├── costs/        ├── models        ├── git_parser        ├── badge        ├── index        ├── calculator├── project        ├── reports        ├── cli```
 
 ## API Overview
 
 ### Functions
 
-- `generate_markdown_report(results, output_path)` — Generate markdown report with cost visualizations.
-- `generate_html_report(results, output_path)` — Generate interactive HTML report with visualizations.
-- `get_cost_color(cost)` — Get badge color based on cost level.
-- `update_readme_badge(repo_path, results)` — Update README.md with cost badge.
+- `get_model_price(model)` — Get pricing for a model, fallback to local if unknown.
+- `get_openrouter_headers()` — Get headers for OpenRouter API calls.
+- `get_litellm_model_name(model)` — Convert model name to liteLLM format.
 - `get_commit_diff(repo, commit)` — Get diff for a commit.
 - `is_ai_commit(commit, tag_pattern)` — Check if commit message contains AI tag.
 - `extract_ai_tag(commit)` — Extract AI tag from commit message.
@@ -163,12 +162,17 @@ cost/
 - `determineColor()` — —
 - `analyzeRepository()` — —
 - `handleApiRequest()` — —
-- `install_hook()` — —
 - `estimate_tokens(diff)` — Estimate input/output tokens from diff.
 - `calculate_cost(tokens, model)` — Calculate cost in USD from tokens.
 - `calculate_roi(cost, lines_changed, hourly_rate)` — Calculate ROI metrics.
 - `ai_cost(commit_diff, model, api_key, saas_token)` — Calculate AI cost for a commit.
 - `batch_calculate_costs(commits_data, model, api_key, saas_token)` — Calculate costs for multiple commits.
+- `install_hook()` — —
+- `calculate_human_time(commits)` — Calculate human development time with 30-min deduplication.
+- `generate_markdown_report(results, output_path)` — Generate markdown report with cost visualizations.
+- `generate_html_report(results, output_path)` — Generate interactive HTML report with visualizations.
+- `get_cost_color(cost)` — Get badge color based on cost level.
+- `update_readme_badge(repo_path, results)` — Update README.md with cost badge including human time calculation.
 - `version_callback(value)` — —
 - `callback(version)` — —
 - `analyze(repo, model, api_key, saas_token)` — Analyze AI costs for git commits with liteLLM support.
@@ -179,9 +183,6 @@ cost/
 - `stats(repo)` — Show repository statistics including commit history.
 - `init(force)` — Initialize .env configuration file.
 - `main()` — —
-- `get_model_price(model)` — Get pricing for a model, fallback to local if unknown.
-- `get_openrouter_headers()` — Get headers for OpenRouter API calls.
-- `get_litellm_model_name(model)` — Convert model name to liteLLM format.
 
 
 ## Project Structure
@@ -191,10 +192,10 @@ cost/
 📄 `services.badge-service.index`
 📦 `src.costs`
 📄 `src.costs.calculator` (5 functions)
-📄 `src.costs.cli` (10 functions)
-📄 `src.costs.git_parser` (8 functions)
+📄 `src.costs.cli` (14 functions)
+📄 `src.costs.git_parser` (9 functions)
 📄 `src.costs.models` (3 functions)
-📄 `src.costs.reports` (5 functions)
+📄 `src.costs.reports` (6 functions)
 
 ## Requirements
 

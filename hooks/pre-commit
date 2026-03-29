@@ -25,8 +25,8 @@ fi
 if [ -f "pyproject.toml" ] && grep -q "\[tool.costs\]" pyproject.toml; then
     echo "🤖 Updating AI cost badge..."
     
-    # Run auto-badge
-    $COSTS_CMD auto-badge --repo . --quiet 2>/dev/null || $COSTS_CMD auto-badge --repo .
+    # Run auto-badge with --all to include all commits
+    $COSTS_CMD auto-badge --repo . --all --quiet 2>/dev/null || $COSTS_CMD auto-badge --repo . --all
     
     # Check if README was modified
     if git diff --quiet README.md 2>/dev/null; then

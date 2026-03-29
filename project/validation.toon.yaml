@@ -1,18 +1,14 @@
-# vallm batch | 31f | 11✓ 2⚠ 4✗ | 2026-03-29
+# vallm batch | 31f | 10✓ 1⚠ 5✗ | 2026-03-29
 
 SUMMARY:
-  scanned: 31  passed: 11 (35.5%)  warnings: 2  errors: 4  unsupported: 16
+  scanned: 31  passed: 10 (32.3%)  warnings: 1  errors: 5  unsupported: 16
 
-WARNINGS[2]{path,score}:
+WARNINGS[1]{path,score}:
   services/badge-service/badge.php,0.97
     issues[1]{rule,severity,message,line}:
       complexity.lizard_cc,warning,handleApiRequest: CC=20 exceeds limit 15,160
-  src/costs/git_parser.py,0.97
-    issues[2]{rule,severity,message,line}:
-      complexity.cyclomatic,warning,parse_commits has cyclomatic complexity 16 (max: 15),83
-      complexity.lizard_cc,warning,parse_commits: CC=16 exceeds limit 15,83
 
-ERRORS[4]{path,score}:
+ERRORS[5]{path,score}:
   src/costs/__init__.py,0.57
     issues[2]{rule,severity,message,line}:
       python.import.resolvable,error,Module 'calculator' not found,4
@@ -32,11 +28,14 @@ ERRORS[4]{path,score}:
       python.import.resolvable,error,Module 'calculator' not found,12
       python.import.resolvable,error,Module 'git_parser' not found,13
       python.import.resolvable,error,Module 'models' not found,14
-      python.import.resolvable,error,Module 'reports' not found,291
-      python.import.resolvable,error,Module 'reports' not found,370
-      python.import.resolvable,error,Module 'reports' not found,230
+      python.import.resolvable,error,Module 'reports' not found,297
+      python.import.resolvable,error,Module 'reports' not found,376
       python.import.resolvable,error,Module 'reports' not found,236
       python.import.resolvable,error,Module 'reports' not found,242
+      python.import.resolvable,error,Module 'reports' not found,248
+  src/costs/reports.py,0.93
+    issues[1]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'git_parser' not found,477
 
 UNSUPPORTED[3]{bucket,count}:
   *.md,8

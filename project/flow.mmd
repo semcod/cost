@@ -4,22 +4,22 @@ flowchart TD
     classDef entry fill:#4dabf7,stroke:#1971c2,color:#fff
 
     subgraph Core
-        src__costs__cli__version_callback["version_callback"]
-        src__costs__cli__callback["callback"]
-        src__costs__cli__analyze["analyze"]
-        src__costs__cli__report["report"]
-        src__costs__cli__badge["badge"]
-        src__costs__cli__auto_badge["auto_badge"]
-        src__costs__cli__estimate["estimate"]
-        src__costs__cli__stats["stats"]
-        src__costs__cli__init["init"]
-        src__costs__cli__main["main"]
+        src__costs__git_parser__extract_ai_tag["extract_ai_tag"]
+        src__costs__models__get_model_price["get_model_price"]
+        src__costs__models__get_openrouter_headers["get_openrouter_headers"]
+        services__badge_service__badge__handleApiRequest["handleApiRequest"]
+        project__install_hook["install_hook"]
         src__costs__calculator__calculate_cost["calculate_cost"]
         src__costs__calculator__ai_cost["ai_cost"]
         src__costs__calculator__batch_calculate_costs["batch_calculate_costs"]
-        services__badge_service__badge__handleApiRequest["handleApiRequest"]
-        project__install_hook["install_hook"]
-        ...["+4 more"]
+        src__costs__cli__version_callback["version_callback"]
+        src__costs__cli__callback["callback"]
+        src__costs__cli___get_repo["_get_repo"]
+        src__costs__cli___get_execution_context["_get_execution_context"]
+        src__costs__cli___get_filter_str["_get_filter_str"]
+        src__costs__cli___display_results["_display_results"]
+        src__costs__cli__analyze["analyze"]
+        ...["+7 more"]
     end
 
-    class src__costs__cli__version_callback,src__costs__cli__callback,src__costs__cli__analyze,src__costs__cli__report,src__costs__cli__badge,src__costs__cli__auto_badge,src__costs__cli__estimate,src__costs__cli__stats,src__costs__cli__init,src__costs__cli__main entry
+    class src__costs__git_parser__extract_ai_tag,src__costs__models__get_openrouter_headers,services__badge_service__badge__handleApiRequest,project__install_hook,src__costs__cli__version_callback,src__costs__cli__callback,src__costs__cli___get_repo,src__costs__cli___get_execution_context,src__costs__cli___get_filter_str,src__costs__cli___display_results entry

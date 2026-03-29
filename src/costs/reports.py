@@ -7,10 +7,11 @@ import json
 
 
 def calculate_human_time(commits: List[Dict[str, Any]]) -> float:
-    """Calculate human development time with 30-min deduplication.
+    """Calculate human development time using session-based estimation.
     
-    Each commit block (within 30 min of previous) counts as 30 min minimum.
-    Commits within 30 min of each other are grouped and count as one block.
+    Commits are grouped into sessions where the gap between consecutive 
+    commits is less than 30 minutes. 
+    Duration = (last_commit - first_commit) + 30m buffer per session.
     """
     if not commits:
         return 0.0
@@ -31,22 +32,26 @@ def calculate_human_time(commits: List[Dict[str, Any]]) -> float:
     
     dates.sort()
     
-    # Group commits into 30-minute blocks
-    blocks = []
-    current_block_start = dates[0]
+    total_seconds = 0
+    if dates:
+        session_start = dates[0]
+        session_last = dates[0]
+        
+        for i in range(1, len(dates)):
+            # If gap between consecutive commits > 30 minutes, end session
+            if dates[i] - session_last > timedelta(minutes=30):
+                # Calculate session duration: (last - start) + 30m buffer
+                session_duration = (session_last - session_start).total_seconds() + 1800
+                total_seconds += session_duration
+                # Start new session
+                session_start = dates[i]
+            session_last = dates[i]
+        
+        # Add final session
+        session_duration = (session_last - session_start).total_seconds() + 1800
+        total_seconds += session_duration
     
-    for dt in dates[1:]:
-        if dt - current_block_start > timedelta(minutes=30):
-            # Start new block
-            blocks.append(current_block_start)
-            current_block_start = dt
-    
-    # Add last block
-    blocks.append(current_block_start)
-    
-    # Each block is minimum 30 minutes
-    total_minutes = len(blocks) * 30
-    return total_minutes / 60.0  # Convert to hours
+    return total_seconds / 3600.0
 
 
 def generate_markdown_report(results: Dict[str, Any], output_path: Path) -> str:
@@ -432,20 +437,6 @@ def generate_html_report(results: Dict[str, Any], output_path: Path) -> str:
     
     output_path.write_text(html_content)
     return html_content
-
-
-def get_cost_color(cost: float) -> str:
-    """Get badge color based on cost level."""
-    if cost < 1:
-        return "brightgreen"
-    elif cost < 5:
-        return "green"
-    elif cost < 10:
-        return "yellow"
-    elif cost < 50:
-        return "orange"
-    else:
-        return "red"
 
 
 def get_cost_color(cost: float) -> str:

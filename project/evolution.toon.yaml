@@ -1,41 +1,25 @@
-# code2llm/evolution | 35 func | 7f | 2026-03-29
+# code2llm/evolution | 41 func | 7f | 2026-03-29
 
-NEXT[0] (ranked by impact):
-  (All high-priority splits complete)
+NEXT[1] (ranked by impact):
+  - "[1] !! SPLIT src/costs/reports.py"
+  - "WHY: 529L, 0 classes, max CC=9"
+  - "EFFORT: ~4h IMPACT: 4842"
 
-
-RISKS[0]: none
+RISKS[1]:
+  - "⚠ Splitting src/costs/reports.py may break 5 import paths"
 
 METRICS-TARGET:
-  CC̄:          5.2 → ≤3.6
-  max-CC:      20 → ≤10
-  god-modules: 0 → 0
-  high-CC(≥15): 2 → ≤1
-  hub-types:   0 → ≤0
+  - "CC̄: 4.8 → ≤3.4"
+  - "max-CC: 14 → ≤7"
+  - "god-modules: 1 → 0"
+  - "high-CC(≥15): 0 → ≤0"
+  - "hub-types: 0 → ≤0"
 
 PATTERNS (language parser shared logic):
-  _extract_declarations() in base.py — unified extraction for:
-    - TypeScript: interfaces, types, classes, functions, arrow funcs
-    - PHP: namespaces, traits, classes, functions, includes
-    - Ruby: modules, classes, methods, requires
-    - C++: classes, structs, functions, #includes
-    - C#: classes, interfaces, methods, usings
-    - Java: classes, interfaces, methods, imports
-    - Go: packages, functions, structs
-    - Rust: modules, functions, traits, use statements
-
-  Shared regex patterns per language:
-    - import: language-specific import/require/using patterns
-    - class: class/struct/trait declarations with inheritance
-    - function: function/method signatures with visibility
-    - brace_tracking: for C-family languages ({ })
-    - end_keyword_tracking: for Ruby (module/class/def...end)
-
-  Benefits:
-    - Consistent extraction logic across all languages
-    - Reduced code duplication (~70% reduction in parser LOC)
-    - Easier maintenance: fix once, apply everywhere
-    - Standardized FunctionInfo/ClassInfo models
+  - "_extract_declarations() in base.py — unified extraction for:"
+  - "  - TypeScript: interfaces, types, classes, functions, arrow funcs"
+  - "  - PHP: namespaces, traits, classes, functions, includes"
+  - "  - Ruby: modules, classes, methods, requires"
 
 HISTORY:
-  prev CC̄=5.2 → now CC̄=5.2
+  - "prev CC̄=5.2 → now CC̄=4.8"

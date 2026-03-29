@@ -300,6 +300,51 @@ Generate badges via API:
 curl "http://localhost:8080/badge.php?cost=12.34&model=claude-4&commits=42"
 ```
 
+## Automatic Cost Calculation
+
+The tool can automatically calculate costs and update badges on every commit and during test runs.
+
+### Pre-commit Hook
+
+Install the pre-commit hook to automatically update the badge before each commit:
+
+```bash
+# Copy hook to git hooks
+cp hooks/pre-commit .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+
+# Or use project.sh (includes hook installation)
+bash project.sh
+```
+
+The hook will:
+1. Detect `aicost` in global PATH or virtualenv
+2. Run `aicost auto-badge` if `[tool.costs]` is configured in `pyproject.toml`
+3. Stage updated README.md (interactive prompt in terminal)
+
+### Pytest Integration
+
+Tests automatically validate the cost calculation pipeline:
+
+```bash
+# Run all tests including auto-badge test
+pytest tests/test_cost.py -v
+
+# Test will:
+# - Check if [tool.costs] is configured
+# - Run aicost auto-badge
+# - Verify badge was updated
+```
+
+### GitHub Actions
+
+The repository includes a workflow that runs on push/PR:
+
+```yaml
+# .github/workflows/ai-cost-badge.yml
+# Automatically updates badge on main branch
+```
+
 ## CLI Commands
 
 | Command | Description |

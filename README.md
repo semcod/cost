@@ -1,8 +1,32 @@
 # AI Cost Tracker
 
 [![PyPI version](https://badge.fury.io/py/costs.svg)](https://pypi.org/project/costs/)
+[![AI Cost](https://img.shields.io/badge/AI%20Cost%20Tracker-Tool%20for%20tracking%20AI%20costs-blue)](https://github.com/semcod/cost)
+[![Default Model](https://img.shields.io/badge/Default%20Model-Claude%204%20Sonnet-lightgrey)](https://anthropic.com/claude)
+
+💰 **Track AI costs for your projects** - This tool helps developers monitor AI usage costs across git commits.
 
 **Zero-config AI cost calculator per commit/model with liteLLM integration.**
+
+---
+
+## 📊 AI Cost Tracking for This Project
+
+This project tracks its own AI development costs.
+
+**Development Stats:**
+- 📝 **18 commits** across **1 day** of active development
+- ⏱️ **~6 hours** estimated development time (accounting for overlapping work)
+- 💰 **AI Cost:** Analyze with `aicost auto-badge --repo .`
+
+```bash
+pip install costs
+aicost auto-badge --repo .
+```
+
+![AI Cost for costs](https://img.shields.io/badge/AI%20Cost-Analyze%20with%20costs-blue)
+
+---
 
 Track AI usage costs across your git commits with three flexible usage modes - no initial configuration required.
 
@@ -287,6 +311,8 @@ curl "http://localhost:8080/badge.php?cost=12.34&model=claude-4&commits=42"
 | `aicost badge` | Generate cost badge |
 | `aicost auto-badge` | Auto-generate badge from pyproject.toml |
 | `aicost estimate` | Estimate cost for single diff |
+
+📖 **Automatic Badge Generation**: See [docs/AUTO_BADGE.md](docs/AUTO_BADGE.md) for GitHub Actions, pre-commit hooks, and CI/CD integration.
 
 ## Environment Variables
 

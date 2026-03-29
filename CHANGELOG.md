@@ -27,6 +27,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.18] - 2026-03-29
+
+### Docs
+- Update README.md
+- Update docs/AUTO_BADGE.md
+
+### Other
+- Update hooks/pre-commit
+
 ## [0.1.17] - 2026-03-29
 
 ### Docs

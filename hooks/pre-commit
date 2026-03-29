@@ -1,0 +1,43 @@
+#!/bin/bash
+# AI Cost pre-commit hook
+# Automatically updates AI cost badge before each commit
+
+# Check if costs is installed
+if ! command -v aicost &> /dev/null; then
+    echo "⚠️  'costs' not installed. Install with: pip install costs"
+    exit 0
+fi
+
+# Get project root
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+cd "$PROJECT_ROOT"
+
+# Check if pyproject.toml has [tool.costs] configured
+if [ -f "pyproject.toml" ] && grep -q "\[tool.costs\]" pyproject.toml; then
+    echo "🤖 Updating AI cost badge..."
+    
+    # Run auto-badge
+    aicost auto-badge --repo . --quiet
+    
+    # Check if README was modified
+    if git diff --quiet README.md; then
+        echo "ℹ️  No changes to README.md"
+    else
+        echo "✅ AI cost badge updated"
+        
+        # Stage the updated README
+        git add README.md
+        
+        # Ask if user wants to include it in this commit
+        read -p "Include badge update in this commit? (y/n) " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            echo "📦 README.md staged with badge update"
+        else
+            git reset HEAD README.md
+            echo "📦 README.md unstaged (badge updated but not committed)"
+        fi
+    fi
+fi
+
+exit 0

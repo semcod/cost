@@ -141,7 +141,7 @@ Content outside the markers is preserved when regenerating. Enable this with `sy
 
 ```
 cost/
-    ├── ai_cost_tracker/        ├── models        ├── git_parser        ├── reports        ├── calculator        ├── index        ├── badge├── project        ├── cli```
+    ├── costs/        ├── models        ├── git_parser        ├── reports        ├── calculator        ├── index        ├── badge├── project        ├── cli```
 
 ## API Overview
 
@@ -187,12 +187,12 @@ cost/
 📄 `project`
 📄 `services.badge-service.badge` (4 functions)
 📄 `services.badge-service.index`
-📦 `src.ai_cost_tracker`
-📄 `src.ai_cost_tracker.calculator` (5 functions)
-📄 `src.ai_cost_tracker.cli` (9 functions)
-📄 `src.ai_cost_tracker.git_parser` (8 functions)
-📄 `src.ai_cost_tracker.models` (3 functions)
-📄 `src.ai_cost_tracker.reports` (4 functions)
+📦 `src.costs`
+📄 `src.costs.calculator` (5 functions)
+📄 `src.costs.cli` (9 functions)
+📄 `src.costs.git_parser` (8 functions)
+📄 `src.costs.models` (3 functions)
+📄 `src.costs.reports` (4 functions)
 
 ## Requirements
 

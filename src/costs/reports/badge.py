@@ -73,17 +73,26 @@ Generated on {datetime.now().strftime("%Y-%m-%d")} using [{model}](https://openr
         # Replace existing section
         pattern = r"## AI Cost Tracking\n.*?\n---\n\n"
         content = re.sub(pattern, badge_section, content, flags=re.DOTALL)
-    else:
-        # Add after first heading
+        # Add after main badges if possible, else after first heading
         lines = content.split("\n")
-        # Find first # or ## heading
-        insert_idx = 0
+        insert_idx = -1
+        
+        # Strategy 1: Find the end of a center-aligned badge block
         for i, line in enumerate(lines):
-            if line.startswith("# "):
+            if "</p>" in line and i < 50:  # Usually at the top
                 insert_idx = i + 1
                 break
-        lines.insert(insert_idx, "\n" + badge_section)
-        content = "\n".join(lines)
+        
+        # Strategy 2: Fallback to after the first # heading
+        if insert_idx == -1:
+            for i, line in enumerate(lines):
+                if line.startswith("# "):
+                    insert_idx = i + 1
+                    break
+        
+        if insert_idx != -1:
+            lines.insert(insert_idx, "\n" + badge_section)
+            content = "\n".join(lines)
     
     readme_path.write_text(content)
     return True

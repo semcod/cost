@@ -446,21 +446,81 @@ def stats(
 
 @app.command()
 def init(
-    force: bool = typer.Option(False, "--force", help="Overwrite existing .env file"),
+    force: bool = typer.Option(False, "--force", help="Overwrite existing configuration"),
+    auto: bool = typer.Option(False, "--auto", "-a", help="Auto-configure project with all defaults"),
 ):
-    """Initialize .env configuration file."""
-    env_path = Path(".env")
+    """Initialize AI cost tracking for current project.
+    
+    Creates .env file and adds [tool.costs] to pyproject.toml if present.
+    Use --auto for non-interactive setup.
+    """
+    project_dir = Path(".").resolve()
+    
+    # --- 1. Setup .env file ---
+    env_path = project_dir / ".env"
+    env_template = """# AI Cost Tracking Configuration
+# Get your API key from: https://openrouter.ai/keys
 
-    if env_path.exists() and not force:
-        typer.echo("⚠️  .env file already exists. Use --force to overwrite.")
-        raise typer.Exit(1)
-
-    env_content = """# Required: OpenRouter API key (https://openrouter.ai/keys)
+# OpenRouter API Key (required for real cost calculation)
 OPENROUTER_API_KEY=
+
+# Default AI model for cost analysis
 LLM_MODEL=openrouter/qwen/qwen3-coder-next
 """
-    env_path.write_text(env_content)
-    typer.echo("✅ Created .env file. Edit it to add your OpenRouter API key.")
+    
+    if env_path.exists() and not force:
+        typer.echo("⚠️  .env file already exists. Use --force to overwrite.")
+    else:
+        env_path.write_text(env_template)
+        typer.echo("✅ Created .env file")
+    
+    # --- 2. Setup pyproject.toml [tool.costs] ---
+    pyproject = project_dir / "pyproject.toml"
+    if pyproject.exists():
+        content = pyproject.read_text(encoding='utf-8')
+        
+        if '[tool.costs]' in content and not force:
+            typer.echo("⚠️  [tool.costs] already configured in pyproject.toml")
+        else:
+            costs_config = '''\n[tool.costs]
+# AI Cost tracking configuration
+badge = true
+update_readme = true
+readme_path = "README.md"
+default_model = "openrouter/qwen/qwen3-coder-next"
+analysis_mode = "byok"
+full_history = true
+max_commits = 500
+
+# Cost thresholds for badge colors (USD)
+badge_color_thresholds = { low = 1.0, medium = 5.0, high = 10.0, critical = 50.0 }
+'''
+            with open(pyproject, 'a', encoding='utf-8') as f:
+                f.write(costs_config)
+            typer.echo("✅ Added [tool.costs] to pyproject.toml")
+    
+    # --- 3. Ensure .gitignore ignores .env ---
+    gitignore = project_dir / ".gitignore"
+    gitignore_entry = ".env\n"
+    if gitignore.exists():
+        content = gitignore.read_text(encoding='utf-8')
+        if '.env' not in content:
+            with open(gitignore, 'a', encoding='utf-8') as f:
+                f.write('\n# Environment variables\n' + gitignore_entry)
+            typer.echo("✅ Added .env to .gitignore")
+    else:
+        gitignore.write_text(gitignore_entry + ".env.local\n")
+        typer.echo("✅ Created .gitignore with .env")
+    
+    # --- Summary ---
+    typer.echo()
+    typer.echo("=" * 50)
+    typer.echo("🤖 AI Cost Tracking initialized!")
+    typer.echo("=" * 50)
+    typer.echo("Next steps:")
+    typer.echo("1. Edit .env and add your OPENROUTER_API_KEY")
+    typer.echo("2. Run: costs auto-badge --repo . --all")
+    typer.echo("=" * 50)
 
 
 def main():

@@ -3,55 +3,19 @@
 ## AI Cost Tracking
 
 ![PyPI](https://img.shields.io/badge/pypi-costs-blue) ![Version](https://img.shields.io/badge/version-0.1.31-blue) ![Python](https://img.shields.io/badge/python-3.9+-blue) ![License](https://img.shields.io/badge/license-Apache--2.0-green)
-![AI Cost](https://img.shields.io/badge/AI%20Cost-$1.46-orange) ![Human Time](https://img.shields.io/badge/Human%20Time-5.5h-blue) ![Model](https://img.shields.io/badge/Model-openrouter%2Fqwen%2Fqwen3--coder--next-lightgrey)
+![AI Cost](https://img.shields.io/badge/AI%20Cost-$1.59-orange) ![Human Time](https://img.shields.io/badge/Human%20Time-5.5h-blue) ![Model](https://img.shields.io/badge/Model-openrouter%2Fqwen%2Fqwen3--coder--next-lightgrey)
 
 This project uses AI-generated code.
 
 **Costs:**
-- 🤖 **LLM usage:** $1.4600 (33 commits)
-- 👤 **Human dev:** ~$547 (5.5h @ $100/h, 30min dedup)
-- 📊 **ROI:** 374x savings vs full manual
+- 🤖 **LLM usage:** $1.5876 (34 commits)
+- 👤 **Human dev:** ~$551 (5.5h @ $100/h, 30min dedup)
+- 📊 **ROI:** 347x savings vs full manual
 
 Generated on 2026-03-29 using [openrouter/qwen/qwen3-coder-next](https://openrouter.ai/models/openrouter/qwen/qwen3-coder-next)
 
 ---
 
-
-
-
-## 📊 AI Cost Tracking for This Project
-
-This project tracks its own AI development costs.
-
-**Current Costs:**
-- 💰 **Total AI Cost:** $0.8403
-- 📝 **27 commits** analyzed  
-- 🤖 **Model:** openrouter/qwen/qwen3-coder-next
-- 📅 **Last updated:** 2026-03-29
-
-**Human Development Time:**
-- ⏱️ **1.5 hours** estimated (30-min deduplicated blocks)
-- 🧮 Calculation: min 30 min per commit block (commits within 30 min window count as one block)
-- 💵 **Human cost:** ~$150 (@ $100/h)
-
-**Cost Comparison:**
-| Type | Cost | Ratio |
-|------|------|-------|
-| 🤖 LLM usage | $0.84 | 0.56% |
-| 👤 Human dev | ~$150 | 99.44% |
-| **ROI** | **179x** | savings vs full manual |
-
-To update these numbers:
-```bash
-costs auto-badge --repo . --all
-```
-
-```bash
-pip install costs
-costs auto-badge --repo . --all
-```
-
----
 
 Track AI usage costs across your git commits with three flexible usage modes - no initial configuration required.
 

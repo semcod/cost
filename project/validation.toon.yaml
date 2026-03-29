@@ -1,25 +1,24 @@
-# vallm batch | 33f | 12✓ 1⚠ 5✗ | 2026-03-29
+# vallm batch | 36f | 13✓ 1⚠ 7✗ | 2026-03-29
 
 SUMMARY:
-  scanned: 33  passed: 12 (36.4%)  warnings: 1  errors: 5  unsupported: 16
+  scanned: 36  passed: 13 (36.1%)  warnings: 1  errors: 7  unsupported: 16
 
 WARNINGS[1]{path,score}:
   services/badge-service/badge.php,0.97
     issues[1]{rule,severity,message,line}:
       complexity.lizard_cc,warning,handleApiRequest: CC=20 exceeds limit 15,160
 
-ERRORS[5]{path,score}:
+ERRORS[7]{path,score}:
   src/costs/__init__.py,0.57
     issues[2]{rule,severity,message,line}:
       python.import.resolvable,error,Module 'calculator' not found,4
       python.import.resolvable,error,Module 'models' not found,5
-  src/costs/reports.py,0.57
-    issues[5]{rule,severity,message,line}:
-      python.import.resolvable,error,Module 'metrics' not found,4
-      python.import.resolvable,error,Module 'reports.base' not found,5
-      python.import.resolvable,error,Module 'reports.markdown' not found,6
-      python.import.resolvable,error,Module 'reports.html' not found,7
-      python.import.resolvable,error,Module 'reports.badge' not found,8
+  src/costs/reports/__init__.py,0.66
+    issues[4]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'base' not found,4
+      python.import.resolvable,error,Module 'markdown' not found,5
+      python.import.resolvable,error,Module 'badge' not found,7
+      python.import.resolvable,error,Module 'metrics' not found,8
   tests/test_cost.py,0.76
     issues[4]{rule,severity,message,line}:
       python.import.resolvable,error,Module 'src.costs' not found,15
@@ -39,6 +38,13 @@ ERRORS[5]{path,score}:
   src/costs/calculator.py,0.86
     issues[1]{rule,severity,message,line}:
       python.import.resolvable,error,Module 'models' not found,5
+  src/costs/reports/badge.py,0.86
+    issues[2]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'metrics' not found,7
+      python.import.resolvable,error,Module 'git_parser' not found,22
+  src/costs/reports/markdown.py,0.89
+    issues[1]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'base' not found,6
 
 UNSUPPORTED[3]{bucket,count}:
   *.md,8

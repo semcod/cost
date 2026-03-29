@@ -1,7 +1,7 @@
 <!-- code2docs:start --># cost
 
 ![version](https://img.shields.io/badge/version-0.1.0-blue) ![python](https://img.shields.io/badge/python-%3E%3D3.9-blue) ![coverage](https://img.shields.io/badge/coverage-unknown-lightgrey) ![functions](https://img.shields.io/badge/functions-43-green)
-> **43** functions | **0** classes | **9** files | CC̄ = 5.1
+> **43** functions | **0** classes | **14** files | CC̄ = 5.1
 
 > Auto-generated project documentation from source code analysis.
 
@@ -141,7 +141,7 @@ Content outside the markers is preserved when regenerating. Enable this with `sy
 
 ```
 cost/
-    ├── costs/        ├── models        ├── git_parser        ├── badge        ├── index├── project        ├── calculator        ├── reports        ├── cli```
+    ├── costs/        ├── models        ├── git_parser            ├── base        ├── calculator        ├── reports/            ├── markdown            ├── html            ├── badge        ├── index        ├── badge├── project        ├── metrics        ├── cli```
 
 ## API Overview
 
@@ -158,22 +158,22 @@ cost/
 - `parse_commits(repo_path, max_count, ai_only, since)` — Parse commits from repository with date filtering.
 - `get_repo_name(repo)` — Get repository name from git remote or directory.
 - `get_repo_stats(repo_path)` — Get repository statistics including first commit date.
-- `generateBadge()` — —
-- `determineColor()` — —
-- `analyzeRepository()` — —
-- `handleApiRequest()` — —
-- `install_hook()` — —
+- `get_cost_color(cost)` — Get badge color based on cost level.
 - `get_file_type_multiplier(filename)` — Get multiplier based on file extension.
 - `estimate_tokens(diff)` — Estimate tokens by parsing diff headers for file-type multipliers.
 - `calculate_cost(tokens, model)` — Calculate cost from tokens using model prices.
 - `calculate_roi(cost, lines_changed, hourly_rate, review_factor)` — Calculate ROI metrics with human review overhead.
 - `ai_cost(commit_diff, model, api_key, saas_token)` — Calculate AI cost for a commit with file-type awareness.
 - `batch_calculate_costs(commits_data, model, api_key, saas_token)` — Calculate costs for multiple commits.
-- `calculate_human_time(commits)` — Calculate human development time with realistic overhead.
 - `generate_markdown_report(results, output_path)` — Generate markdown report with cost visualizations.
 - `generate_html_report(results, output_path)` — Generate interactive HTML report with visualizations.
-- `get_cost_color(cost)` — Get badge color based on cost level.
 - `update_readme_badge(repo_path, results)` — Update README.md with cost badge including human time calculation.
+- `generateBadge()` — —
+- `determineColor()` — —
+- `analyzeRepository()` — —
+- `handleApiRequest()` — —
+- `install_hook()` — —
+- `calculate_human_time(commits)` — Calculate human development time with realistic overhead.
 - `version_callback(value)` — —
 - `callback(version)` — —
 - `analyze(repo, model, api_key, saas_token)` — Analyze AI costs for git commits with liteLLM support.
@@ -195,8 +195,13 @@ cost/
 📄 `src.costs.calculator` (7 functions)
 📄 `src.costs.cli` (14 functions)
 📄 `src.costs.git_parser` (9 functions)
+📄 `src.costs.metrics` (1 functions)
 📄 `src.costs.models` (3 functions)
-📄 `src.costs.reports` (5 functions)
+📦 `src.costs.reports`
+📄 `src.costs.reports.badge` (1 functions)
+📄 `src.costs.reports.base` (1 functions)
+📄 `src.costs.reports.html` (1 functions)
+📄 `src.costs.reports.markdown` (1 functions)
 
 ## Requirements
 

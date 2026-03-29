@@ -563,3 +563,16 @@ sprints:
     model_hints:
       planning: balanced
       implementation: balanced
+  - id: ticket-3a8886ad
+    name: Fix relative-imports issues
+    description: Resolve 10 relative-imports issues in src/costs/reports/__init__.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - src/costs/reports/__init__.py
+    rule_id: relative-imports
+    count: 10
+    model_hints:
+      planning: balanced
+      implementation: balanced

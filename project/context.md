@@ -4,11 +4,11 @@
 
 - **Project**: /home/tom/github/semcod/cost
 - **Primary Language**: python
-- **Languages**: python: 6, php: 2, shell: 1
+- **Languages**: python: 11, php: 2, shell: 1
 - **Analysis Mode**: static
 - **Total Functions**: 43
 - **Total Classes**: 0
-- **Modules**: 9
+- **Modules**: 14
 - **Entry Points**: 14
 
 ## Architecture by Module
@@ -25,10 +25,6 @@
 - **Functions**: 7
 - **File**: `calculator.py`
 
-### src.costs.reports
-- **Functions**: 5
-- **File**: `reports.py`
-
 ### services.badge-service.badge
 - **Functions**: 4
 - **File**: `badge.php`
@@ -37,9 +33,29 @@
 - **Functions**: 3
 - **File**: `models.py`
 
+### src.costs.reports.base
+- **Functions**: 1
+- **File**: `base.py`
+
+### src.costs.metrics
+- **Functions**: 1
+- **File**: `metrics.py`
+
+### src.costs.reports.markdown
+- **Functions**: 1
+- **File**: `markdown.py`
+
+### src.costs.reports.html
+- **Functions**: 1
+- **File**: `html.py`
+
 ### project
 - **Functions**: 1
 - **File**: `project.sh`
+
+### src.costs.reports.badge
+- **Functions**: 1
+- **File**: `badge.py`
 
 ## Key Entry Points
 
@@ -62,7 +78,7 @@ genera
 
 ### src.costs.cli.badge
 > Generate or update cost badge in README.md.
-- **Calls**: app.command, typer.Argument, typer.Option, typer.Option, typer.echo, src.costs.git_parser.parse_commits, src.costs.calculator.batch_calculate_costs, src.costs.reports.update_readme_badge
+- **Calls**: app.command, typer.Argument, typer.Option, typer.Option, typer.echo, src.costs.git_parser.parse_commits, src.costs.calculator.batch_calculate_costs, src.costs.reports.badge.update_readme_badge
 
 ### src.costs.cli.stats
 > Show repository statistics including commit history.
@@ -178,19 +194,19 @@ Functions exposed as public API (no underscore prefix):
 - `src.costs.cli.report` - 39 calls
 - `src.costs.cli.analyze` - 31 calls
 - `src.costs.cli.badge` - 22 calls
-- `src.costs.reports.calculate_human_time` - 21 calls
-- `src.costs.reports.update_readme_badge` - 18 calls
+- `src.costs.metrics.calculate_human_time` - 21 calls
 - `src.costs.cli.stats` - 18 calls
 - `src.costs.cli.estimate` - 17 calls
-- `src.costs.reports.generate_markdown_report` - 16 calls
-- `src.costs.reports.generate_html_report` - 14 calls
+- `src.costs.reports.badge.update_readme_badge` - 17 calls
+- `src.costs.reports.markdown.generate_markdown_report` - 16 calls
+- `src.costs.reports.html.generate_html_report` - 14 calls
 - `services.badge-service.badge.handleApiRequest` - 14 calls
 - `src.costs.calculator.ai_cost` - 11 calls
-- `services.badge-service.badge.analyzeRepository` - 9 calls
 - `src.costs.calculator.estimate_tokens` - 9 calls
+- `services.badge-service.badge.analyzeRepository` - 9 calls
 - `src.costs.git_parser.get_commit_diff` - 8 calls
-- `src.costs.cli.init` - 8 calls
 - `src.costs.calculator.batch_calculate_costs` - 8 calls
+- `src.costs.cli.init` - 8 calls
 - `src.costs.git_parser.parse_commits` - 7 calls
 - `src.costs.git_parser.get_repo_stats` - 7 calls
 - `src.costs.calculator.calculate_roi` - 6 calls
@@ -200,17 +216,17 @@ Functions exposed as public API (no underscore prefix):
 - `src.costs.models.get_model_price` - 3 calls
 - `src.costs.git_parser.is_ai_commit` - 2 calls
 - `src.costs.git_parser.extract_ai_tag` - 2 calls
-- `src.costs.cli.version_callback` - 2 calls
-- `src.costs.cli.callback` - 2 calls
 - `src.costs.calculator.get_file_type_multiplier` - 2 calls
 - `src.costs.calculator.calculate_cost` - 2 calls
+- `src.costs.cli.version_callback` - 2 calls
+- `src.costs.cli.callback` - 2 calls
 - `src.costs.git_parser.is_commit_in_date_range` - 1 calls
 - `src.costs.cli.main` - 1 calls
 - `src.costs.models.get_openrouter_headers` - 0 calls
 - `src.costs.models.get_litellm_model_name` - 0 calls
-- `src.costs.reports.get_cost_color` - 0 calls
-- `project.install_hook` - 0 calls
+- `src.costs.reports.base.get_cost_color` - 0 calls
 - `services.badge-service.badge.determineColor` - 0 calls
+- `project.install_hook` - 0 calls
 
 ## System Interactions
 

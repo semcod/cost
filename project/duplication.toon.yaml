@@ -1,23 +1,9 @@
-# redup/duplication | 1 groups | 8f 1587L | 2026-03-29
+# redup/duplication | 0 groups | 9f 1520L | 2026-03-29
 
 SUMMARY:
-  files_scanned: 8
-  total_lines:   1587
-  dup_groups:    1
-  dup_fragments: 2
-  saved_lines:   69
-  scan_ms:       3896
-
-DUPLICATES[1] (ranked by impact):
-  [202f437d69d7eccc] ! EXAC  calculate_human_time  L=69 N=2 saved=69 sim=1.00
-      src/costs/metrics.py:0-68  (calculate_human_time)
-      src/costs/reports.py:0-68  (calculate_human_time)
-
-REFACTOR[1] (ranked by priority):
-  [1] ◐ extract_module     → src/costs/utils/calculate_human_time.py
-      WHY: 2 occurrences of 69-line block across 2 files — saves 69 lines
-      FILES: src/costs/metrics.py, src/costs/reports.py
-
-METRICS-TARGET:
-  dup_groups:  1 → 0
-  saved_lines: 69 lines recoverable
+  files_scanned: 9
+  total_lines:   1520
+  dup_groups:    0
+  dup_fragments: 0
+  saved_lines:   0
+  scan_ms:       4623

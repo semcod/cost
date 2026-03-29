@@ -13,7 +13,7 @@
 
 version: '1.0'
 project:
-  name: costs
+  name: cost
   type:
   - python
   description: Zero-config AI cost calculator per commit/model
@@ -224,7 +224,7 @@ strategies:
   python:
     test: pytest tests/ -v
     build: python -m build
-    publish: twine upload dist/costs-{version}*
+    publish: twine upload dist/cost-{version}*
     publish_enabled: true
     dependencies:
       file: requirements.txt

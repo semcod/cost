@@ -9,7 +9,7 @@ load_dotenv()
 
 # Default configuration from .env
 DEFAULT_OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
-DEFAULT_MODEL = os.getenv("PFIX_MODEL", "anthropic/claude-4-sonnet")
+DEFAULT_MODEL = os.getenv("LLM_MODEL", "openrouter/qwen/qwen3-coder-next")
 
 # Model pricing ($/token) - includes liteLLM supported providers
 PRICES: Dict[str, Dict[str, float]] = {

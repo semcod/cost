@@ -39,9 +39,9 @@ def callback(
 def analyze(
     repo: Path = typer.Argument(..., help="Path to git repository"),
     model: str = typer.Option(
-        os.getenv("PFIX_MODEL", "openrouter/qwen/qwen3-coder-next"),
+        os.getenv("LLM_MODEL", "openrouter/qwen/qwen3-coder-next"),
         "--model", "-m",
-        help="AI model to use (default from .env PFIX_MODEL)"
+        help="AI model to use (default from .env LLM_MODEL)"
     ),
     api_key: str = typer.Option(
         os.getenv("OPENROUTER_API_KEY", ""),
@@ -52,7 +52,8 @@ def analyze(
     mode: str = typer.Option("auto", "--mode", help="Calculation mode: auto, byok, local, saas"),
     max_commits: int = typer.Option(100, "--max-commits", "-n", help="Max commits to analyze"),
     output: Path = typer.Option(Path("ai_costs.csv"), "--output", "-o", help="Output CSV file"),
-    ai_only: bool = typer.Option(True, "--ai-only/--all", help="Only analyze commits with [ai:] tag"),
+    ai_only: bool = typer.Option(True, "--ai-only", help="Only analyze commits with [ai:] tag"),
+    all_commits: bool = typer.Option(False, "--all", help="Analyze all commits (not just AI-tagged)"),
     saas_url: str = typer.Option("https://your-saas.com/api/cost", "--saas-url", help="SaaS API endpoint"),
     since: Optional[str] = typer.Option(None, "--since", help="Start date (YYYY-MM-DD) - analyze commits from this date"),
     until: Optional[str] = typer.Option(None, "--until", help="End date (YYYY-MM-DD) - analyze commits until this date"),
@@ -75,7 +76,7 @@ def analyze(
     **Configuration via .env file:**
     ```
     OPENROUTER_API_KEY=sk-or-v1-...
-    PFIX_MODEL=openrouter/qwen/qwen3-coder-next
+    LLM_MODEL=openrouter/qwen/qwen3-coder-next
     ```
 
     **Date filtering options:**
@@ -128,6 +129,9 @@ def analyze(
     
     filter_str = " | ".join(filter_desc) if filter_desc else "last commits"
     
+    # Handle ai_only vs all_commits logic
+    effective_ai_only = ai_only and not all_commits
+    
     typer.echo(f"🔍 Analyzing {max_commits} commits from {get_repo_name(git_repo)}...")
     typer.echo(f"🤖 Model: {litellm_model} | Mode: {effective_mode} | Filter: {filter_str}")
     
@@ -135,7 +139,7 @@ def analyze(
     commits_data = parse_commits(
         str(repo),
         max_count=max_commits,
-        ai_only=ai_only,
+        ai_only=effective_ai_only,
         since=since,
         until=until,
         specific_date=specific_date,
@@ -186,7 +190,7 @@ def analyze(
 def report(
     repo: Path = typer.Argument(..., help="Path to git repository"),
     model: str = typer.Option(
-        os.getenv("PFIX_MODEL", "anthropic/claude-4-sonnet"),
+        os.getenv("LLM_MODEL", "openrouter/qwen/qwen3-coder-next"),
         "--model", "-m",
         help="AI model to use"
     ),
@@ -258,7 +262,7 @@ def report(
 def badge(
     repo: Path = typer.Argument(..., help="Path to git repository"),
     model: str = typer.Option(
-        os.getenv("PFIX_MODEL", "anthropic/claude-4-sonnet"),
+        os.getenv("LLM_MODEL", "openrouter/qwen/qwen3-coder-next"),
         "--model", "-m",
         help="AI model to use"
     ),
@@ -372,9 +376,9 @@ def auto_badge(
 def estimate(
     diff_file: Path = typer.Argument(..., help="Path to diff file or '-' for stdin"),
     model: str = typer.Option(
-        os.getenv("PFIX_MODEL", "openrouter/qwen/qwen3-coder-next"),
+        os.getenv("LLM_MODEL", "openrouter/qwen/qwen3-coder-next"),
         "--model", "-m",
-        help="AI model to use (default from .env PFIX_MODEL)"
+        help="AI model to use (default from .env LLM_MODEL)"
     ),
 ):
     """Estimate cost for a single diff using liteLLM token counting."""
@@ -439,7 +443,7 @@ def init(
 
     env_content = """# Required: OpenRouter API key (https://openrouter.ai/keys)
 OPENROUTER_API_KEY=
-PFIX_MODEL=anthropic/claude-4-sonnet
+LLM_MODEL=openrouter/qwen/qwen3-coder-next
 """
     env_path.write_text(env_content)
     typer.echo("✅ Created .env file. Edit it to add your OpenRouter API key.")

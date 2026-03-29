@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "costs"
-version = "0.1.23"
+version = "0.1.24"
 description = "Zero-config AI cost calculator per commit/model with liteLLM"
 readme = "README.md"
 license = "Apache-2.0"
@@ -16,6 +16,7 @@ dependencies = [
     "gitpython>=3.1",
     "pandas>=2.0",
     "typer>=0.12",
+    "click<8.1.0",
     "httpx>=0.27",
     "litellm>=1.0",
     "python-dotenv>=1.0"
@@ -56,7 +57,7 @@ readme_path = "README.md"  # Path to README file
 badge_color_thresholds = { low = 1.0, medium = 5.0, high = 10.0, critical = 50.0 }
 
 # Analysis configuration
-default_model = "anthropic/claude-4-sonnet"
+default_model = "openrouter/qwen/qwen3-coder-next"
 analysis_mode = "byok"  # byok, local, saas
 full_history = false  # Analyze full git history by default
 max_commits = 1000  # Maximum commits to analyze

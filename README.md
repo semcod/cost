@@ -74,7 +74,7 @@ Create a `.env` file in your project root:
 ```bash
 # Required: OpenRouter API key (https://openrouter.ai/keys)
 OPENROUTER_API_KEY=YOUR_KEY
-PFIX_MODEL=anthropic/claude-4-sonnet
+LLM_MODEL=openrouter/qwen/qwen3-coder-next
 ```
 
 Or use the built-in init command:
@@ -364,7 +364,7 @@ The repository includes a workflow that runs on push/PR:
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `OPENROUTER_API_KEY` | OpenRouter API key | (required for BYOK) |
-| `PFIX_MODEL` | Default model for calculations | `anthropic/claude-4-sonnet` |
+| `LLM_MODEL` | Default model for calculations | `openrouter/qwen/qwen3-coder-next` |
 
 ## License
 

@@ -6,15 +6,15 @@ HEALTH[0]: ok
 REFACTOR[0]: none needed
 
 PIPELINES[12]:
-  [1] Src [version_callback]: version_callback
+  [1] Src [extract_ai_tag]: extract_ai_tag
       PURITY: 100% pure
-  [2] Src [callback]: callback
+  [2] Src [handleApiRequest]: handleApiRequest → generateBadge → determineColor
       PURITY: 100% pure
-  [3] Src [analyze]: analyze → _get_repo
+  [3] Src [version_callback]: version_callback
       PURITY: 100% pure
-  [4] Src [report]: report → parse_commits → _parse_date_args → get_first_commit_date
+  [4] Src [callback]: callback
       PURITY: 100% pure
-  [5] Src [badge]: badge → parse_commits → _parse_date_args → get_first_commit_date
+  [5] Src [analyze]: analyze → _get_repo
       PURITY: 100% pure
 
 LAYERS:

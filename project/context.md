@@ -33,6 +33,10 @@
 - **Functions**: 3
 - **File**: `models.py`
 
+### src.costs.metrics
+- **Functions**: 1
+- **File**: `metrics.py`
+
 ### src.costs.reports.base
 - **Functions**: 1
 - **File**: `base.py`
@@ -41,9 +45,9 @@
 - **Functions**: 1
 - **File**: `markdown.py`
 
-### src.costs.metrics
+### src.costs.reports.html
 - **Functions**: 1
-- **File**: `metrics.py`
+- **File**: `html.py`
 
 ### project
 - **Functions**: 1
@@ -52,10 +56,6 @@
 ### src.costs.reports.badge
 - **Functions**: 1
 - **File**: `badge.py`
-
-### src.costs.reports.html
-- **Functions**: 1
-- **File**: `html.py`
 
 ## Key Entry Points
 
@@ -98,15 +98,15 @@ Use --auto for non-interactive
 ### services.badge-service.badge.handleApiRequest
 - **Calls**: services.badge-service.badge.json_decode, services.badge-service.badge.file_get_contents, services.badge-service.badge.http_response_code, services.badge-service.badge.json_encode, services.badge-service.badge.generateBadge, services.badge-service.badge.isset, services.badge-service.badge.header, services.badge-service.badge.base64_encode
 
+### src.costs.git_parser.extract_ai_tag
+> Extract AI tag from commit message.
+- **Calls**: re.search, match.group
+
 ### src.costs.cli.version_callback
 - **Calls**: typer.echo, typer.Exit
 
 ### src.costs.cli.callback
 - **Calls**: app.callback, typer.Option
-
-### src.costs.git_parser.extract_ai_tag
-> Extract AI tag from commit message.
-- **Calls**: re.search, match.group
 
 ### src.costs.cli.main
 - **Calls**: app
@@ -167,14 +167,14 @@ estimate [src.costs.cli]
 handleApiRequest [services.badge-service.badge]
 ```
 
-### Flow 9: version_callback
+### Flow 9: extract_ai_tag
 ```
-version_callback [src.costs.cli]
+extract_ai_tag [src.costs.git_parser]
 ```
 
-### Flow 10: callback
+### Flow 10: version_callback
 ```
-callback [src.costs.cli]
+version_callback [src.costs.cli]
 ```
 
 ## Data Transformation Functions
@@ -203,11 +203,11 @@ Functions exposed as public API (no underscore prefix):
 - `src.costs.cli.stats` - 18 calls
 - `src.costs.cli.estimate` - 17 calls
 - `src.costs.reports.markdown.generate_markdown_report` - 16 calls
-- `services.badge-service.badge.handleApiRequest` - 14 calls
 - `src.costs.reports.html.generate_html_report` - 14 calls
+- `services.badge-service.badge.handleApiRequest` - 14 calls
 - `src.costs.calculator.ai_cost` - 11 calls
-- `services.badge-service.badge.analyzeRepository` - 9 calls
 - `src.costs.calculator.estimate_tokens` - 9 calls
+- `services.badge-service.badge.analyzeRepository` - 9 calls
 - `src.costs.git_parser.get_commit_diff` - 8 calls
 - `src.costs.calculator.batch_calculate_costs` - 8 calls
 - `src.costs.git_parser.parse_commits` - 7 calls
@@ -217,19 +217,19 @@ Functions exposed as public API (no underscore prefix):
 - `services.badge-service.badge.generateBadge` - 5 calls
 - `src.costs.git_parser.get_repo_name` - 4 calls
 - `src.costs.models.get_model_price` - 3 calls
-- `src.costs.cli.version_callback` - 2 calls
-- `src.costs.cli.callback` - 2 calls
 - `src.costs.git_parser.is_ai_commit` - 2 calls
 - `src.costs.git_parser.extract_ai_tag` - 2 calls
 - `src.costs.calculator.get_file_type_multiplier` - 2 calls
 - `src.costs.calculator.calculate_cost` - 2 calls
-- `src.costs.cli.main` - 1 calls
+- `src.costs.cli.version_callback` - 2 calls
+- `src.costs.cli.callback` - 2 calls
 - `src.costs.git_parser.is_commit_in_date_range` - 1 calls
+- `src.costs.cli.main` - 1 calls
 - `src.costs.models.get_openrouter_headers` - 0 calls
 - `src.costs.models.get_litellm_model_name` - 0 calls
 - `src.costs.reports.base.get_cost_color` - 0 calls
-- `services.badge-service.badge.determineColor` - 0 calls
 - `project.install_hook` - 0 calls
+- `services.badge-service.badge.determineColor` - 0 calls
 
 ## System Interactions
 

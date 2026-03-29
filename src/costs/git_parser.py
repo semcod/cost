@@ -80,6 +80,17 @@ def get_first_commit_date(repo: git.Repo) -> date:
         return date.today()
 
 
+def _to_date(val: Optional[Union[date, datetime, str]]) -> Optional[date]:
+    """Helper to convert various types to a date object."""
+    if val is None:
+        return None
+    if isinstance(val, str):
+        return datetime.strptime(val, "%Y-%m-%d").date()
+    if isinstance(val, datetime):
+        return val.date()
+    return val
+
+
 def _parse_date_args(
     repo: git.Repo,
     since: Optional[Union[date, datetime, str]] = None,
@@ -88,36 +99,16 @@ def _parse_date_args(
     full_history: bool = False
 ) -> Tuple[Optional[date], Optional[date], Optional[date]]:
     """Parse various date argument formats into standard date objects."""
-    parsed_since = None
-    parsed_until = None
-    parsed_specific = None
-    
     if specific_date:
-        if isinstance(specific_date, str):
-            parsed_specific = datetime.strptime(specific_date, "%Y-%m-%d").date()
-        else:
-            parsed_specific = specific_date
-    else:
-        if since:
-            if isinstance(since, str):
-                parsed_since = datetime.strptime(since, "%Y-%m-%d").date()
-            elif isinstance(since, datetime):
-                parsed_since = since.date()
-            else:
-                parsed_since = since
-        
-        if until:
-            if isinstance(until, str):
-                parsed_until = datetime.strptime(until, "%Y-%m-%d").date()
-            elif isinstance(until, datetime):
-                parsed_until = until.date()
-            else:
-                parsed_until = until
-        
-        if full_history and not parsed_since:
-            parsed_since = get_first_commit_date(repo)
+        return None, None, _to_date(specific_date)
+    
+    parsed_since = _to_date(since)
+    parsed_until = _to_date(until)
+    
+    if full_history and not parsed_since:
+        parsed_since = get_first_commit_date(repo)
             
-    return parsed_since, parsed_until, parsed_specific
+    return parsed_since, parsed_until, None
 
 
 def parse_commits(

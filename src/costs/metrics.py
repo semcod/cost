@@ -11,19 +11,8 @@ MIN_SESSION_DURATION = timedelta(hours=1.0)   # Minimum work block (1h)
 DAILY_PREP_BUFFER = timedelta(hours=1.5)      # Setup/Research overhead per author/day
 
 
-def calculate_human_time(commits: List[Dict[str, Any]]) -> float:
-    """Calculate human development time with realistic overhead.
-    
-    1. Groups commits by Author and Date.
-    2. Adds a 1.5h Daily Prep Buffer (Research/Setup) per author-day.
-    3. Identifies Work Sessions (gaps > 2h).
-    4. Applies Context Switching Penalty (15m) for gaps between 30m and 2h.
-    5. Ensures minimum session duration (1h).
-    """
-    if not commits:
-        return 0.0
-    
-    # Group commits by author
+def _group_commits_by_author(commits: List[Dict[str, Any]]) -> Dict[str, List[datetime]]:
+    """Group commit datetimes by author."""
     authors_data = {}
     for commit in commits:
         author = commit.get("author", "unknown")
@@ -35,45 +24,64 @@ def calculate_human_time(commits: List[Dict[str, Any]]) -> float:
             if date_str:
                 dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
                 authors_data[author].append(dt)
-        except:
+        except (ValueError, TypeError):
             continue
+    return authors_data
+
+
+def _calculate_session_duration(start_dt: datetime, end_dt: datetime) -> float:
+    """Calculate session duration in seconds, ensuring it meets the minimum block requirement."""
+    duration = (end_dt - start_dt).total_seconds()
+    return max(duration, MIN_SESSION_DURATION.total_seconds())
+
+
+def _calculate_author_time(dates: List[datetime]) -> float:
+    """Calculate development time for a single author across all their commits."""
+    if not dates:
+        return 0.0
     
-    total_seconds = 0.0
+    dates.sort()
     
-    for author, dates in authors_data.items():
-        if not dates:
-            continue
+    # Track unique days worked for daily buffers
+    days_worked = set(d.date() for d in dates)
+    total_seconds = len(days_worked) * DAILY_PREP_BUFFER.total_seconds()
+    
+    author_session_seconds = 0.0
+    session_start = dates[0]
+    session_last = dates[0]
+    
+    for i in range(1, len(dates)):
+        gap = dates[i] - session_last
         
-        dates.sort()
+        if gap > SESSION_GAP_THRESHOLD:
+            # End session and start new
+            author_session_seconds += _calculate_session_duration(session_start, session_last)
+            session_start = dates[i]
+        elif gap > timedelta(minutes=30):
+            # Apply context switch penalty
+            author_session_seconds += CONTEXT_SWITCH_PENALTY.total_seconds()
         
-        # Track unique days worked for daily buffers
-        days_worked = set(d.date() for d in dates)
-        total_seconds += len(days_worked) * DAILY_PREP_BUFFER.total_seconds()
-        
-        session_start = dates[0]
-        session_last = dates[0]
-        author_session_seconds = 0.0
-        
-        for i in range(1, len(dates)):
-            gap = dates[i] - session_last
-            
-            if gap > SESSION_GAP_THRESHOLD:
-                # End session: duration + buffer (enforce minimum)
-                session_duration = max((session_last - session_start).total_seconds(), 
-                                      MIN_SESSION_DURATION.total_seconds())
-                author_session_seconds += session_duration
-                # Start new session
-                session_start = dates[i]
-            elif gap > timedelta(minutes=30):
-                # Context switch penalty
-                author_session_seconds += CONTEXT_SWITCH_PENALTY.total_seconds()
-            
-            session_last = dates[i]
-        
-        # Add final session for this author
-        session_duration = max((session_last - session_start).total_seconds(), 
-                              MIN_SESSION_DURATION.total_seconds())
-        author_session_seconds += session_duration
-        total_seconds += author_session_seconds
+        session_last = dates[i]
+    
+    # Add final session
+    author_session_seconds += _calculate_session_duration(session_start, session_last)
+    
+    return total_seconds + author_session_seconds
+
+
+def calculate_human_time(commits: List[Dict[str, Any]]) -> float:
+    """Calculate human development time with realistic overhead.
+    
+    The calculation includes:
+    1. 1.5h Daily Prep Buffer per author-day.
+    2. Session identification (2h gap threshold).
+    3. Context Switching Penalties (15m for gaps > 30m).
+    4. Minimum session block (1h).
+    """
+    if not commits:
+        return 0.0
+    
+    authors_data = _group_commits_by_author(commits)
+    total_seconds = sum(_calculate_author_time(dates) for dates in authors_data.values())
     
     return total_seconds / 3600.0

@@ -141,7 +141,7 @@ Content outside the markers is preserved when regenerating. Enable this with `sy
 
 ```
 cost/
-    ├── costs/        ├── models        ├── git_parser            ├── base        ├── calculator        ├── reports/        ├── cli            ├── markdown        ├── badge            ├── html        ├── index├── project            ├── badge        ├── metrics```
+    ├── costs/        ├── models        ├── metrics            ├── base        ├── git_parser        ├── reports/            ├── markdown        ├── calculator            ├── html            ├── badge        ├── index├── project        ├── badge        ├── cli```
 
 ## API Overview
 
@@ -150,6 +150,8 @@ cost/
 - `get_model_price(model)` — Get pricing for a model, fallback to local if unknown.
 - `get_openrouter_headers()` — Get headers for OpenRouter API calls.
 - `get_litellm_model_name(model)` — Convert model name to liteLLM format.
+- `calculate_human_time(commits)` — Calculate human development time with realistic overhead.
+- `get_cost_color(cost)` — Get badge color based on cost level.
 - `get_commit_diff(repo, commit)` — Get diff for a commit.
 - `is_ai_commit(commit, tag_pattern)` — Check if commit message contains AI tag.
 - `extract_ai_tag(commit)` — Extract AI tag from commit message.
@@ -158,13 +160,20 @@ cost/
 - `parse_commits(repo_path, max_count, ai_only, since)` — Parse commits from repository with date filtering.
 - `get_repo_name(repo)` — Get repository name from git remote or directory.
 - `get_repo_stats(repo_path)` — Get repository statistics including first commit date.
-- `get_cost_color(cost)` — Get badge color based on cost level.
+- `generate_markdown_report(results, output_path)` — Generate markdown report with cost visualizations.
 - `get_file_type_multiplier(filename)` — Get multiplier based on file extension.
 - `estimate_tokens(diff)` — Estimate tokens by parsing diff headers for file-type multipliers.
 - `calculate_cost(tokens, model)` — Calculate cost from tokens using model prices.
 - `calculate_roi(cost, lines_changed, hourly_rate, review_factor)` — Calculate ROI metrics with human review overhead.
 - `ai_cost(commit_diff, model, api_key, saas_token)` — Calculate AI cost for a commit with file-type awareness.
 - `batch_calculate_costs(commits_data, model, api_key, saas_token)` — Calculate costs for multiple commits.
+- `generate_html_report(results, output_path)` — Generate interactive HTML report with visualizations.
+- `update_readme_badge(repo_path, results)` — Update README.md with cost badge including human time calculation.
+- `install_hook()` — —
+- `generateBadge()` — —
+- `determineColor()` — —
+- `analyzeRepository()` — —
+- `handleApiRequest()` — —
 - `version_callback(value)` — —
 - `callback(version)` — —
 - `analyze(repo, model, api_key, saas_token)` — Analyze AI costs for git commits with liteLLM support.
@@ -175,15 +184,6 @@ cost/
 - `stats(repo)` — Show repository statistics including commit history.
 - `init(force, auto)` — Initialize AI cost tracking for current project.
 - `main()` — —
-- `generate_markdown_report(results, output_path)` — Generate markdown report with cost visualizations.
-- `generateBadge()` — —
-- `determineColor()` — —
-- `analyzeRepository()` — —
-- `handleApiRequest()` — —
-- `generate_html_report(results, output_path)` — Generate interactive HTML report with visualizations.
-- `install_hook()` — —
-- `update_readme_badge(repo_path, results)` — Update README.md with cost badge including human time calculation.
-- `calculate_human_time(commits)` — Calculate human development time with realistic overhead.
 
 
 ## Project Structure

@@ -81,15 +81,30 @@ Generated on {datetime.now().strftime("%Y-%m-%d")} using [{model}](https://openr
     else:
         # Add after main badges if possible, else after first heading
         lines = content.split("\n")
-        insert_idx = -1
-        
-        # Strategy 1: Find the end of a center-aligned badge block
+        # Strategy 1: Find the end of a centered badge block (p element)
         for i, line in enumerate(lines):
-            if "</p>" in line and i < 50:  # Usually at the top
+            if "</p>" in line and i < 50:
                 insert_idx = i + 1
                 break
         
-        # Strategy 2: Fallback to after the first # heading
+        # Strategy 2: Find the end of a Markdown badge block (lines starting with [! or <img)
+        if insert_idx == -1:
+            last_badge_idx = -1
+            for i, line in enumerate(lines):
+                stripped = line.strip()
+                if stripped.startswith("[![") or stripped.startswith("<img"):
+                    last_badge_idx = i
+                elif last_badge_idx != -1 and not stripped:
+                    # Found the first empty line after a badge block
+                    insert_idx = i
+                    break
+                elif i > 50: # Don't search too deep
+                    break
+            
+            if last_badge_idx != -1 and insert_idx == -1:
+                insert_idx = last_badge_idx + 1
+
+        # Strategy 3: Fallback to after the first # heading
         if insert_idx == -1:
             for i, line in enumerate(lines):
                 if line.startswith("# "):
@@ -97,7 +112,9 @@ Generated on {datetime.now().strftime("%Y-%m-%d")} using [{model}](https://openr
                     break
         
         if insert_idx != -1:
-            lines.insert(insert_idx, "\n" + badge_section)
+            # Ensure we have clean spacing
+            prefix = "\n" if insert_idx < len(lines) and lines[insert_idx].strip() else "\n\n"
+            lines.insert(insert_idx, prefix + badge_section)
             content = "\n".join(lines)
     
     readme_path.write_text(content)

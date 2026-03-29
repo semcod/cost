@@ -1,4 +1,25 @@
 cost,cost_formatted,model,mode,tokens,hours_saved,review_time,value_generated,roi,roi_formatted,commit_hash,commit_message,author,date
+0.0054470000000000005,$0.0054,openrouter/qwen/qwen3-coder-next,byok,"{'input': 1702, 'output': 3064, 'total': 4767}",0.4,0.1,40.0,7343.5,∞,e55efcb3,"docs(docs): multi-language support with 2 supporting modules
+
+stats:
+  lines: ""+6/-1 (net +5)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:54:57+02:00
+0.034126000000000004,$0.0341,openrouter/qwen/qwen3-coder-next,byok,"{'input': 10664, 'output': 19196, 'total': 29860}",3.19,0.8,319.2,9353.6,∞,ba777813,"feat(None): deep code analysis engine with 5 supporting modules
+
+changes:
+  - file: calculator.py
+    area: core
+    added: [_estimate_single_file_tokens, get_file_type_multiplier]
+    modified: [calculate_roi, estimate_tokens, calculate_cost, batch_calculate_costs, ai_cost]
+  - file: reports.py
+    area: core
+    modified: [calculate_human_time, update_readme_badge]
+
+stats:
+  lines: ""+169/-83 (net +86)""
+  files: 4
+  complexity: ""+186% complexity (monitor)""",Tom Softreck,2026-03-29T12:53:39+02:00
 0.265591,$0.2656,openrouter/qwen/qwen3-coder-next,byok,"{'input': 82997, 'output': 149395, 'total': 232393}",8.61,2.15,860.8,3241.1,∞,fb906e54,"refactor(docs): code analysis engine
 
 changes:
@@ -64,3 +85,249 @@ stats:
   lines: ""+21/-16 (net +5)""
   files: 5
   complexity: ""+20% complexity (new features)""",Tom Softreck,2026-03-29T12:34:43+02:00
+0.024016,$0.0240,openrouter/qwen/qwen3-coder-next,byok,"{'input': 7505, 'output': 13509, 'total': 21014}",2.62,0.66,262.4,10926.0,∞,da1edc0d,"refactor(docs): commit message generator
+
+changes:
+  - file: test_cost.py
+    area: test
+    modified: [test_aicost_auto_badge]
+
+stats:
+  lines: ""+63/-63 (net +0)""
+  files: 4
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:26:05+02:00
+0.006455,$0.0065,openrouter/qwen/qwen3-coder-next,byok,"{'input': 2017, 'output': 3631, 'total': 5649}",0.94,0.24,94.4,14624.3,∞,80afcc78,"feat(docs): code relationship mapping with 2 supporting modules
+
+stats:
+  lines: ""+65/-2 (net +63)""
+  files: 3
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:24:34+02:00
+0.013215999999999999,$0.0132,openrouter/qwen/qwen3-coder-next,byok,"{'input': 4130, 'output': 7434, 'total': 11564}",1.46,0.37,146.4,11077.5,∞,7b3f4bc2,"feat(tests): commit message generator
+
+changes:
+  - file: test_cost.py
+    area: test
+    new_tests: 3
+    modified: [test_import]
+
+testing:
+  new_tests: 3
+  scenarios:
+    - aicost_auto_badge
+    - reports_module
+    - cost_calculator_imports
+
+stats:
+  lines: ""+111/-17 (net +94)""
+  files: 2
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T12:22:36+02:00
+0.003856,$0.0039,openrouter/qwen/qwen3-coder-next,byok,"{'input': 1205, 'output': 2169, 'total': 3374}",0.39,0.1,39.2,10166.0,∞,2645351c,"docs(docs): multi-language support
+
+stats:
+  lines: ""+7/-7 (net +0)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:19:39+02:00
+0.002608,$0.0026,openrouter/qwen/qwen3-coder-next,byok,"{'input': 815, 'output': 1467, 'total': 2282}",0.32,0.08,32.0,12269.9,∞,f49e021b,"refactor(config): CLI interface improvements
+
+changes:
+  - file: calculator.py
+    area: core
+    added: [calculate_roi, calculate_cost, estimate_tokens, batch_calculate_costs, ai_cost]
+  - file: cli.py
+    area: cli
+    added: [analyze, stats, auto_badge, estimate, report, init, +4 more]
+  - file: git_parser.py
+    area: analyzer
+    added: [get_commit_diff, is_commit_in_date_range, is_ai_commit, get_first_commit_date, get_repo_name, get_repo_stats, +2 more]
+  - file: models.py
+    area: model
+    added: [get_openrouter_headers, get_model_price, get_litellm_model_name]
+  - file: reports.py
+    area: core
+    added: [update_readme_badge, generate_html_report, get_cost_color, generate_markdown_report]
+
+dependencies:
+  flow: ""cli→calculator→git_parser""
+  - calculator.py -> git_parser.py
+  - cli.py -> calculator.py
+  - cli.py -> git_parser.py
+  - cli.py -> reports.py
+
+stats:
+  lines: ""+3/-3 (net +0)""
+  files: 7
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T12:18:29+02:00
+0.023255,$0.0233,openrouter/qwen/qwen3-coder-next,byok,"{'input': 7267, 'output': 13081, 'total': 20349}",3.78,0.94,377.6,16237.4,∞,1ac0bcaa,"feat(docs): commit message generator
+
+stats:
+  lines: ""+428/-0 (net +428)""
+  files: 4
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:14:13+02:00
+0.014304,$0.0143,openrouter/qwen/qwen3-coder-next,byok,"{'input': 4470, 'output': 8046, 'total': 12516}",1.62,0.4,161.6,11297.5,∞,a54c4733,"docs(docs): CLI interface with 3 supporting modules
+
+stats:
+  lines: ""+91/-18 (net +73)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:09:49+02:00
+0.25371900000000003,$0.2537,openrouter/qwen/qwen3-coder-next,byok,"{'input': 79287, 'output': 142717, 'total': 222005}",21.0,5.25,2100.0,8276.9,∞,8a4760db,"feat(docs): code analysis engine
+
+changes:
+  - file: cli.py
+    area: cli
+    added: [auto_badge]
+    modified: [init]
+
+dependencies:
+  flow: ""cli→reports""
+  - cli.py -> reports.py
+
+stats:
+  lines: ""+2499/-3 (net +2496)""
+  files: 27
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T12:04:52+02:00
+0.054672000000000005,$0.0547,openrouter/qwen/qwen3-coder-next,byok,"{'input': 17085, 'output': 30753, 'total': 47838}",6.67,1.67,667.2,12203.7,∞,fa69cb4b,"feat(goal): CLI interface improvements
+
+changes:
+  - file: cli.py
+    area: cli
+    added: [badge, report]
+  - file: reports.py
+    area: core
+    added: [get_cost_color, generate_markdown_report, generate_html_report, update_readme_badge]
+
+dependencies:
+  flow: ""cli→reports""
+  - cli.py -> reports.py
+
+stats:
+  lines: ""+796/-0 (net +796)""
+  files: 3
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T12:00:35+02:00
+0.00328,$0.0033,openrouter/qwen/qwen3-coder-next,byok,"{'input': 1025, 'output': 1845, 'total': 2870}",0.33,0.08,32.8,10000.0,∞,59e60ec3,"feat(None): configuration management
+
+stats:
+  lines: ""+3/-1 (net +2)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:58:20+02:00
+0.022384,$0.0224,openrouter/qwen/qwen3-coder-next,byok,"{'input': 6995, 'output': 12591, 'total': 19586}",2.34,0.59,234.4,10471.8,∞,a9e4abfd,"refactor(goal): CLI interface improvements
+
+changes:
+  - file: cli.py
+    area: cli
+    added: [stats]
+    modified: [analyze]
+  - file: git_parser.py
+    area: analyzer
+    added: [get_first_commit_date, get_repo_stats, is_commit_in_date_range]
+    modified: [parse_commits]
+
+dependencies:
+  flow: ""cli→git_parser""
+  - cli.py -> git_parser.py
+
+stats:
+  lines: ""+194/-12 (net +182)""
+  files: 4
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T11:57:00+02:00
+0.0020800000000000003,$0.0021,openrouter/qwen/qwen3-coder-next,byok,"{'input': 650, 'output': 1170, 'total': 1820}",0.31,0.08,31.2,15000.0,∞,ec9840c7,"docs(docs): new API capabilities
+
+stats:
+  lines: ""+0/-14 (net -14)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:49:44+02:00
+0.003056,$0.0031,openrouter/qwen/qwen3-coder-next,byok,"{'input': 955, 'output': 1719, 'total': 2674}",0.46,0.11,45.6,14921.5,∞,af79536b,"refactor(docs): code relationship mapping with 2 supporting modules
+
+stats:
+  lines: ""+3/-15 (net -12)""
+  files: 3
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:48:14+02:00
+0.002551,$0.0026,openrouter/qwen/qwen3-coder-next,byok,"{'input': 797, 'output': 1435, 'total': 2233}",0.32,0.08,32.0,12544.1,∞,bdf7dff2,"chore(goal): code relationship mapping with 2 supporting modules
+
+stats:
+  lines: ""+2/-2 (net +0)""
+  files: 2
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:47:15+02:00
+0.002231,$0.0022,openrouter/qwen/qwen3-coder-next,byok,"{'input': 697, 'output': 1255, 'total': 1953}",0.3,0.07,29.6,13267.6,∞,958a64e4,"chore(goal): configuration management
+
+stats:
+  lines: ""+1/-1 (net +0)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:46:35+02:00
+0.00304,$0.0030,openrouter/qwen/qwen3-coder-next,byok,"{'input': 950, 'output': 1710, 'total': 2660}",0.4,0.1,40.0,13157.9,∞,a7d6f029,"chore(goal): code relationship mapping with 2 supporting modules
+
+stats:
+  lines: ""+3/-3 (net +0)""
+  files: 2
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:46:13+02:00
+0.002007,$0.0020,openrouter/qwen/qwen3-coder-next,byok,"{'input': 627, 'output': 1129, 'total': 1757}",0.25,0.06,24.8,12356.8,∞,37f2fc1e,"chore(config): configuration management
+
+stats:
+  lines: ""+1/-1 (net +0)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:43:33+02:00
+0.002007,$0.0020,openrouter/qwen/qwen3-coder-next,byok,"{'input': 627, 'output': 1129, 'total': 1757}",0.25,0.06,24.8,12356.8,∞,7c824064,"chore(config): configuration management
+
+stats:
+  lines: ""+1/-1 (net +0)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:40:10+02:00
+0.002023,$0.0020,openrouter/qwen/qwen3-coder-next,byok,"{'input': 632, 'output': 1138, 'total': 1771}",0.25,0.06,24.8,12259.0,∞,b28e0594,"chore(config): configuration management
+
+stats:
+  lines: ""+1/-1 (net +0)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:39:18+02:00
+0.002944,$0.0029,openrouter/qwen/qwen3-coder-next,byok,"{'input': 920, 'output': 1656, 'total': 2576}",0.42,0.11,42.4,14402.2,∞,8f63b60e,"chore(config): code relationship mapping with 2 supporting modules
+
+stats:
+  lines: ""+17/-3 (net +14)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:37:52+02:00
+0.005568,$0.0056,openrouter/qwen/qwen3-coder-next,byok,"{'input': 1740, 'output': 3132, 'total': 4872}",0.62,0.16,62.4,11206.9,∞,78a6b37e,"docs(docs): CLI interface
+
+stats:
+  lines: ""+18/-10 (net +8)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:35:49+02:00
+0.003175,$0.0032,openrouter/qwen/qwen3-coder-next,byok,"{'input': 992, 'output': 1786, 'total': 2779}",0.4,0.1,40.0,12598.4,∞,4c6e6565,"chore(goal): CLI interface with 2 supporting modules
+
+stats:
+  lines: ""+3/-3 (net +0)""
+  files: 2
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T11:34:22+02:00
+0.074272,$0.0743,openrouter/qwen/qwen3-coder-next,byok,"{'input': 23210, 'output': 41778, 'total': 64988}",10.54,2.63,1053.6,14185.7,∞,8e685825,"refactor(goal): CLI interface improvements
+
+changes:
+  - file: calculator.py
+    area: core
+    added: [batch_calculate_costs, estimate_tokens, ai_cost, calculate_cost, calculate_roi]
+  - file: cli.py
+    area: cli
+    added: [main, init, analyze, version_callback, estimate, callback]
+  - file: git_parser.py
+    area: analyzer
+    added: [get_commit_diff, extract_ai_tag, is_ai_commit, parse_commits, get_repo_name]
+  - file: models.py
+    area: model
+    added: [get_model_price, get_litellm_model_name, get_openrouter_headers]
+  - file: test_cost.py
+    area: test
+    new_tests: 2
+
+testing:
+  new_tests: 2
+  scenarios:
+    - placeholder
+    - import
+
+dependencies:
+  flow: ""cli→calculator→git_parser""
+  - calculator.py -> git_parser.py
+  - cli.py -> calculator.py
+  - cli.py -> git_parser.py
+
+stats:
+  lines: ""+1270/-1 (net +1269)""
+  files: 10
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T11:33:30+02:00
+0.0001,$0.0001,openrouter/qwen/qwen3-coder-next,byok,"{'input': 2, 'output': 4, 'total': 7}",0.01,0.0,0.8,8000.0,∞,bfcfd2a9,Initial commit,Tom Sapletta,2026-03-29T11:20:03+02:00

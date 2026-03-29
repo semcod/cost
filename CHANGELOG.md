@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.15] - 2026-03-29
+
+### Other
+- Update services/badge-service/badge.php
+
 ## [0.1.14] - 2026-03-29
 
 ## [0.1.13] - 2026-03-29

@@ -183,6 +183,116 @@ def analyze(
 
 
 @app.command()
+def report(
+    repo: Path = typer.Argument(..., help="Path to git repository"),
+    model: str = typer.Option(
+        os.getenv("PFIX_MODEL", "anthropic/claude-4-sonnet"),
+        "--model", "-m",
+        help="AI model to use"
+    ),
+    format: str = typer.Option("markdown", "--format", "-f", help="Report format: markdown, html, both"),
+    output_dir: Path = typer.Option(Path("cost-reports"), "--output", "-o", help="Output directory"),
+    update_readme: bool = typer.Option(False, "--update-readme", help="Update README.md with badge"),
+):
+    """Generate cost reports with visualizations."""
+    if not repo.exists():
+        typer.echo(f"❌ Repository not found: {repo}", err=True)
+        raise typer.Exit(1)
+    
+    try:
+        git_repo = git.Repo(repo)
+    except git.InvalidGitRepositoryError:
+        typer.echo(f"❌ Not a git repository: {repo}", err=True)
+        raise typer.Exit(1)
+    
+    typer.echo(f"📊 Analyzing repository: {get_repo_name(git_repo)}")
+    typer.echo(f"🤖 Using model: {model}")
+    
+    # Analyze commits
+    commits_data = parse_commits(str(repo), max_count=1000, ai_only=True, full_history=True)
+    if not commits_data:
+        typer.echo("⚠️  No AI commits found in repository")
+        raise typer.Exit(0)
+    
+    # Calculate costs
+    results = batch_calculate_costs(commits_data, model=model)
+    
+    # Create output directory
+    output_dir.mkdir(exist_ok=True)
+    
+    # Generate reports
+    if format in ("markdown", "both"):
+        md_path = output_dir / "cost-report.md"
+        from .reports import generate_markdown_report
+        generate_markdown_report(results, md_path)
+        typer.echo(f"✅ Markdown report: {md_path}")
+    
+    if format in ("html", "both"):
+        html_path = output_dir / "cost-report.html"
+        from .reports import generate_html_report
+        generate_html_report(results, html_path)
+        typer.echo(f"✅ HTML report: {html_path}")
+    
+    # Update README if requested
+    if update_readme:
+        from .reports import update_readme_badge
+        if update_readme_badge(repo, results):
+            typer.echo(f"✅ Updated README.md with badge")
+        else:
+            typer.echo("⚠️  README.md not found, skipping badge update")
+    
+    # Print summary
+    summary = results["summary"]
+    typer.echo()
+    typer.echo("=" * 50)
+    typer.echo("📊 COST REPORT SUMMARY")
+    typer.echo("=" * 50)
+    typer.echo(f"   Total Cost: {summary['total_cost_formatted']}")
+    typer.echo(f"   AI Commits: {summary['total_commits']}")
+    typer.echo(f"   Hours Saved: {summary['total_hours_saved']:.1f}h")
+    typer.echo(f"   ROI: {summary['average_roi']}")
+    typer.echo("=" * 50)
+
+
+@app.command()
+def badge(
+    repo: Path = typer.Argument(..., help="Path to git repository"),
+    model: str = typer.Option(
+        os.getenv("PFIX_MODEL", "anthropic/claude-4-sonnet"),
+        "--model", "-m",
+        help="AI model to use"
+    ),
+):
+    """Generate or update cost badge in README.md."""
+    if not repo.exists():
+        typer.echo(f"❌ Repository not found: {repo}", err=True)
+        raise typer.Exit(1)
+    
+    typer.echo(f"📊 Analyzing repository for badge...")
+    
+    # Analyze commits
+    commits_data = parse_commits(str(repo), max_count=1000, ai_only=True, full_history=True)
+    if not commits_data:
+        typer.echo("⚠️  No AI commits found")
+        raise typer.Exit(0)
+    
+    # Calculate costs
+    results = batch_calculate_costs(commits_data, model=model)
+    
+    # Update README
+    from .reports import update_readme_badge
+    if update_readme_badge(repo, results):
+        typer.echo(f"✅ Badge updated in README.md")
+        summary = results["summary"]
+        typer.echo(f"   Cost: {summary['total_cost_formatted']}")
+        typer.echo(f"   Commits: {summary['total_commits']}")
+        typer.echo(f"   Model: {summary['model']}")
+    else:
+        typer.echo("❌ README.md not found")
+        raise typer.Exit(1)
+
+
+@app.command()
 def estimate(
     diff_file: Path = typer.Argument(..., help="Path to diff file or '-' for stdin"),
     model: str = typer.Option(

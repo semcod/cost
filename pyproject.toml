@@ -4,10 +4,10 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "costofai"
-version = "0.1.7"
+version = "0.1.8"
 description = "Zero-config AI cost calculator per commit/model with liteLLM"
 readme = "README.md"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 authors = [
     {name = "Tom Sapletta", email = "tom@sapletta.com"}
 ]

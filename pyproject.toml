@@ -3,8 +3,8 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [project]
-name = "aicosts"
-version = "0.1.6"
+name = "costofai"
+version = "0.1.7"
 description = "Zero-config AI cost calculator per commit/model with liteLLM"
 readme = "README.md"
 license = {text = "Apache-2.0"}

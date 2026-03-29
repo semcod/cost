@@ -8,6 +8,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.10] - 2026-03-29
 
 ### Fixed
+- Fix smart-return-type issues (ticket-86a6c8e7)
+- Fix string-concat issues (ticket-6f810ec1)
+- Fix magic-numbers issues (ticket-ab903482)
+- Fix string-concat issues (ticket-54d6fbf2)
+- Fix magic-numbers issues (ticket-2638d3da)
+- Fix string-concat issues (ticket-8c41bc33)
+- Fix magic-numbers issues (ticket-038ee286)
+- Fix magic-numbers issues (ticket-dbc88434)
+- Fix smart-return-type issues (ticket-fb791caa)
+- Fix magic-numbers issues (ticket-7fc33e6d)
+- Fix smart-return-type issues (ticket-d641fe90)
+- Fix string-concat issues (ticket-89d38862)
+- Fix unused-imports issues (ticket-7bcc8f97)
+- Fix magic-numbers issues (ticket-bf655f1d)
+- Fix relative-imports issues (ticket-394ebd9d)
+- Fix smart-return-type issues (ticket-b442ee8f)
+- Fix unused-imports issues (ticket-3ffec5b8)
+- Fix magic-numbers issues (ticket-2d4335ce)
+- Fix relative-imports issues (ticket-a1d0b702)
+- Fix smart-return-type issues (ticket-27b4ad2a)
+- Fix duplicate-imports issues (ticket-5ef31250)
+- Fix magic-numbers issues (ticket-ac3e6718)
+- Fix llm-generated-code issues (ticket-ef1a8284)
+- Fix relative-imports issues (ticket-8701a6f7)
+- Fix smart-return-type issues (ticket-ae1af87a)
+- Fix unused-imports issues (ticket-3fa490f2)
+- Fix magic-numbers issues (ticket-2dacd769)
+- Fix relative-imports issues (ticket-2ad117e4)
+- Fix smart-return-type issues (ticket-ca37f11e)
+- Fix string-concat issues (ticket-42b49135)
+- Fix magic-numbers issues (ticket-69c69af6)
+- Fix string-concat issues (ticket-665a97a5)
+- Fix string-concat issues (ticket-9c38e1c3)
+- Fix unused-imports issues (ticket-4d883f27)
+- Fix llm-generated-code issues (ticket-419f32ba)
+
+## [0.1.10] - 2026-03-29
+
+### Fixed
 - Fix string-concat issues (ticket-0967ecb2)
 - Fix magic-numbers issues (ticket-5c9c519e)
 
@@ -75,6 +114,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix llm-generated-code issues (ticket-7c8d1d82)
 
 ## [Unreleased]
+
+## [0.1.48] - 2026-03-29
+
+### Docs
+- Update CHANGELOG.md
+- Update TODO.md
+
+### Other
+- Update planfile.yaml
 
 ## [0.1.47] - 2026-03-29
 

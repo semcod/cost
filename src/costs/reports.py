@@ -6,50 +6,70 @@ from datetime import datetime, timedelta
 import json
 
 
+# Advanced estimation constants
+SESSION_GAP_THRESHOLD = timedelta(hours=2)    # Gaps > 2h define a new session
+CONTEXT_SWITCH_PENALTY = timedelta(minutes=15) # Penalty for gaps between 30m and 2h
+MIN_SESSION_DURATION = timedelta(minutes=30)  # Minimum time per session
+
+
 def calculate_human_time(commits: List[Dict[str, Any]]) -> float:
-    """Calculate human development time using session-based estimation.
+    """Calculate human development time using advanced session-based estimation.
     
-    Commits are grouped into sessions where the gap between consecutive 
-    commits is less than 30 minutes. 
-    Duration = (last_commit - first_commit) + 30m buffer per session.
+    1. Groups commits by Author.
+    2. Identifies Work Sessions (gaps > 2h).
+    3. Applies Context Switching Penalty (15m) for gaps between 30m and 2h.
+    4. Ensures minimum session duration (30m).
     """
     if not commits:
         return 0.0
     
-    # Parse dates and sort
-    dates = []
+    # Group commits by author
+    authors_data = {}
     for commit in commits:
+        author = commit.get("author", "unknown")
+        if author not in authors_data:
+            authors_data[author] = []
+        
         try:
             date_str = commit.get("date", "")
             if date_str:
                 dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
-                dates.append(dt)
+                authors_data[author].append(dt)
         except:
             continue
     
-    if not dates:
-        return 0.0
+    total_seconds = 0.0
     
-    dates.sort()
-    
-    total_seconds = 0
-    if dates:
+    for author, dates in authors_data.items():
+        if not dates:
+            continue
+        
+        dates.sort()
         session_start = dates[0]
         session_last = dates[0]
+        author_seconds = 0.0
         
         for i in range(1, len(dates)):
-            # If gap between consecutive commits > 30 minutes, end session
-            if dates[i] - session_last > timedelta(minutes=30):
-                # Calculate session duration: (last - start) + 30m buffer
-                session_duration = (session_last - session_start).total_seconds() + 1800
-                total_seconds += session_duration
+            gap = dates[i] - session_last
+            
+            if gap > SESSION_GAP_THRESHOLD:
+                # End session: duration + buffer (enforce minimum)
+                session_duration = max((session_last - session_start).total_seconds(), 
+                                      MIN_SESSION_DURATION.total_seconds())
+                author_seconds += session_duration
                 # Start new session
                 session_start = dates[i]
+            elif gap > timedelta(minutes=30):
+                # Context switch penalty for moderate gaps
+                author_seconds += CONTEXT_SWITCH_PENALTY.total_seconds()
+            
             session_last = dates[i]
         
-        # Add final session
-        session_duration = (session_last - session_start).total_seconds() + 1800
-        total_seconds += session_duration
+        # Add final session for this author
+        session_duration = max((session_last - session_start).total_seconds(), 
+                              MIN_SESSION_DURATION.total_seconds())
+        author_seconds += session_duration
+        total_seconds += author_seconds
     
     return total_seconds / 3600.0
 
@@ -473,7 +493,10 @@ def update_readme_badge(repo_path: Path, results: Dict[str, Any]) -> bool:
         full_history=True
     )
     # Convert to dict format expected by calculate_human_time
-    all_commits = [{"date": c[0].committed_datetime.isoformat()} for c in all_commits_data]
+    all_commits = [
+        {"date": c[0].committed_datetime.isoformat(), "author": c[0].author.name} 
+        for c in all_commits_data
+    ]
     
     # Calculate human time with 30-min deduplication using ALL commits
     human_hours = calculate_human_time(all_commits)

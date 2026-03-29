@@ -1,5 +1,16 @@
-cost,cost_formatted,model,mode,tokens,hours_saved,value_generated,roi,roi_formatted,commit_hash,commit_message,author,date
-0.092786,$0.0928,openrouter/qwen/qwen3-coder-next,byok,"{'input': 21832, 'output': 54580, 'total': 76412}",10.09,1009.0,10874.5,∞,2d3f1993,"refactor(docs): CLI interface improvements
+cost,cost_formatted,model,mode,tokens,hours_saved,review_time,value_generated,roi,roi_formatted,commit_hash,commit_message,author,date
+0.265591,$0.2656,openrouter/qwen/qwen3-coder-next,byok,"{'input': 82997, 'output': 149395, 'total': 232393}",8.61,2.15,860.8,3241.1,∞,fb906e54,"refactor(docs): code analysis engine
+
+changes:
+  - file: reports.py
+    area: core
+    modified: [calculate_human_time]
+
+stats:
+  lines: ""+347/-348 (net -1)""
+  files: 22
+  complexity: ""+100% complexity (monitor)""",Tom Softreck,2026-03-29T12:51:17+02:00
+0.087328,$0.0873,openrouter/qwen/qwen3-coder-next,byok,"{'input': 27290, 'output': 49122, 'total': 76412}",8.07,2.02,807.2,9243.3,∞,2d3f1993,"refactor(docs): CLI interface improvements
 
 changes:
   - file: cli.py
@@ -25,13 +36,13 @@ stats:
   lines: ""+632/-202 (net +430)""
   files: 11
   complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T12:43:50+02:00
-0.015385,$0.0154,openrouter/qwen/qwen3-coder-next,byok,"{'input': 3620, 'output': 9050, 'total': 12670}",1.56,156.0,10139.7,∞,de304303,"docs(docs): CLI interface with 3 supporting modules
+0.01448,$0.0145,openrouter/qwen/qwen3-coder-next,byok,"{'input': 4525, 'output': 8145, 'total': 12670}",1.25,0.31,124.8,8618.8,∞,de304303,"docs(docs): CLI interface with 3 supporting modules
 
 stats:
   lines: ""+39/-35 (net +4)""
   files: 1
   complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:38:27+02:00
-0.2501975,$0.2502,openrouter/qwen/qwen3-coder-next,byok,"{'input': 58870, 'output': 147175, 'total': 206045}",8.61,861.0,3441.3,∞,e94f4122,"feat(docs): code analysis engine
+0.23547900000000002,$0.2355,openrouter/qwen/qwen3-coder-next,byok,"{'input': 73587, 'output': 132457, 'total': 206045}",6.89,1.72,688.8,2925.1,∞,e94f4122,"feat(docs): code analysis engine
 
 changes:
   - file: cli.py
@@ -42,7 +53,7 @@ stats:
   lines: ""+276/-229 (net +47)""
   files: 17
   complexity: ""+100% complexity (monitor)""",Tom Softreck,2026-03-29T12:37:01+02:00
-0.0150025,$0.0150,openrouter/qwen/qwen3-coder-next,byok,"{'input': 3530, 'output': 8825, 'total': 12355}",1.64,164.0,10931.5,∞,e1c394b4,"feat(goal): CLI interface improvements
+0.014119,$0.0141,openrouter/qwen/qwen3-coder-next,byok,"{'input': 4412, 'output': 7942, 'total': 12355}",1.31,0.33,131.2,9292.4,∞,e1c394b4,"feat(goal): CLI interface improvements
 
 changes:
   - file: cli.py
@@ -53,14 +64,3 @@ stats:
   lines: ""+21/-16 (net +5)""
   files: 5
   complexity: ""+20% complexity (new features)""",Tom Softreck,2026-03-29T12:34:43+02:00
-0.025517,$0.0255,openrouter/qwen/qwen3-coder-next,byok,"{'input': 6004, 'output': 15010, 'total': 21014}",3.28,328.0,12854.2,∞,da1edc0d,"refactor(docs): commit message generator
-
-changes:
-  - file: test_cost.py
-    area: test
-    modified: [test_aicost_auto_badge]
-
-stats:
-  lines: ""+63/-63 (net +0)""
-  files: 4
-  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:26:05+02:00

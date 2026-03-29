@@ -1,50 +1,48 @@
-# cost | 41 func | 7f | 1805L | python | 2026-03-29
+# cost | 43 func | 7f | 1901L | python | 2026-03-29
 
 HEALTH:
-  CC̄: 4.8
-  critical: 2
-  limit: 10
-  dup: 0
-  cycles: 0
+  CC̄=5.0  critical=4 (limit:10)  dup=0  cycles=0
 
-ALERTS:
-  - "! high_fan_out update_readme_badge = 13 (limit:10)"
-  - "! high_fan_out auto_badge = 13 (limit:10)"
-  - "! high_fan_out report = 13 (limit:10)"
-  - "! high_fan_out analyze = 12 (limit:10)"
-  - "! high_fan_out handleApiRequest = 14 (limit:10)"
-  - "! high_fan_out generate_markdown_report = 13 (limit:10)"
-  - "! high_fan_out estimate = 12 (limit:10)"
-  - "! high_fan_out generate_html_report = 11 (limit:10)"
-  - "! high_fan_out badge = 11 (limit:10)"
-  - "! high_fan_out ai_cost = 10 (limit:10)"
+ALERTS[11]:
+  !!  high_fan_out     update_readme_badge = 18 (limit:10)
+  !!  high_fan_out     auto_badge = 18 (limit:10)
+  !!  high_fan_out     report = 17 (limit:10)
+  !!  high_fan_out     calculate_human_time = 16 (limit:10)
+  !!  high_fan_out     analyze = 16 (limit:10)
+  !   high_fan_out     handleApiRequest = 14 (limit:10)
+  !   high_fan_out     generate_markdown_report = 13 (limit:10)
+  !   high_fan_out     estimate = 12 (limit:10)
+  !   high_fan_out     generate_html_report = 11 (limit:10)
+  !   high_fan_out     badge = 11 (limit:10)
 
-MODULES:
-  - "M[src/costs/reports.py] 552L C:0 F:5 CC↑9 D:1 (python)"
-  - "M[src/costs/cli.py] 472L C:0 F:14 CC↑8 D:0 (python)"
-  - "M[services/badge-service/badge.php] 231L C:0 F:4 CC↑14 D:0 (php)"
-  - "M[src/costs/git_parser.py] 186L C:0 F:9 CC↑11 D:2 (python)"
-  - "M[src/costs/calculator.py] 184L C:0 F:5 CC↑6 D:1 (python)"
-  - "M[src/costs/models.py] 74L C:0 F:3 CC↑5 D:2 (python)"
-  - "M[project.sh] 42L C:0 F:1 CC↑0 D:0 (shell)"
-  - "M[services/badge-service/index.php] 26L C:0 F:0 CC↑0 D:0 (php)"
-  - "M[src/costs/__init__.py] 8L C:0 F:0 CC↑0 D:0 (python)"
+MODULES[9] (top by size):
+  M[src/costs/reports.py] 559L C:0 F:5 CC↑12 D:1 (python)
+  M[src/costs/cli.py] 471L C:0 F:14 CC↑9 D:0 (python)
+  M[services/badge-service/badge.php] 231L C:0 F:4 CC↑14 D:0 (php)
+  M[src/costs/calculator.py] 210L C:0 F:7 CC↑8 D:1 (python)
+  M[src/costs/git_parser.py] 186L C:0 F:9 CC↑11 D:2 (python)
+  M[src/costs/models.py] 74L C:0 F:3 CC↑5 D:2 (python)
+  M[project.sh] 44L C:0 F:1 CC↑0 D:0 (shell)
+  M[services/badge-service/index.php] 26L C:0 F:0 CC↑0 D:0 (php)
+  M[src/costs/__init__.py] 8L C:0 F:0 CC↑0 D:0 (python)
+  LANGS: python:6/php:2/shell:1
 
-SUMMARY:
-  LANGS: "python:6/php:2/shell:1"
+HOTSPOTS[10]:
+  ★ update_readme_badge fan=18  // Update README.md with cost badge including human time calculation.
+  ★ auto_badge fan=18  // Auto-generate badge based on pyproject.toml [tool.costs] configuration.
 
-HOTSPOTS:
-  - "★ update_readme_badge fan=18 // Update README.md with cost badge including human time calculation."
-  - "★ auto_badge fan=18 // Auto-generate badge based on pyproject.toml [tool.costs] configuration."
-  - "★ report fan=17 // Generate cost reports with visualizations."
-  - "★ analyze fan=16 // Analysis pipeline, 16 stages"
-  - "★ handleApiRequest fan=14 // Orchestrates 14 calls"
+This co
+  ★ report fan=17  // Generate cost reports with visualizations.
+  ★ calculate_human_time fan=16  // Calculate human development time with realistic overhead.
 
-REFACTOR:
-  - "[1] H/H Split god module src/costs/reports.py (552L, 0 classes)"
-  - "[2] M/M Reduce update_readme_badge fan-out (currently 18)"
-  - "[3] M/M Reduce auto_badge fan-out (currently 18)"
-  - "[4] M/M Reduce report fan-out (currently 17)"
+1. Groups commits by 
+  ★ analyze fan=16  // Analysis pipeline, 16 stages
+
+REFACTOR[4]:
+  [1] H/H Split god module src/costs/reports.py (559L, 0 classes)
+  [2] M/M Reduce update_readme_badge fan-out (currently 18)
+  [3] M/M Reduce auto_badge fan-out (currently 18)
+  [4] M/M Reduce report fan-out (currently 17)
 
 EVOLUTION:
-  - "2026-03-29 CC̄=4.8 crit=2 1805L // Automated analysis realistic cost tuning"
+  2026-03-29 CC̄=5.0 crit=4 1901L // Automated analysis

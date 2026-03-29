@@ -4,10 +4,9 @@
 
 - **Project**: /home/tom/github/semcod/cost
 - **Primary Language**: python
-- **Total Lines**: 1795 (Python, PHP, Shell)
 - **Languages**: python: 6, php: 2, shell: 1
 - **Analysis Mode**: static
-- **Total Functions**: 41
+- **Total Functions**: 43
 - **Total Classes**: 0
 - **Modules**: 9
 - **Entry Points**: 14
@@ -22,13 +21,13 @@
 - **Functions**: 9
 - **File**: `git_parser.py`
 
+### src.costs.calculator
+- **Functions**: 7
+- **File**: `calculator.py`
+
 ### src.costs.reports
 - **Functions**: 5
 - **File**: `reports.py`
-
-### src.costs.calculator
-- **Functions**: 5
-- **File**: `calculator.py`
 
 ### services.badge-service.badge
 - **Functions**: 4
@@ -70,11 +69,7 @@ genera
 - **Calls**: app.command, typer.Argument, src.costs.git_parser.get_repo_stats, typer.echo, typer.echo, typer.echo, typer.echo, typer.echo
 
 ### src.costs.cli.estimate
-> 3.  **Sophisticated Estimation**:
-    - **LLM Tokens**: Multi-file diff parsing with `FILE_TYPE_MULTIPLIERS` (e.g., Python x1.5 vs Markdown x0.5).
-    - **ROI**: Gross hours calculated via LOC, then reduced by a 20% `HUMAN_REVIEW_OVERHEAD`.
-    - **Human Time**: Author-aware session grouping with `CONTEXT_SWITCH_PENALTY` (15m) and `SESSION_GAP_THRESHOLD` (2h).
-4.  **Reporting**:
+> Estimate cost for a single diff using liteLLM token counting.
 - **Calls**: app.command, typer.Argument, typer.Option, src.costs.models.get_litellm_model_name, src.costs.calculator.ai_cost, typer.echo, typer.echo, typer.echo
 
 ### services.badge-service.badge.handleApiRequest
@@ -139,8 +134,8 @@ estimate [src.costs.cli]
   └─ →> get_litellm_model_name
   └─ →> ai_cost
       └─> estimate_tokens
-      └─> calculate_cost
-          └─ →> get_model_price
+          └─> _estimate_single_file_tokens
+          └─> _estimate_single_file_tokens
 ```
 
 ### Flow 7: handleApiRequest
@@ -183,6 +178,7 @@ Functions exposed as public API (no underscore prefix):
 - `src.costs.cli.report` - 39 calls
 - `src.costs.cli.analyze` - 31 calls
 - `src.costs.cli.badge` - 22 calls
+- `src.costs.reports.calculate_human_time` - 21 calls
 - `src.costs.reports.update_readme_badge` - 18 calls
 - `src.costs.cli.stats` - 18 calls
 - `src.costs.cli.estimate` - 17 calls
@@ -190,32 +186,31 @@ Functions exposed as public API (no underscore prefix):
 - `src.costs.reports.generate_html_report` - 14 calls
 - `services.badge-service.badge.handleApiRequest` - 14 calls
 - `src.costs.calculator.ai_cost` - 11 calls
-- `src.costs.calculator.calculate_roi` - 4 calls
-- `src.costs.reports.calculate_human_time` - 9 calls
 - `services.badge-service.badge.analyzeRepository` - 9 calls
+- `src.costs.calculator.estimate_tokens` - 9 calls
 - `src.costs.git_parser.get_commit_diff` - 8 calls
-- `src.costs.calculator.batch_calculate_costs` - 8 calls
 - `src.costs.cli.init` - 8 calls
+- `src.costs.calculator.batch_calculate_costs` - 8 calls
 - `src.costs.git_parser.parse_commits` - 7 calls
 - `src.costs.git_parser.get_repo_stats` - 7 calls
+- `src.costs.calculator.calculate_roi` - 6 calls
 - `src.costs.git_parser.get_first_commit_date` - 5 calls
 - `services.badge-service.badge.generateBadge` - 5 calls
 - `src.costs.git_parser.get_repo_name` - 4 calls
-- `src.costs.calculator.calculate_roi` - 4 calls
 - `src.costs.models.get_model_price` - 3 calls
 - `src.costs.git_parser.is_ai_commit` - 2 calls
 - `src.costs.git_parser.extract_ai_tag` - 2 calls
-- `src.costs.calculator.estimate_tokens` - 2 calls
-- `src.costs.calculator.calculate_cost` - 2 calls
 - `src.costs.cli.version_callback` - 2 calls
 - `src.costs.cli.callback` - 2 calls
+- `src.costs.calculator.get_file_type_multiplier` - 2 calls
+- `src.costs.calculator.calculate_cost` - 2 calls
 - `src.costs.git_parser.is_commit_in_date_range` - 1 calls
 - `src.costs.cli.main` - 1 calls
 - `src.costs.models.get_openrouter_headers` - 0 calls
 - `src.costs.models.get_litellm_model_name` - 0 calls
 - `src.costs.reports.get_cost_color` - 0 calls
-- `services.badge-service.badge.determineColor` - 0 calls
 - `project.install_hook` - 0 calls
+- `services.badge-service.badge.determineColor` - 0 calls
 
 ## System Interactions
 

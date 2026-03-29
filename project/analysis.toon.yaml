@@ -1,5 +1,5 @@
-# code2llm | 9f 1723L | python:6,php:2,shell:1 | 2026-03-29
-# CC̄=4.8 | critical:0/41 | dups:0 | cycles:0
+# code2llm | 9f 1809L | python:6,php:2,shell:1 | 2026-03-29
+# CC̄=5.0 | critical:0/43 | dups:0 | cycles:0
 
 HEALTH[0]: ok
 
@@ -22,16 +22,16 @@ LAYERS:
   │ badge.php                  231L  0C    4m  CC=14     ←0
   │ index.php                   26L  0C    0m  CC=0.0    ←0
   │
-  src/                            CC̄=4.5    ←in:0  →out:0
-  │ !! reports                    538L  0C    5m  CC=9      ←1
+  src/                            CC̄=4.7    ←in:0  →out:0
+  │ !! reports                    559L  0C    5m  CC=12     ←1
   │ cli                        471L  0C   14m  CC=9      ←0
+  │ calculator                 210L  0C    7m  CC=8      ←1
   │ git_parser                 186L  0C    9m  CC=11     ←2
-  │ calculator                 147L  0C    5m  CC=6      ←1
   │ models                      74L  0C    3m  CC=5      ←2
   │ __init__                     8L  0C    0m  CC=0.0    ←0
   │
   ./                              CC̄=0.0    ←in:0  →out:0
-  │ project.sh                  42L  0C    1m  CC=0.0    ←0
+  │ project.sh                  44L  0C    1m  CC=0.0    ←0
   │
 
 COUPLING: no cross-package imports detected

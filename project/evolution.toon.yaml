@@ -1,25 +1,44 @@
-# code2llm/evolution | 41 func | 7f | 2026-03-29
+# code2llm/evolution | 43 func | 7f | 2026-03-29
 
 NEXT[1] (ranked by impact):
-  - "[1] !! SPLIT src/costs/reports.py"
-  - "WHY: 529L, 0 classes, max CC=9"
-  - "EFFORT: ~4h IMPACT: 4842"
+  [1] !! SPLIT           src/costs/reports.py
+      WHY: 559L, 0 classes, max CC=12
+      EFFORT: ~4h  IMPACT: 6708
+
 
 RISKS[1]:
-  - "⚠ Splitting src/costs/reports.py may break 5 import paths"
+  ⚠ Splitting src/costs/reports.py may break 5 import paths
 
 METRICS-TARGET:
-  - "CC̄: 4.8 → ≤3.4"
-  - "max-CC: 14 → ≤7"
-  - "god-modules: 1 → 0"
-  - "high-CC(≥15): 0 → ≤0"
-  - "hub-types: 0 → ≤0"
+  CC̄:          5.0 → ≤3.5
+  max-CC:      14 → ≤7
+  god-modules: 1 → 0
+  high-CC(≥15): 0 → ≤0
+  hub-types:   0 → ≤0
 
 PATTERNS (language parser shared logic):
-  - "_extract_declarations() in base.py — unified extraction for:"
-  - "  - TypeScript: interfaces, types, classes, functions, arrow funcs"
-  - "  - PHP: namespaces, traits, classes, functions, includes"
-  - "  - Ruby: modules, classes, methods, requires"
+  _extract_declarations() in base.py — unified extraction for:
+    - TypeScript: interfaces, types, classes, functions, arrow funcs
+    - PHP: namespaces, traits, classes, functions, includes
+    - Ruby: modules, classes, methods, requires
+    - C++: classes, structs, functions, #includes
+    - C#: classes, interfaces, methods, usings
+    - Java: classes, interfaces, methods, imports
+    - Go: packages, functions, structs
+    - Rust: modules, functions, traits, use statements
+
+  Shared regex patterns per language:
+    - import: language-specific import/require/using patterns
+    - class: class/struct/trait declarations with inheritance
+    - function: function/method signatures with visibility
+    - brace_tracking: for C-family languages ({ })
+    - end_keyword_tracking: for Ruby (module/class/def...end)
+
+  Benefits:
+    - Consistent extraction logic across all languages
+    - Reduced code duplication (~70% reduction in parser LOC)
+    - Easier maintenance: fix once, apply everywhere
+    - Standardized FunctionInfo/ClassInfo models
 
 HISTORY:
-  - "prev CC̄=5.2 → now CC̄=4.8"
+  previous evolution.toon.yaml found but no metrics parsed

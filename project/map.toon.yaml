@@ -1,19 +1,19 @@
-# cost | 9f 1723L | python:6,php:2,shell:1 | 2026-03-29
-# stats: 41 func | 0 cls | 9 mod | CC̄=4.8 | critical:0 | cycles:0
-# alerts[5]: fan-out auto_badge=18; fan-out update_readme_badge=18; fan-out report=17; fan-out analyze=16; fan-out handleApiRequest=14
-# hotspots[5]: update_readme_badge fan=18; auto_badge fan=18; report fan=17; analyze fan=16; handleApiRequest fan=14
-# evolution: CC̄ 5.2→4.8 (improved -0.4)
+# cost | 9f 1809L | python:6,php:2,shell:1 | 2026-03-29
+# stats: 43 func | 0 cls | 9 mod | CC̄=5.0 | critical:0 | cycles:0
+# alerts[5]: fan-out auto_badge=18; fan-out update_readme_badge=18; fan-out report=17; fan-out analyze=16; fan-out calculate_human_time=16
+# hotspots[5]: update_readme_badge fan=18; auto_badge fan=18; report fan=17; calculate_human_time fan=16; analyze fan=16
+# evolution: CC̄ 4.8→5.0 (regressed +0.2)
 # Keys: M=modules, D=details, i=imports, e=exports, c=classes, f=functions, m=methods
 M[9]:
-  project.sh,42
+  project.sh,44
   services/badge-service/badge.php,231
   services/badge-service/index.php,26
   src/costs/__init__.py,8
-  src/costs/calculator.py,147
+  src/costs/calculator.py,210
   src/costs/cli.py,471
   src/costs/git_parser.py,186
   src/costs/models.py,74
-  src/costs/reports.py,538
+  src/costs/reports.py,559
 D:
   services/badge-service/badge.php:
     e: generateBadge,determineColor,analyzeRepository,handleApiRequest
@@ -21,6 +21,13 @@ D:
     determineColor()
     analyzeRepository()
     handleApiRequest()
+  src/costs/reports.py:
+    e: calculate_human_time,generate_markdown_report,generate_html_report,get_cost_color,update_readme_badge
+    calculate_human_time(commits)
+    generate_markdown_report(results;output_path)
+    generate_html_report(results;output_path)
+    get_cost_color(cost)
+    update_readme_badge(repo_path;results)
   src/costs/git_parser.py:
     e: get_commit_diff,is_ai_commit,extract_ai_tag,is_commit_in_date_range,get_first_commit_date,_parse_date_args,parse_commits,get_repo_name,get_repo_stats
     get_commit_diff(repo;commit)
@@ -32,14 +39,6 @@ D:
     parse_commits(repo_path;max_count;ai_only;since;until;specific_date;full_history)
     get_repo_name(repo)
     get_repo_stats(repo_path)
-  src/costs/reports.py:
-    e: calculate_human_time,generate_markdown_report,generate_html_report,get_cost_color,get_cost_color,update_readme_badge
-    calculate_human_time(commits)
-    generate_markdown_report(results;output_path)
-    generate_html_report(results;output_path)
-    get_cost_color(cost)
-    get_cost_color(cost)
-    update_readme_badge(repo_path;results)
   src/costs/cli.py:
     e: version_callback,callback,_get_repo,_get_execution_context,_get_filter_str,_display_results,analyze,report,badge,auto_badge,estimate,stats,init,main
     version_callback(value)
@@ -57,10 +56,12 @@ D:
     init(force)
     main()
   src/costs/calculator.py:
-    e: estimate_tokens,calculate_cost,calculate_roi,ai_cost,batch_calculate_costs
+    e: get_file_type_multiplier,_estimate_single_file_tokens,estimate_tokens,calculate_cost,calculate_roi,ai_cost,batch_calculate_costs
+    get_file_type_multiplier(filename)
+    _estimate_single_file_tokens(diff;filename)
     estimate_tokens(diff)
     calculate_cost(tokens;model)
-    calculate_roi(cost;lines_changed;hourly_rate)
+    calculate_roi(cost;lines_changed;hourly_rate;review_factor)
     ai_cost(commit_diff;model;api_key;saas_token;saas_url)
     batch_calculate_costs(commits_data;model;api_key;saas_token)
   src/costs/models.py:
@@ -69,8 +70,8 @@ D:
     get_openrouter_headers()
     get_litellm_model_name(model)
   src/costs/__init__.py:
+  services/badge-service/index.php:
+    i: badge.php
   project.sh:
     e: install_hook
     install_hook()
-  services/badge-service/index.php:
-    i: badge.php

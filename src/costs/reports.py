@@ -515,12 +515,11 @@ def update_readme_badge(repo_path: Path, results: Dict[str, Any]) -> bool:
     # Create badge lines with standout colors
     cost_badge = f"![AI Cost](https://img.shields.io/badge/AI%20Cost-${total_cost:.2f}-orange)"
     human_time_badge = f"![Human Time](https://img.shields.io/badge/Human%20Time-{human_hours:.1f}h-blue)"
-    llm_cost_badge = f"![LLM Cost](https://img.shields.io/badge/LLM%20Cost-${total_cost:.2f}-red)"
     model_badge = f"![Model](https://img.shields.io/badge/Model-{model.replace('/', '%2F').replace('-', '--')}-lightgrey)"
     
     badge_section = f"""## AI Cost Tracking
 
-{cost_badge} {human_time_badge} {llm_cost_badge} {model_badge}
+{cost_badge} {human_time_badge} {model_badge}
 
 This project uses AI-generated code.
 

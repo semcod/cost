@@ -19,6 +19,7 @@ install_hook() {
 clear
 pip install -e .
 install_hook  # Install pre-commit hook
+pip install costs --upgrade
 pip install prefact --upgrade
 pip install vallm --upgrade
 pip install redup --upgrade
@@ -34,6 +35,7 @@ rm project/analysis.yaml
 
 pip install code2docs --upgrade
 code2docs ./ --readme-only
+costs auto-badge --repo . --all
 redup scan . --format toon --output ./project
 #redup scan . --functions-only -f toon --output ./project
 #vallm batch ./src --recursive --semantic --model qwen2.5-coder:7b

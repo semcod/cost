@@ -4,6 +4,7 @@
 
 - **Project**: /home/tom/github/semcod/cost
 - **Primary Language**: python
+- **Total Lines**: 1795 (Python, PHP, Shell)
 - **Languages**: python: 6, php: 2, shell: 1
 - **Analysis Mode**: static
 - **Total Functions**: 41
@@ -69,7 +70,11 @@ genera
 - **Calls**: app.command, typer.Argument, src.costs.git_parser.get_repo_stats, typer.echo, typer.echo, typer.echo, typer.echo, typer.echo
 
 ### src.costs.cli.estimate
-> Estimate cost for a single diff using liteLLM token counting.
+> 3.  **Sophisticated Estimation**:
+    - **LLM Tokens**: Multi-file diff parsing with `FILE_TYPE_MULTIPLIERS` (e.g., Python x1.5 vs Markdown x0.5).
+    - **ROI**: Gross hours calculated via LOC, then reduced by a 20% `HUMAN_REVIEW_OVERHEAD`.
+    - **Human Time**: Author-aware session grouping with `CONTEXT_SWITCH_PENALTY` (15m) and `SESSION_GAP_THRESHOLD` (2h).
+4.  **Reporting**:
 - **Calls**: app.command, typer.Argument, typer.Option, src.costs.models.get_litellm_model_name, src.costs.calculator.ai_cost, typer.echo, typer.echo, typer.echo
 
 ### services.badge-service.badge.handleApiRequest

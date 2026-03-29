@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "costs"
-version = "0.1.15"
+version = "0.1.16"
 description = "Zero-config AI cost calculator per commit/model with liteLLM"
 readme = "README.md"
 license = "Apache-2.0"
@@ -42,3 +42,32 @@ aicost = "ai_cost_tracker.cli:main"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
 black = "^24.0"
+
+[tool.costs]
+# Badge generation configuration
+badge = true  # Enable automatic badge generation
+badge_format = "svg"  # Badge format: svg, png
+badge_style = "flat"  # Badge style: flat, flat-square, plastic, for-the-badge
+badge_label = "AI Cost"  # Badge label text
+update_readme = true  # Auto-update README.md with badge
+readme_path = "README.md"  # Path to README file
+
+# Cost thresholds for badge colors (in USD)
+badge_color_thresholds = { low = 1.0, medium = 5.0, high = 10.0, critical = 50.0 }
+
+# Analysis configuration
+default_model = "anthropic/claude-4-sonnet"
+analysis_mode = "byok"  # byok, local, saas
+full_history = false  # Analyze full git history by default
+max_commits = 1000  # Maximum commits to analyze
+
+# Auto-run configuration
+# Set to true to enable automatic badge generation on package install
+auto_generate = false
+
+# Badge output directory (relative to project root)
+badge_output_dir = "."
+
+# Custom badge message template
+# Available variables: {cost}, {model}, {commits}, {date}
+badge_message_template = "${cost} with {model} · {commits} AI commits"

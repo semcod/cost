@@ -1,0 +1,40 @@
+# vallm batch | 26f | 9✓ 2⚠ 4✗ | 2026-03-29
+
+SUMMARY:
+  scanned: 26  passed: 9 (34.6%)  warnings: 2  errors: 4  unsupported: 13
+
+WARNINGS[2]{path,score}:
+  services/badge-service/badge.php,0.97
+    issues[1]{rule,severity,message,line}:
+      complexity.lizard_cc,warning,handleApiRequest: CC=20 exceeds limit 15,160
+  src/ai_cost_tracker/git_parser.py,0.97
+    issues[2]{rule,severity,message,line}:
+      complexity.cyclomatic,warning,parse_commits has cyclomatic complexity 16 (max: 15),83
+      complexity.lizard_cc,warning,parse_commits: CC=16 exceeds limit 15,83
+
+ERRORS[4]{path,score}:
+  src/ai_cost_tracker/__init__.py,0.57
+    issues[2]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'calculator' not found,4
+      python.import.resolvable,error,Module 'models' not found,5
+  tests/test_cost.py,0.57
+    issues[1]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'cost' not found,11
+  src/ai_cost_tracker/calculator.py,0.79
+    issues[2]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'models' not found,6
+      python.import.resolvable,error,Module 'git_parser' not found,7
+  src/ai_cost_tracker/cli.py,0.80
+    issues[7]{rule,severity,message,line}:
+      python.import.resolvable,error,Module 'calculator' not found,12
+      python.import.resolvable,error,Module 'git_parser' not found,13
+      python.import.resolvable,error,Module 'models' not found,14
+      python.import.resolvable,error,Module 'reports' not found,283
+      python.import.resolvable,error,Module 'reports' not found,226
+      python.import.resolvable,error,Module 'reports' not found,232
+      python.import.resolvable,error,Module 'reports' not found,238
+
+UNSUPPORTED[3]{bucket,count}:
+  *.md,6
+  *.txt,1
+  other,6

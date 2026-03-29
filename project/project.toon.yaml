@@ -1,0 +1,44 @@
+# cost | 33 func | 6f | 1536L | python | 2026-03-29
+
+HEALTH:
+  CC̄=5.2  critical=4 (limit:10)  dup=0  cycles=0
+
+ALERTS[12]:
+  !!! high_fan_out     analyze = 20 (limit:10)
+  !!  high_fan_out     report = 17 (limit:10)
+  !   cc_exceeded      analyze = 19 (limit:15)
+  !   cc_exceeded      parse_commits = 16 (limit:15)
+  !   high_fan_out     handleApiRequest = 14 (limit:10)
+  !   high_fan_out     generate_markdown_report = 13 (limit:10)
+  !   high_fan_out     update_readme_badge = 13 (limit:10)
+  !   high_fan_out     parse_commits = 12 (limit:10)
+  !   high_fan_out     estimate = 12 (limit:10)
+  !   high_fan_out     generate_html_report = 11 (limit:10)
+
+MODULES[9] (top by size):
+  M[src/ai_cost_tracker/reports.py] 455L C:0 F:4 CC↑9 D:1 (python)
+  M[src/ai_cost_tracker/cli.py] 377L C:0 F:9 CC↑19 D:0 (python)
+  M[services/badge-service/badge.php] 231L C:0 F:4 CC↑14 D:0 (php)
+  M[src/ai_cost_tracker/git_parser.py] 183L C:0 F:8 CC↑16 D:1 (python)
+  M[src/ai_cost_tracker/calculator.py] 147L C:0 F:5 CC↑6 D:1 (python)
+  M[src/ai_cost_tracker/models.py] 74L C:0 F:3 CC↑5 D:2 (python)
+  M[services/badge-service/index.php] 26L C:0 F:0 CC↑0 D:0 (php)
+  M[project.sh] 24L C:0 F:0 CC↑0 D:0 (shell)
+  M[src/ai_cost_tracker/__init__.py] 8L C:0 F:0 CC↑0 D:0 (python)
+  LANGS: python:6/php:2/shell:1
+
+HOTSPOTS[10]:
+  ★ analyze fan=20  // Analysis pipeline, 20 stages
+  ★ report fan=17  // Generate cost reports with visualizations.
+  ★ handleApiRequest fan=14  // Orchestrates 14 calls
+  ★ generate_markdown_report fan=13  // Generate markdown report with cost visualizations.
+  ★ update_readme_badge fan=13  // Update README.md with cost badge.
+
+REFACTOR[4]:
+  [1] M/L Split parse_commits (CC=16 → target CC<10)
+  [2] M/L Split analyze (CC=19 → target CC<10)
+  [3] M/M Reduce analyze fan-out (currently 20)
+  [4] M/M Reduce report fan-out (currently 17)
+
+EVOLUTION:
+  2026-03-29 CC̄=5.2 crit=4 1536L // Automated analysis

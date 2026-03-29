@@ -5,7 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.10] - 2026-03-29
+
+### Fixed
+- Fix relative-imports issues (ticket-29184732)
+- Fix string-concat issues (ticket-7532dd33)
+- Fix unused-imports issues (ticket-297efbf1)
+- Fix relative-imports issues (ticket-163a7b6b)
+- Fix relative-imports issues (ticket-647992ca)
+- Fix smart-return-type issues (ticket-90824935)
+- Fix unused-imports issues (ticket-76bb83e7)
+- Fix duplicate-imports issues (ticket-66f1f1ee)
+- Fix magic-numbers issues (ticket-683e70e6)
+- Fix ai-boilerplate issues (ticket-d0dccb11)
+- Fix unused-imports issues (ticket-19653a92)
+- Fix string-concat issues (ticket-8a517c47)
+- Fix unused-imports issues (ticket-7120d7f2)
+- Fix magic-numbers issues (ticket-2f344f07)
+- Fix unused-imports issues (ticket-752cdfe3)
+- Fix llm-generated-code issues (ticket-7c8d1d82)
+
 ## [Unreleased]
+
+## [0.1.16] - 2026-03-29
+
+### Docs
+- Update CHANGELOG.md
+- Update TODO.md
+- Update docs/README.md
+- Update project/README.md
+- Update project/context.md
+- Update services/badge-service/README.md
+
+### Other
+- Update planfile.yaml
+- Update prefact.yaml
+- Update project.sh
+- Update project/analysis.toon.yaml
+- Update project/calls.mmd
+- Update project/calls.png
+- Update project/compact_flow.mmd
+- Update project/compact_flow.png
+- Update project/duplication.toon.yaml
+- Update project/evolution.toon.yaml
+- ... and 9 more files
 
 ## [0.1.15] - 2026-03-29
 

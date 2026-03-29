@@ -1,0 +1,44 @@
+# code2llm | 9f 1525L | python:6,php:2,shell:1 | 2026-03-29
+# CC̄=5.2 | critical:2/33 | dups:0 | cycles:0
+
+HEALTH[2]:
+  🟡 CC    parse_commits CC=16 (limit:15)
+  🟡 CC    analyze CC=19 (limit:15)
+
+REFACTOR[1]:
+  1. split 2 high-CC methods  (CC>15)
+
+PIPELINES[11]:
+  [1] Src [extract_ai_tag]: extract_ai_tag
+      PURITY: 100% pure
+  [2] Src [handleApiRequest]: handleApiRequest → generateBadge → determineColor
+      PURITY: 100% pure
+  [3] Src [version_callback]: version_callback
+      PURITY: 100% pure
+  [4] Src [callback]: callback
+      PURITY: 100% pure
+  [5] Src [analyze]: analyze → get_litellm_model_name
+      PURITY: 100% pure
+
+LAYERS:
+  services/                       CC̄=9.2    ←in:0  →out:0
+  │ badge.php                  231L  0C    4m  CC=14     ←0
+  │ index.php                   26L  0C    0m  CC=0.0    ←0
+  │
+  src/                            CC̄=4.7    ←in:0  →out:0
+  │ reports                    455L  0C    4m  CC=9      ←1
+  │ !! cli                        377L  0C    9m  CC=19     ←0
+  │ !! git_parser                 183L  0C    8m  CC=16     ←1
+  │ calculator                 147L  0C    5m  CC=6      ←1
+  │ models                      74L  0C    3m  CC=5      ←2
+  │ __init__                     8L  0C    0m  CC=0.0    ←0
+  │
+  ./                              CC̄=0.0    ←in:0  →out:0
+  │ project.sh                  24L  0C    0m  CC=0.0    ←0
+  │
+
+COUPLING: no cross-package imports detected
+
+EXTERNAL:
+  validation: run `vallm batch .` → validation.toon
+  duplication: run `redup scan .` → duplication.toon

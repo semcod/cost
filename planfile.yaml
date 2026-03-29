@@ -1,0 +1,227 @@
+name: Code Quality Improvement
+project_name: ''
+project_type: prefactoring
+domain: dev-tools
+goal: Improve code quality using prefact
+goals:
+- Fix all prefact-detected issues
+- Improve code maintainability
+- Ensure consistent code style
+quality_gates:
+- metric: Prefact Issues
+  threshold: '0'
+sprints:
+- id: sprint-1
+  name: Code Quality Improvements
+  duration: 2 weeks
+  objectives:
+  - Fix code quality issues
+  task_patterns:
+  - id: ticket-29184732
+    name: Fix relative-imports issues
+    description: Resolve 4 relative-imports issues in src/ai_cost_tracker/calculator.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/calculator.py
+    rule_id: relative-imports
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-7532dd33
+    name: Fix string-concat issues
+    description: Resolve 1 string-concat issues in src/ai_cost_tracker/calculator.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/ai_cost_tracker/calculator.py
+    rule_id: string-concat
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-297efbf1
+    name: Fix unused-imports issues
+    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/calculator.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/calculator.py
+    rule_id: unused-imports
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-163a7b6b
+    name: Fix relative-imports issues
+    description: Resolve 4 relative-imports issues in src/ai_cost_tracker/__init__.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/__init__.py
+    rule_id: relative-imports
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-647992ca
+    name: Fix relative-imports issues
+    description: Resolve 14 relative-imports issues in src/ai_cost_tracker/cli.py
+    task_type: prefactor
+    priority: high
+    estimate: 3d
+    files:
+    - src/ai_cost_tracker/cli.py
+    rule_id: relative-imports
+    count: 14
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-90824935
+    name: Fix smart-return-type issues
+    description: Resolve 9 smart-return-type issues in src/ai_cost_tracker/cli.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/cli.py
+    rule_id: smart-return-type
+    count: 9
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-76bb83e7
+    name: Fix unused-imports issues
+    description: Resolve 8 unused-imports issues in src/ai_cost_tracker/cli.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/cli.py
+    rule_id: unused-imports
+    count: 8
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-66f1f1ee
+    name: Fix duplicate-imports issues
+    description: Resolve 1 duplicate-imports issues in src/ai_cost_tracker/cli.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/ai_cost_tracker/cli.py
+    rule_id: duplicate-imports
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-683e70e6
+    name: Fix magic-numbers issues
+    description: Resolve 9 magic-numbers issues in src/ai_cost_tracker/cli.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/cli.py
+    rule_id: magic-numbers
+    count: 9
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-d0dccb11
+    name: Fix ai-boilerplate issues
+    description: Resolve 2 ai-boilerplate issues in src/ai_cost_tracker/cli.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/ai_cost_tracker/cli.py
+    rule_id: ai-boilerplate
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-19653a92
+    name: Fix unused-imports issues
+    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/models.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/models.py
+    rule_id: unused-imports
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-8a517c47
+    name: Fix string-concat issues
+    description: Resolve 5 string-concat issues in src/ai_cost_tracker/reports.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/reports.py
+    rule_id: string-concat
+    count: 5
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-7120d7f2
+    name: Fix unused-imports issues
+    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/reports.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/reports.py
+    rule_id: unused-imports
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-2f344f07
+    name: Fix magic-numbers issues
+    description: Resolve 11 magic-numbers issues in src/ai_cost_tracker/reports.py
+    task_type: prefactor
+    priority: high
+    estimate: 3d
+    files:
+    - src/ai_cost_tracker/reports.py
+    rule_id: magic-numbers
+    count: 11
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-752cdfe3
+    name: Fix unused-imports issues
+    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/git_parser.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/ai_cost_tracker/git_parser.py
+    rule_id: unused-imports
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-7c8d1d82
+    name: Fix llm-generated-code issues
+    description: Resolve 2 llm-generated-code issues in src/ai_cost_tracker/git_parser.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/ai_cost_tracker/git_parser.py
+    rule_id: llm-generated-code
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced

@@ -1,0 +1,66 @@
+# cost | 9f 1525L | python:6,php:2,shell:1 | 2026-03-29
+# stats: 33 func | 0 cls | 9 mod | CC̄=5.2 | critical:2 | cycles:0
+# alerts[5]: fan-out analyze=20; CC analyze=19; fan-out report=17; CC parse_commits=16; fan-out handleApiRequest=14
+# hotspots[5]: analyze fan=20; report fan=17; handleApiRequest fan=14; generate_markdown_report fan=13; update_readme_badge fan=13
+# evolution: baseline
+# Keys: M=modules, D=details, i=imports, e=exports, c=classes, f=functions, m=methods
+M[9]:
+  project.sh,24
+  services/badge-service/badge.php,231
+  services/badge-service/index.php,26
+  src/ai_cost_tracker/__init__.py,8
+  src/ai_cost_tracker/calculator.py,147
+  src/ai_cost_tracker/cli.py,377
+  src/ai_cost_tracker/git_parser.py,183
+  src/ai_cost_tracker/models.py,74
+  src/ai_cost_tracker/reports.py,455
+D:
+  src/ai_cost_tracker/cli.py:
+    e: version_callback,callback,analyze,report,badge,estimate,stats,init,main
+    version_callback(value)
+    callback(version)
+    analyze(repo;model;api_key;saas_token;mode;max_commits;output;ai_only;saas_url;since;until;specific_date;full_history)
+    report(repo;model;format;output_dir;update_readme)
+    badge(repo;model)
+    estimate(diff_file;model)
+    stats(repo)
+    init(force)
+    main()
+  src/ai_cost_tracker/git_parser.py:
+    e: get_commit_diff,is_ai_commit,extract_ai_tag,is_commit_in_date_range,get_first_commit_date,parse_commits,get_repo_name,get_repo_stats
+    get_commit_diff(repo;commit)
+    is_ai_commit(commit;tag_pattern)
+    extract_ai_tag(commit)
+    is_commit_in_date_range(commit;since;until;specific_date)
+    get_first_commit_date(repo)
+    parse_commits(repo_path;max_count;ai_only;since;until;specific_date;full_history)
+    get_repo_name(repo)
+    get_repo_stats(repo_path)
+  services/badge-service/badge.php:
+    e: generateBadge,determineColor,analyzeRepository,handleApiRequest
+    generateBadge()
+    determineColor()
+    analyzeRepository()
+    handleApiRequest()
+  src/ai_cost_tracker/reports.py:
+    e: generate_markdown_report,generate_html_report,get_cost_color,update_readme_badge
+    generate_markdown_report(results;output_path)
+    generate_html_report(results;output_path)
+    get_cost_color(cost)
+    update_readme_badge(repo_path;results)
+  src/ai_cost_tracker/calculator.py:
+    e: estimate_tokens,calculate_cost,calculate_roi,ai_cost,batch_calculate_costs
+    estimate_tokens(diff)
+    calculate_cost(tokens;model)
+    calculate_roi(cost;lines_changed;hourly_rate)
+    ai_cost(commit_diff;model;api_key;saas_token;saas_url)
+    batch_calculate_costs(commits_data;model;api_key;saas_token)
+  src/ai_cost_tracker/models.py:
+    e: get_model_price,get_openrouter_headers,get_litellm_model_name
+    get_model_price(model)
+    get_openrouter_headers()
+    get_litellm_model_name(model)
+  src/ai_cost_tracker/__init__.py:
+  services/badge-service/index.php:
+    i: badge.php
+  project.sh:

@@ -1,0 +1,25 @@
+flowchart TD
+
+    %% Entry points (blue)
+    classDef entry fill:#4dabf7,stroke:#1971c2,color:#fff
+
+    subgraph Core
+        src__ai_cost_tracker__models__get_model_price["get_model_price"]
+        src__ai_cost_tracker__models__get_openrouter_headers["get_openrouter_headers"]
+        src__ai_cost_tracker__calculator__calculate_cost["calculate_cost"]
+        src__ai_cost_tracker__calculator__ai_cost["ai_cost"]
+        src__ai_cost_tracker__calculator__batch_calculate_costs["batch_calculate_costs"]
+        src__ai_cost_tracker__git_parser__extract_ai_tag["extract_ai_tag"]
+        src__ai_cost_tracker__git_parser__parse_commits{{parse_commits CC=16}}
+        services__badge_service__badge__handleApiRequest["handleApiRequest"]
+        src__ai_cost_tracker__cli__version_callback["version_callback"]
+        src__ai_cost_tracker__cli__callback["callback"]
+        src__ai_cost_tracker__cli__analyze["analyze"]
+        src__ai_cost_tracker__cli__report["report"]
+        src__ai_cost_tracker__cli__badge["badge"]
+        src__ai_cost_tracker__cli__estimate["estimate"]
+        src__ai_cost_tracker__cli__stats["stats"]
+        ...["+2 more"]
+    end
+
+    class src__ai_cost_tracker__models__get_openrouter_headers,src__ai_cost_tracker__git_parser__extract_ai_tag,services__badge_service__badge__handleApiRequest,src__ai_cost_tracker__cli__version_callback,src__ai_cost_tracker__cli__callback,src__ai_cost_tracker__cli__analyze,src__ai_cost_tracker__cli__report,src__ai_cost_tracker__cli__badge,src__ai_cost_tracker__cli__estimate,src__ai_cost_tracker__cli__stats entry

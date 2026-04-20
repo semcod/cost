@@ -1,64 +1,920 @@
-cost,cost_formatted,model,mode,tokens,hours_saved,review_time,value_generated,roi,roi_formatted,commit_hash,commit_message,author,date
-0.24014400000000002,$0.2401,openrouter/qwen/qwen3-coder-next,byok,"{'input': 75045, 'output': 135081, 'total': 210126}",6.8,1.7,680.0,2831.6,∞,3bde0a3a,"feat(docs): code analysis engine
+cost,cost_formatted,model,mode,tokens,hours_saved,value_generated,roi,roi_formatted,commit_hash,commit_message,author,date
+0.040137,$0.0401,openrouter/qwen/qwen3-coder-next,local,"{'input': 9444, 'output': 23610, 'total': 33054}",3.84,384.0,9567.2,∞,fe6bec44,"docs(docs): add markdown output
+
+Statistics: 5 files changed, 82 insertions, 109 deletions
+
+Summary:
+- Dirs: .=1, code2docs=1, docs=1, examples=1, project=1
+- Exts: .md=2, .py=2, .yaml=1
+- A/M/D: 0/5/0
+
+Modified files:
+- README.md (+2/-2)
+- code2docs/generators/examples_gen.py (+6/-34)
+- docs/README.md (+56/-54)
+- examples/class_examples.py (+15/-16)
+- project/duplication.toon.yaml (+3/-3)
+
+Changes (notes):
+- README.md (+2/-2): update documentation
+- code2docs/generators/examples_gen.py (+6/-34): update
+- docs/README.md (+56/-54): update documentation
+- examples/class_examples.py (+15/-16): add markdown formatting
+- project/duplication.toon.yaml (+3/-3): update
+
+Implementation notes (heuristics):
+- Type inferred from file paths + diff keywords + add/delete ratio
+- Scope prefers 'goal' when goal/* is touched; otherwise based on top-level dirs
+- For <=6 files: generate short per-file notes from added lines (defs/classes/click options/headings)
+- A/M/D derived from git name-status; per-file +X/-X from git numstat",Tom Softreck,2026-04-20T08:51:19+02:00
+0.0883405,$0.0883,openrouter/qwen/qwen3-coder-next,local,"{'input': 20786, 'output': 51965, 'total': 72751}",8.04,804.0,9101.1,∞,ae5a340a,"docs(docs): add markdown output
+
+Statistics: 9 files changed, 448 insertions, 109 deletions
+
+Summary:
+- Dirs: code2docs=5, .=1, docs=1, project=1, tests=1
+- Exts: .py=5, .md=2, .j2=1, .yaml=1
+- A/M/D: 2/7/0
+- Added: code2docs/analyzers/markdown_validator.py, tests/test_markdown_validator.py
+- Symbols: by_kind, test_validate_ignores_links_in_code_fences, _check_headings, _count_cells, class ValidationReport
+
+Added files:
+- code2docs/analyzers/markdown_validator.py (+194/-0)
+- tests/test_markdown_validator.py (+75/-0)
+
+Modified files:
+- README.md (+4/-4)
+- code2docs/analyzers/__init__.py (+10/-0)
+- code2docs/cli.py (+30/-0)
+- code2docs/generators/readme_gen.py (+43/-8)
+- code2docs/templates/readme.md.j2 (+10/-25)
+- docs/README.md (+78/-68)
+- project/duplication.toon.yaml (+4/-4)
+
+Implementation notes (heuristics):
+- Type inferred from file paths + diff keywords + add/delete ratio
+- Scope prefers 'goal' when goal/* is touched; otherwise based on top-level dirs
+- For <=6 files: generate short per-file notes from added lines (defs/classes/click options/headings)
+- A/M/D derived from git name-status; per-file +X/-X from git numstat",Tom Softreck,2026-04-20T08:36:36+02:00
+1.0732015,$1.0732,openrouter/qwen/qwen3-coder-next,local,"{'input': 252518, 'output': 631295, 'total': 883813}",35.01,3501.0,3262.2,∞,64638e60,"docs(docs): add markdown output
+
+Statistics: 26 files changed, 1485 insertions, 807 deletions
+
+Summary:
+- Dirs: project=18, code2docs=5, .=2, docs=1
+- Exts: .yaml=7, .md=4, .py=4, .mmd=3, .png=3, other=1
+- A/M/D: 1/25/0
+- Added: project/mermaid.export
+- Symbols: class code2docs__sync__updater__Updater__apply, class code2docs__formatters__badges___make_badge, filtered, _runtime_badge, _parse_cargo_toml
+
+Added files:
+- project/mermaid.export (+275/-0)
+
+Modified files:
+- .gitignore (+1/-1)
+- README.md (+5/-5)
+- code2docs/analyzers/dependency_scanner.py (+26/-1)
+- code2docs/config.py (+1/-1)
+- code2docs/formatters/badges.py (+20/-0)
+- code2docs/generators/readme_gen.py (+2/-1)
+- code2docs/templates/readme.md.j2 (+98/-2)
+- docs/README.md (+278/-65)
+- project/README.md (+2/-2)
+- project/analysis.toon.yaml (+41/-17)
+- project/calls.mmd (+35/-35)
+- project/calls.png (+0/-0)
+- project/calls.toon.yaml (+32/-32)
+- project/calls.yaml (+275/-274)
+- project/compact_flow.mmd (+4/-4)
+- project/compact_flow.png (+0/-0)
+- project/context.md (+88/-88)
+- project/duplication.toon.yaml (+3/-3)
+- project/evolution.toon.yaml (+1/-1)
+- project/flow.mmd (+16/-16)
+- ... and 5 more
+
+Implementation notes (heuristics):
+- Type inferred from file paths + diff keywords + add/delete ratio
+- Scope prefers 'goal' when goal/* is touched; otherwise based on top-level dirs
+- For <=6 files: generate short per-file notes from added lines (defs/classes/click options/headings)
+- A/M/D derived from git name-status; per-file +X/-X from git numstat",Tom Softreck,2026-04-20T08:29:27+02:00
+0.7861480000000001,$0.7861,openrouter/qwen/qwen3-coder-next,local,"{'input': 184976, 'output': 462440, 'total': 647416}",6.46,646.0,821.7,822x,f9bee636,refactoring,Tom Softreck,2026-04-19T18:12:21+02:00
+0.787117,$0.7871,openrouter/qwen/qwen3-coder-next,local,"{'input': 185204, 'output': 463010, 'total': 648214}",10.17,1017.0,1292.1,∞,4518339b,"docs(docs): add markdown output
+
+Statistics: 9 files changed, 450 insertions, 297 deletions
+
+Summary:
+- Dirs: project=6, .=3
+- Exts: .md=3, .yaml=2, .yml=1, .mmd=1, .png=1, .html=1
+- A/M/D: 1/8/0
+- Added: redsl_refactor_plan.md
+- Symbols: files
+
+Added files:
+- redsl_refactor_plan.md (+40/-0)
+
+Modified files:
+- README.md (+5/-5)
+- Taskfile.yml (+113/-0)
+- project/calls.mmd (+19/-19)
+- project/calls.png (+0/-0)
+- project/calls.toon.yaml (+8/-8)
+- project/calls.yaml (+223/-223)
+- project/context.md (+41/-41)
+- project/index.html (+1/-1)
+
+Implementation notes (heuristics):
+- Type inferred from file paths + diff keywords + add/delete ratio
+- Scope prefers 'goal' when goal/* is touched; otherwise based on top-level dirs
+- For <=6 files: generate short per-file notes from added lines (defs/classes/click options/headings)
+- A/M/D derived from git name-status; per-file +X/-X from git numstat",Tom Softreck,2026-04-19T17:51:05+02:00
+0.78591,$0.7859,openrouter/qwen/qwen3-coder-next,local,"{'input': 184920, 'output': 462300, 'total': 647220}",19.41,1941.0,2469.7,∞,8e740bf9,refactoring,Tom Softreck,2026-04-19T09:54:49+02:00
+0.008381,$0.0084,openrouter/qwen/qwen3-coder-next,local,"{'input': 1972, 'output': 4930, 'total': 6902}",0.63,63.0,7517.0,∞,f3282945,"docs(docs): update README
+
+Statistics: 12 files changed, 58 insertions, 1500 deletions
+
+Summary:
+- Dirs: code2docs=11, .=1
+- Exts: .md=12
+- A/M/D: 0/9/3
+- Deleted: code2docs/docs/api-changelog.md, code2docs/docs/coverage.md, code2docs/docs/dependency-graph.md
+
+Modified files:
+- README.md (+5/-5)
+- code2docs/CONTRIBUTING.md (+0/-9)
+- code2docs/README.md (+53/-1141)
+- code2docs/docs/api.md (+0/-10)
+- code2docs/docs/architecture.md (+0/-4)
+- code2docs/docs/getting-started.md (+0/-7)
+- code2docs/docs/modules.md (+0/-28)
+- code2docs/project/README.md (+0/-60)
+- code2docs/project/context.md (+0/-4)
+
+Deleted files:
+- code2docs/docs/api-changelog.md (+0/-3)
+- code2docs/docs/coverage.md (+0/-66)
+- code2docs/docs/dependency-graph.md (+0/-163)
+
+Implementation notes (heuristics):
+- Type inferred from file paths + diff keywords + add/delete ratio
+- Scope prefers 'goal' when goal/* is touched; otherwise based on top-level dirs
+- For <=6 files: generate short per-file notes from added lines (defs/classes/click options/headings)
+- A/M/D derived from git name-status; per-file +X/-X from git numstat",Tom Softreck,2026-04-18T18:50:44+02:00
+0.206023,$0.2060,openrouter/qwen/qwen3-coder-next,local,"{'input': 48476, 'output': 121190, 'total': 169666}",18.67,1867.0,9062.1,∞,411cc76b,refactoring,Tom Softreck,2026-04-18T18:49:57+02:00
+1.445935,$1.4459,openrouter/qwen/qwen3-coder-next,local,"{'input': 340220, 'output': 850550, 'total': 1190770}",79.79,7979.0,5518.2,∞,c624cce1,refactoring,Tom Softreck,2026-04-18T18:47:30+02:00
+0.5547610000000001,$0.5548,openrouter/qwen/qwen3-coder-next,local,"{'input': 130532, 'output': 326330, 'total': 456862}",5.52,552.0,995.0,995x,287e10a7,draft,Tom Softreck,2026-04-13T16:00:11+02:00
+0.5911665,$0.5912,openrouter/qwen/qwen3-coder-next,local,"{'input': 139098, 'output': 347745, 'total': 486843}",7.99,799.0,1351.6,∞,c47cb341,draft,Tom Softreck,2026-04-13T13:33:59+02:00
+1.2933089999999998,$1.2933,openrouter/qwen/qwen3-coder-next,local,"{'input': 304308, 'output': 760770, 'total': 1065078}",49.88,4988.0,3856.8,∞,9587b330,draft,Tom Softreck,2026-04-13T12:52:26+02:00
+1.061123,$1.0611,openrouter/qwen/qwen3-coder-next,local,"{'input': 249676, 'output': 624190, 'total': 873866}",18.49,1849.0,1742.5,∞,14daa396,"refactor(docs): code analysis engine
 
 changes:
-  - file: metrics.py
-    area: quality
-    added: [calculate_human_time]
-  - file: reports.py
-    area: core
-    modified: [update_readme_badge]
-  - file: base.py
-    area: core
-    added: [get_cost_color]
-  - file: markdown.py
-    area: core
-    added: [generate_markdown_report]
+  - file: examples_gen.py
+    area: docs
+    modified: [_generate_quickstart, _generate_advanced, ExamplesGenerator, _build_realistic_args]
+  - file: readme_gen.py
+    area: docs
+    added: [write, _extract_extras, _build_endpoints_section, _build_module_tree, _calc_avg_complexity, _build_manual, +9 more]
+    modified: [ReadmeGenerator, _extract_project_metadata]
+    removed: [_set_authors, _extract_contributors_from_git, _extract_license_file, _set_license_from_file, _extract_metadata_from_pyproject, _set_license, +1 more]
+  - file: test_generators.py
+    area: test
+    modified: [test_generate_produces_output, _make_result, TestArchitectureGenerator]
 
 stats:
-  lines: ""+405/-165 (net +240)""
-  files: 20
-  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-29T13:01:32+02:00
-0.036455,$0.0365,openrouter/qwen/qwen3-coder-next,byok,"{'input': 11392, 'output': 20506, 'total': 31899}",3.21,0.8,320.8,8799.9,∞,fcc6a679,"feat(docs): deep code analysis engine with 6 supporting modules
-
-changes:
-  - file: reports.py
-    area: core
-    modified: [calculate_human_time]
+  lines: ""+840/-355 (net +485)""
+  files: 42
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-04-09T15:01:02+02:00
+8.323795,$8.3238,openrouter/qwen/qwen3-coder-next,local,"{'input': 1958540, 'output': 4896350, 'total': 6854890}",18.95,1895.0,227.7,228x,663685b3,refactoring,Tom Softreck,2026-04-09T09:51:38+02:00
+0.007276,$0.0073,openrouter/qwen/qwen3-coder-next,local,"{'input': 1712, 'output': 4280, 'total': 5992}",0.49,49.0,6734.5,∞,ac04cb68,"docs(docs): configuration management system
 
 stats:
-  lines: ""+294/-21 (net +273)""
-  files: 4
-  complexity: ""+100% complexity (monitor)""",Tom Softreck,2026-03-29T12:58:57+02:00
-0.0054470000000000005,$0.0054,openrouter/qwen/qwen3-coder-next,byok,"{'input': 1702, 'output': 3064, 'total': 4767}",0.4,0.1,40.0,7343.5,∞,e55efcb3,"docs(docs): multi-language support with 2 supporting modules
-
-stats:
-  lines: ""+6/-1 (net +5)""
+  lines: ""+3/-3 (net +0)""
   files: 1
-  complexity: ""Stable complexity""",Tom Softreck,2026-03-29T12:54:57+02:00
-0.034126000000000004,$0.0341,openrouter/qwen/qwen3-coder-next,byok,"{'input': 10664, 'output': 19196, 'total': 29860}",3.19,0.8,319.2,9353.6,∞,ba777813,"feat(None): deep code analysis engine with 5 supporting modules
+  complexity: ""Stable complexity""",Tom Softreck,2026-04-08T13:53:06+02:00
+0.041412000000000004,$0.0414,openrouter/qwen/qwen3-coder-next,local,"{'input': 9744, 'output': 24360, 'total': 34104}",2.97,297.0,7171.8,∞,3a377b07,docs: regenerate documentation,Tom Softreck,2026-04-08T13:40:57+02:00
+0.44234850000000003,$0.4423,openrouter/qwen/qwen3-coder-next,local,"{'input': 104082, 'output': 260205, 'total': 364287}",26.58,2658.0,6008.8,∞,42500b76,"fix: repair syntax errors and module-level definitions
 
-changes:
-  - file: calculator.py
-    area: core
-    added: [_estimate_single_file_tokens, get_file_type_multiplier]
-    modified: [calculate_roi, estimate_tokens, calculate_cost, batch_calculate_costs, ai_cost]
-  - file: reports.py
-    area: core
-    modified: [calculate_human_time, update_readme_badge]
-
-stats:
-  lines: ""+169/-83 (net +86)""
-  files: 4
-  complexity: ""+186% complexity (monitor)""",Tom Softreck,2026-03-29T12:53:39+02:00
-0.265591,$0.2656,openrouter/qwen/qwen3-coder-next,byok,"{'input': 82997, 'output': 149395, 'total': 232393}",8.61,2.15,860.8,3241.1,∞,fb906e54,"refactor(docs): code analysis engine
-
-changes:
-  - file: reports.py
-    area: core
-    modified: [calculate_human_time]
+- Move ALL_ADAPTERS to module level in _registry_adapters.py
+- Move MARKER_START/MARKER_END to module level in readme_gen.py
+- Move console definition to module level in cli.py
+- Move __version__/__author__ to module level in __init__.py
+- Fix try/except blocks in config.py and dependency_scanner.py
+- Fix indentation in ReadmeGeneratorAdapter class
+- Fix code placement in examples/quickstart.py and advanced_usage.py",Tom Softreck,2026-04-08T13:37:42+02:00
+1.47271,$1.4727,openrouter/qwen/qwen3-coder-next,local,"{'input': 346520, 'output': 866300, 'total': 1212820}",60.5,6050.0,4108.1,∞,f8dbeb38,draft,Tom Softreck,2026-04-08T13:35:29+02:00
+0.8949905,$0.8950,openrouter/qwen/qwen3-coder-next,local,"{'input': 210586, 'output': 526465, 'total': 737051}",2.36,236.0,263.7,264x,6fe9b2e1,"refactor(docs): code analysis engine
 
 stats:
-  lines: ""+347/-348 (net -1)""
+  lines: ""+41/-41 (net +0)""
+  files: 6
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-31T13:36:24+02:00
+0.929713,$0.9297,openrouter/qwen/qwen3-coder-next,local,"{'input': 218756, 'output': 546890, 'total': 765646}",4.92,492.0,529.2,529x,be393c7e,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+99/-99 (net +0)""
+  files: 9
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-31T12:58:13+02:00
+10.231688,$10.2317,openrouter/qwen/qwen3-coder-next,local,"{'input': 2407456, 'output': 6018640, 'total': 8426096}",589.61,58961.0,5762.6,∞,39fed355,"refactor(docs): code analysis engine
+
+changes:
+  - file: examples_gen.py
+    area: docs
+    modified: [ExamplesGenerator, _generate_advanced]
+
+stats:
+  lines: ""+8520/-50163 (net -41643)""
+  files: 28
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-31T12:49:50+02:00
+14.9602805,$14.9603,openrouter/qwen/qwen3-coder-next,local,"{'input': 3520066, 'output': 8800165, 'total': 12320231}",642.21,64221.0,4292.8,∞,d23b9170,draft,Tom Softreck,2026-03-15T13:50:07+01:00
+14.5217825,$14.5218,openrouter/qwen/qwen3-coder-next,local,"{'input': 3416890, 'output': 8542225, 'total': 11959115}",580.89,58089.0,4000.1,∞,e8c5b396,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+24400/-24694 (net -294)""
+  files: 11
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-15T13:49:09+01:00
+10.339417000000001,$10.3394,openrouter/qwen/qwen3-coder-next,local,"{'input': 2432804, 'output': 6082010, 'total': 8514814}",171.82,17182.0,1661.8,∞,d3fe52c6,refactoring,Tom Softreck,2026-03-15T13:45:04+01:00
+12.943681,$12.9437,openrouter/qwen/qwen3-coder-next,local,"{'input': 3045572, 'output': 7613930, 'total': 10659502}",447.46,44746.0,3457.0,∞,dd199974,"refactor(docs): code analysis engine
+
+changes:
+  - file: _registry_adapters.py
+    area: docs
+    added: [_generate_html, IndexHtmlAdapter]
+    modified: [should_run, run]
+
+stats:
+  lines: ""+38238/-4561 (net +33677)""
+  files: 13
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-15T11:11:00+01:00
+14.673082500000001,$14.6731,openrouter/qwen/qwen3-coder-next,local,"{'input': 3452490, 'output': 8631225, 'total': 12083715}",295.73,29573.0,2015.5,∞,ed701a95,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+5072/-4899 (net +173)""
+  files: 13
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T21:34:56+01:00
+18.279547500000003,$18.2795,openrouter/qwen/qwen3-coder-next,local,"{'input': 4301070, 'output': 10752675, 'total': 15053745}",740.76,74076.0,4052.4,∞,270215d5,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+10262/-58369 (net -48107)""
+  files: 17
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T20:10:49+01:00
+8.9920565,$8.9921,openrouter/qwen/qwen3-coder-next,local,"{'input': 2115778, 'output': 5289445, 'total': 7405223}",499.11,49911.0,5550.6,∞,cd0b911e,"feat(tests): code analysis engine
+
+stats:
+  lines: ""+49298/-177 (net +49121)""
+  files: 12
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T19:25:38+01:00
+19.088008,$19.0880,openrouter/qwen/qwen3-coder-next,local,"{'input': 4491296, 'output': 11228240, 'total': 15719536}",836.58,83658.0,4382.8,∞,0225e621,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+14412/-61271 (net -46859)""
   files: 22
-  complexity: ""+100% complexity (monitor)""",Tom Softreck,2026-03-29T12:51:17+02:00
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T18:57:09+01:00
+11.9974865,$11.9975,openrouter/qwen/qwen3-coder-next,local,"{'input': 2822938, 'output': 7057345, 'total': 9880283}",335.01,33501.0,2792.3,∞,c8c4f32a,refactoring,Tom Softreck,2026-03-09T18:52:21+01:00
+11.849255,$11.8493,openrouter/qwen/qwen3-coder-next,local,"{'input': 2788060, 'output': 6970150, 'total': 9758210}",322.92,32292.0,2725.2,∞,4df6e106,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+13000/-12940 (net +60)""
+  files: 9
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T18:00:46+01:00
+11.9707965,$11.9708,openrouter/qwen/qwen3-coder-next,local,"{'input': 2816658, 'output': 7041645, 'total': 9858303}",333.65,33365.0,2787.2,∞,a60219ec,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+13470/-13546 (net -76)""
+  files: 9
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T17:54:15+01:00
+11.307541500000001,$11.3075,openrouter/qwen/qwen3-coder-next,local,"{'input': 2660598, 'output': 6651495, 'total': 9312093}",284.35,28435.0,2514.7,∞,6e0e7046,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+12089/-9690 (net +2399)""
+  files: 15
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T17:42:37+01:00
+10.7241865,$10.7242,openrouter/qwen/qwen3-coder-next,local,"{'input': 2523338, 'output': 6308345, 'total': 8831683}",255.31,25531.0,2380.7,∞,fdabe035,"refactor(docs): code analysis engine
+
+changes:
+  - file: dependency_scanner.py
+    area: analyzer
+    added: [_parse_package_json, _parse_go_mod, _parse_cargo_toml]
+    modified: [DependencyScanner, scan, ProjectDependencies]
+  - file: contributing_gen.py
+    area: docs
+    modified: [_render_code_style, _render_setup, _detect_dev_tools, ContributingGenerator, _render_testing]
+  - file: getting_started_gen.py
+    area: docs
+    modified: [_render_prerequisites, _render_installation, GettingStartedGenerator]
+  - file: readme_gen.py
+    area: docs
+    modified: [ReadmeGenerator, _build_install_section, _build_quickstart_section]
+
+stats:
+  lines: ""+9859/-9589 (net +270)""
+  files: 15
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-09T17:35:32+01:00
+20.404403000000002,$20.4044,openrouter/qwen/qwen3-coder-next,local,"{'input': 4801036, 'output': 12002590, 'total': 16803626}",639.21,63921.0,3132.7,∞,bb07d167,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+16071/-62600 (net -46529)""
+  files: 18
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T16:18:10+01:00
+0.00561,$0.0056,openrouter/qwen/qwen3-coder-next,local,"{'input': 1320, 'output': 3300, 'total': 4620}",0.48,48.0,8556.1,∞,23554bf0,"docs(docs): configuration management system
+
+changes:
+  - file: config.py
+    area: config
+    modified: [Code2LlmConfig]
+
+stats:
+  lines: ""+1/-1 (net +0)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-09T16:12:00+01:00
+10.7012365,$10.7012,openrouter/qwen/qwen3-coder-next,local,"{'input': 2517938, 'output': 6294845, 'total': 8812783}",249.74,24974.0,2333.7,∞,a07556dd,docs,Tom Softreck,2026-03-09T09:36:03+01:00
+9.5489085,$9.5489,openrouter/qwen/qwen3-coder-next,local,"{'input': 2246802, 'output': 5617005, 'total': 7863807}",153.41,15341.0,1606.6,∞,32d4b1cc,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+5691/-5675 (net +16)""
+  files: 10
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-08T18:46:06+01:00
+9.8630855,$9.8631,openrouter/qwen/qwen3-coder-next,local,"{'input': 2320726, 'output': 5801815, 'total': 8122541}",185.41,18541.0,1879.8,∞,be6499ea,"refactor(docs): code analysis engine
+
+changes:
+  - file: test_cli.py
+    area: cli
+    modified: [TestCLIShellE2E, test_shell_generate_creates_files]
+
+stats:
+  lines: ""+7025/-7003 (net +22)""
+  files: 9
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-08T15:05:02+01:00
+9.7817065,$9.7817,openrouter/qwen/qwen3-coder-next,local,"{'input': 2301578, 'output': 5753945, 'total': 8055523}",169.93,16993.0,1737.2,∞,e1cba4ee,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+6046/-6042 (net +4)""
+  files: 10
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-08T14:30:20+01:00
+10.8592175,$10.8592,openrouter/qwen/qwen3-coder-next,local,"{'input': 2555110, 'output': 6387775, 'total': 8942885}",263.52,26352.0,2426.7,∞,89c3bba8,"refactor(tests): code analysis engine
+
+changes:
+  - file: test_cli.py
+    area: cli
+    added: [TestCLINewFeaturesE2E, temp_org, TestCLIShellE2E, temp_project, _run_shell]
+    new_tests: 10
+    modified: [TestCLI]
+
+testing:
+  new_tests: 10
+  scenarios:
+    - shell_org_mode_dry_run
+    - shell_diff
+    - shell_version
+    - shell_init
+    - shell_check
+    - shell_generate_with_sections
+    - shell_org_mode
+    - shell_generate
+    - shell_generate_creates_files
+    - shell_help
+
+stats:
+  lines: ""+9974/-9909 (net +65)""
+  files: 13
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-08T12:26:15+01:00
+20.195328500000002,$20.1953,openrouter/qwen/qwen3-coder-next,local,"{'input': 4751842, 'output': 11879605, 'total': 16631447}",628.01,62801.0,3109.7,∞,ffd03590,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+25875/-20282 (net +5593)""
+  files: 29
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-08T08:55:45+01:00
+11.04473,$11.0447,openrouter/qwen/qwen3-coder-next,local,"{'input': 2598760, 'output': 6496900, 'total': 9095660}",327.0,32700.0,2960.7,∞,e8ff53ed,"refactor(docs): code analysis engine
+
+changes:
+  - file: cli.py
+    area: cli
+    modified: [generate]
+  - file: config.py
+    area: config
+    modified: [Code2DocsConfig]
+  - file: _registry_adapters.py
+    area: docs
+    added: [OrgReadmeAdapter]
+    modified: [should_run, run]
+  - file: org_readme_gen.py
+    area: docs
+    added: [_get_repo_url, write, _truncate_description, _analyze_project, _render_project_section, generate, +5 more]
+
+dependencies:
+  flow: ""_registry_adapters→org_readme_gen, cli→config""
+  - cli.py -> config.py
+  - _registry_adapters.py -> org_readme_gen.py
+
+stats:
+  lines: ""+13020/-12312 (net +708)""
+  files: 19
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-08T08:54:02+01:00
+9.962306,$9.9623,openrouter/qwen/qwen3-coder-next,local,"{'input': 2344072, 'output': 5860180, 'total': 8204252}",230.34,23034.0,2312.1,∞,d01f3951,"refactor(docs): code analysis engine
+
+changes:
+  - file: dependency_scanner.py
+    area: analyzer
+    added: [_detect_version]
+    modified: [ProjectDependencies, DependencyScanner, _parse_pyproject]
+  - file: examples_gen.py
+    area: docs
+    added: [_get_example_value]
+    modified: [_generate_advanced, _generate_quickstart, _example_from_type, _build_realistic_args, ExamplesGenerator]
+  - file: mkdocs_gen.py
+    area: docs
+    added: [_read_pyproject_mkdocs]
+    modified: [MkDocsGenerator, generate]
+
+stats:
+  lines: ""+8650/-8248 (net +402)""
+  files: 17
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-08T08:50:45+01:00
+16.8481815,$16.8482,openrouter/qwen/qwen3-coder-next,local,"{'input': 3964278, 'output': 9910695, 'total': 13874973}",325.6,32560.0,1932.6,∞,794ecc09,"refactor(docs): code analysis engine
+
+changes:
+  - file: _registry_adapters.py
+    area: docs
+    modified: [ReadmeGeneratorAdapter, MkDocsAdapter, ContributingAdapter, ExamplesAdapter]
+  - file: contributing_gen.py
+    area: docs
+    modified: [_render_setup, ContributingGenerator]
+  - file: getting_started_gen.py
+    area: docs
+    modified: [GettingStartedGenerator, _render_installation]
+
+dependencies:
+  flow: ""_registry_adapters→contributing_gen""
+  - _registry_adapters.py -> getting_started_gen.py
+  - _registry_adapters.py -> contributing_gen.py
+
+stats:
+  lines: ""+12055/-11916 (net +139)""
+  files: 15
+  complexity: ""+62% complexity (monitor)""",Tom Softreck,2026-03-08T08:46:08+01:00
+10.0563245,$10.0563,openrouter/qwen/qwen3-coder-next,local,"{'input': 2366194, 'output': 5915485, 'total': 8281679}",246.52,24652.0,2451.4,∞,e25162ec,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+9537/-9627 (net -90)""
+  files: 13
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-08T08:38:45+01:00
+8.0221895,$8.0222,openrouter/qwen/qwen3-coder-next,local,"{'input': 1887574, 'output': 4718935, 'total': 6606509}",455.67,45567.0,5680.1,∞,e1604f67,"feat(tests): code analysis engine
+
+stats:
+  lines: ""+44873/-208 (net +44665)""
+  files: 15
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-08T08:35:58+01:00
+7.1143555,$7.1144,openrouter/qwen/qwen3-coder-next,local,"{'input': 1673966, 'output': 4184915, 'total': 5858881}",458.67,45867.0,6447.1,∞,e63a27a7,"feat(docs): code analysis engine
+
+changes:
+  - file: config.py
+    area: config
+    modified: [Code2LlmConfig, to_yaml, Code2DocsConfig, from_yaml]
+  - file: code2llm_gen.py
+    area: docs
+    added: [parse_gitignore]
+    modified: [_run_code2llm, Code2LlmGenerator]
+
+stats:
+  lines: ""+44110/-547 (net +43563)""
+  files: 31
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-08T08:22:34+01:00
+0.16271549999999999,$0.1627,openrouter/qwen/qwen3-coder-next,local,"{'input': 38286, 'output': 95715, 'total': 134001}",14.73,1473.0,9052.6,∞,917a1851,refactoring,Tom Softreck,2026-03-08T07:25:59+01:00
+0.83504,$0.8350,openrouter/qwen/qwen3-coder-next,local,"{'input': 196480, 'output': 491200, 'total': 687680}",86.44,8644.0,10351.6,∞,b0a5439b,refactoring,Tom Softreck,2026-03-08T07:21:55+01:00
+0.0046155,$0.0046,openrouter/qwen/qwen3-coder-next,local,"{'input': 1086, 'output': 2715, 'total': 3801}",0.44,44.0,9533.1,∞,e4e20b2b,"chore(config): new API capabilities
+
+stats:
+  lines: ""+2/-0 (net +2)""
+  files: 1
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-07T21:44:06+01:00
+0.0243015,$0.0243,openrouter/qwen/qwen3-coder-next,local,"{'input': 5718, 'output': 14295, 'total': 20013}",1.41,141.0,5802.1,∞,6262f65c,"docs(docs): code quality metrics with 5 supporting modules
+
+stats:
+  lines: ""+17/-17 (net +0)""
+  files: 4
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-07T21:41:51+01:00
+0.0280585,$0.0281,openrouter/qwen/qwen3-coder-next,local,"{'input': 6602, 'output': 16505, 'total': 23107}",2.12,212.0,7555.6,∞,d01369fc,"docs(docs): code quality metrics with 5 supporting modules
+
+changes:
+  - file: readme_gen.py
+    area: docs
+    modified: [ReadmeGenerator, _extract_project_metadata]
+
+stats:
+  lines: ""+58/-32 (net +26)""
+  files: 6
+  complexity: ""+100% complexity (monitor)""",Tom Softreck,2026-03-07T21:40:15+01:00
+0.00782,$0.0078,openrouter/qwen/qwen3-coder-next,local,"{'input': 1840, 'output': 4600, 'total': 6440}",0.74,74.0,9462.9,∞,65364e62,"feat(docs): configuration management
+
+changes:
+  - file: readme_gen.py
+    area: docs
+    modified: [_extract_project_metadata, ReadmeGenerator]
+  - file: test_llm_helper.py
+    area: util
+    modified: [test_readme_without_llm, TestGeneratorFallback]
+
+stats:
+  lines: ""+15/-4 (net +11)""
+  files: 2
+  complexity: ""+150% complexity (monitor)""",Tom Softreck,2026-03-07T21:39:17+01:00
+0.053295,$0.0533,openrouter/qwen/qwen3-coder-next,local,"{'input': 12540, 'output': 31350, 'total': 43890}",4.69,469.0,8800.1,∞,06d20aa0,"docs(docs): configuration management system
+
+changes:
+  - file: config.py
+    area: config
+    modified: [ReadmeConfig]
+
+stats:
+  lines: ""+190/-122 (net +68)""
+  files: 8
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-07T21:38:36+01:00
+0.240788,$0.2408,openrouter/qwen/qwen3-coder-next,local,"{'input': 56656, 'output': 141640, 'total': 198296}",22.74,2274.0,9444.0,∞,02eed2ff,"feat(docs): configuration management system
+
+changes:
+  - file: config.py
+    area: config
+    modified: [ReadmeConfig]
+  - file: readme_gen.py
+    area: docs
+    added: [_extract_extras]
+    modified: [ReadmeGenerator, _build_context]
+
+stats:
+  lines: ""+1992/-81 (net +1911)""
+  files: 13
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T21:33:18+01:00
+0.0207315,$0.0207,openrouter/qwen/qwen3-coder-next,local,"{'input': 4878, 'output': 12195, 'total': 17073}",2.26,226.0,10901.3,∞,60e09182,refactoring,Tom Softreck,2026-03-07T21:26:22+01:00
+0.0431715,$0.0432,openrouter/qwen/qwen3-coder-next,local,"{'input': 10158, 'output': 25395, 'total': 35553}",4.81,481.0,11141.6,∞,529bd293,refactoring,Tom Softreck,2026-03-07T21:22:45+01:00
+0.4728465,$0.4728,openrouter/qwen/qwen3-coder-next,local,"{'input': 111258, 'output': 278145, 'total': 389403}",58.1,5810.0,12287.3,∞,842378b2,refactoring,Tom Softreck,2026-03-07T21:17:25+01:00
+0.0194905,$0.0195,openrouter/qwen/qwen3-coder-next,local,"{'input': 4586, 'output': 11465, 'total': 16051}",2.35,235.0,12057.2,∞,e129828f,refactoring,Tom Softreck,2026-03-07T20:11:58+01:00
+0.10781400000000001,$0.1078,openrouter/qwen/qwen3-coder-next,local,"{'input': 25368, 'output': 63420, 'total': 88788}",11.02,1102.0,10221.3,∞,6b5eb0eb,refactoring,Tom Softreck,2026-03-07T20:11:40+01:00
+0.3562605,$0.3563,openrouter/qwen/qwen3-coder-next,local,"{'input': 83826, 'output': 209565, 'total': 293391}",48.01,4801.0,13476.1,∞,77ed7a04,"refactor(docs): code analysis engine
+
+changes:
+  - file: cli.py
+    area: cli
+    added: [_run_check, _run_diff, check, diff]
+  - file: _registry_adapters.py
+    area: docs
+    added: [ContributingAdapter, GettingStartedAdapter, ConfigDocsAdapter]
+    modified: [run]
+  - file: config_docs_gen.py
+    area: config
+    added: [ConfigDocsGenerator, generate, _render_section, _render_example, __init__]
+  - file: contributing_gen.py
+    area: docs
+    added: [generate, _render_setup, _render_code_style, _render_testing, __init__, _render_pull_request, +3 more]
+  - file: getting_started_gen.py
+    area: docs
+    added: [generate, _render_next_steps, _render_installation, __init__, _render_prerequisites, _render_first_usage, +2 more]
+  - file: test_cli.py
+    area: cli
+    new_tests: 4
+    modified: [TestCLI]
+  - file: test_generators.py
+    area: test
+    added: [TestGettingStartedGenerator, TestContributingGenerator, TestConfigDocsGenerator]
+    new_tests: 10
+  - file: test_registry.py
+    area: test
+    added: [TestBaseGenerator, _AlwaysGenerator, TestGeneratorRegistry, should_run, TestAdapters, _DummyGenerator, +6 more]
+    new_tests: 14
+
+testing:
+  new_tests: 28
+  scenarios:
+    - diff_runs
+    - check_help
+    - diff_help
+    - check_runs
+    - contains_testing
+    - contains_next_steps
+    - contains_example_yaml
+    - contains_nested_sections
+    - contains_prerequisites
+    - contains_top_level_options
+    # +18 more
+
+dependencies:
+  flow: ""basic_usage→registry, _registry_adapters→getting_started_gen, entry_points→code2docs, cli→config""
+  - cli.py -> config.py
+  - cli.py -> registry.py
+  - basic_usage.py -> registry.py
+  - entry_points.py -> registry.py
+  - entry_points.py -> code2docs.py
+  - _registry_adapters.py -> getting_started_gen.py
+
+stats:
+  lines: ""+4620/-0 (net +4620)""
+  files: 80
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:55:11+01:00
+0.1341215,$0.1341,openrouter/qwen/qwen3-coder-next,local,"{'input': 31558, 'output': 78895, 'total': 110453}",18.98,1898.0,14151.3,∞,113c5668,refactoring,Tom Softreck,2026-03-07T19:48:20+01:00
+0.0125715,$0.0126,openrouter/qwen/qwen3-coder-next,local,"{'input': 2958, 'output': 7395, 'total': 10353}",1.16,116.0,9227.2,∞,25610854,"refactor(docs): configuration management system
+
+changes:
+  - file: api_reference_gen.py
+    area: api
+    modified: [_render_api_functions, ApiReferenceGenerator, _render_api_classes]
+  - file: architecture_gen.py
+    area: docs
+    modified: [_generate_metrics_table, ArchitectureGenerator]
+  - file: module_docs_gen.py
+    area: docs
+    modified: [_calc_module_avg_cc, _render_classes_section, ModuleDocsGenerator]
+  - file: readme_gen.py
+    area: docs
+    modified: [_calc_avg_complexity, ReadmeGenerator]
+
+stats:
+  lines: ""+9/-10 (net -1)""
+  files: 6
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-07T19:45:02+01:00
+0.19907,$0.1991,openrouter/qwen/qwen3-coder-next,local,"{'input': 46840, 'output': 117100, 'total': 163940}",18.56,1856.0,9323.4,∞,7c29c70e,"refactor(docs): code analysis engine
+
+stats:
+  lines: ""+658/-376 (net +282)""
+  files: 20
+  complexity: ""Stable complexity""",Tom Softreck,2026-03-07T19:43:22+01:00
+0.014127,$0.0141,openrouter/qwen/qwen3-coder-next,local,"{'input': 3324, 'output': 8310, 'total': 11634}",1.61,161.0,11396.6,∞,30eca461,"feat(docs): CLI interface improvements
+
+changes:
+  - file: depgraph_gen.py
+    area: docs
+    added: [_extract_imports_from_file]
+    modified: [_collect_edges, DepGraphGenerator]
+  - file: test_cli.py
+    area: cli
+    added: [setup_method, TestCLI]
+    new_tests: 8
+
+testing:
+  new_tests: 8
+  scenarios:
+    - verbose
+    - generate_help
+    - sync_help
+    - generate_dry_run
+    - readme_only_dry_run
+    - init_creates_config
+    - help
+    - default_group_routes_path
+
+stats:
+  lines: ""+100/-5 (net +95)""
+  files: 2
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:35:58+01:00
+0.3477605,$0.3478,openrouter/qwen/qwen3-coder-next,local,"{'input': 81826, 'output': 204565, 'total': 286391}",43.75,4375.0,12580.5,∞,7f04836f,"refactor(docs): code analysis engine
+
+changes:
+  - file: test_generators.py
+    area: test
+    added: [TestMkDocsGenerator, TestDepGraphGenerator, TestCoverageGenerator, TestApiChangelogGenerator]
+    new_tests: 16
+
+testing:
+  new_tests: 16
+  scenarios:
+    - nav_contains_modules
+    - generate_produces_yaml
+    - detect_removed_function
+    - detect_changed_signature
+    - no_changes_after_snapshot
+    - generate_produces_report
+    - shows_per_module_breakdown
+    - write
+    - no_baseline_message
+    - contains_coupling_matrix
+    # +6 more
+
+dependencies:
+  flow: ""entry_points→code2docs""
+  - entry_points.py -> code2docs.py
+
+stats:
+  lines: ""+4248/-2 (net +4246)""
+  files: 67
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:34:24+01:00
+0.0326145,$0.0326,openrouter/qwen/qwen3-coder-next,local,"{'input': 7674, 'output': 19185, 'total': 26859}",4.17,417.0,12785.7,∞,3b505af3,"feat(docs): CLI interface improvements
+
+changes:
+  - file: cli.py
+    area: cli
+    modified: [_run_generate]
+  - file: __init__.py
+    area: docs
+    modified: [generate_docs]
+  - file: api_changelog_gen.py
+    area: api
+    added: [_diff_classes, ApiChangelogGenerator, _build_snapshot, emoji, _diff_functions, __init__, +6 more]
+
+stats:
+  lines: ""+337/-3 (net +334)""
+  files: 5
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:32:57+01:00
+0.026026999999999998,$0.0260,openrouter/qwen/qwen3-coder-next,local,"{'input': 6124, 'output': 15310, 'total': 21434}",3.13,313.0,12026.0,∞,95658704,"docs(docs): code quality metrics with 5 supporting modules
+
+changes:
+  - file: coverage_gen.py
+    area: docs
+    added: [generate, _render_per_module, _render_summary, CoverageGenerator, __init__, _render_undocumented]
+  - file: depgraph_gen.py
+    area: docs
+    added: [_calc_degrees, generate, _render_degree_table, DepGraphGenerator, _render_mermaid, _collect_edges, +3 more]
+  - file: mkdocs_gen.py
+    area: docs
+    added: [write, _build_nav, generate, __init__, MkDocsGenerator]
+
+stats:
+  lines: ""+276/-0 (net +276)""
+  files: 3
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:31:30+01:00
+0.363579,$0.3636,openrouter/qwen/qwen3-coder-next,local,"{'input': 85548, 'output': 213870, 'total': 299418}",34.55,3455.0,9502.7,∞,80ba72e3,"refactor(docs): code analysis engine
+
+changes:
+  - file: docstring_extractor.py
+    area: analyzer
+    added: [_classify_section, _parse_sections, _extract_summary]
+    modified: [DocstringExtractor, parse]
+  - file: project_scanner.py
+    area: analyzer
+    modified: [ProjectScanner, analyze]
+  - file: cli.py
+    area: cli
+    added: [generate, parse_args, DefaultGroup]
+    modified: [main]
+  - file: api_reference_gen.py
+    area: api
+    added: [_render_api_functions, _render_api_imports, _render_api_classes, _render_api_header]
+    modified: [_generate_module_api, ApiReferenceGenerator]
+  - file: examples_gen.py
+    area: docs
+    added: [_generate_import_section, _generate_function_usage_section, _generate_class_usage_section]
+    modified: [ExamplesGenerator, _generate_basic_usage]
+  - file: module_docs_gen.py
+    area: docs
+    added: [_render_functions_section, _render_classes_section, _render_header, _render_dependencies_section, _render_overview, _render_metrics_section]
+    modified: [_generate_module, ModuleDocsGenerator]
+  - file: readme_gen.py
+    area: docs
+    added: [_build_endpoints_section, _build_api_section, _build_overview_section, _build_quickstart_section, _build_structure_section, _build_install_section]
+    modified: [_build_manual, ReadmeGenerator]
+  - file: test_generators.py
+    area: test
+    added: [_make_config, TestModuleDocsGenerator, TestApiReferenceGenerator, _make_result, TestReadmeGenerator, TestChangelogGenerator, +2 more]
+    new_tests: 25
+
+testing:
+  new_tests: 25
+  scenarios:
+    - build_api_section_lists_classes
+    - generate_all_produces_files
+    - basic_usage_contains_imports
+    - render_classes_section
+    - entry_point_examples
+    - write_all
+    - generate_with_no_git
+    - empty_module
+    - generate_produces_output
+    - module_api_contains_class
+    # +15 more
+
+stats:
+  lines: ""+1434/-1006 (net +428)""
+  files: 27
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:29:50+01:00
+0.2204985,$0.2205,openrouter/qwen/qwen3-coder-next,local,"{'input': 51882, 'output': 129705, 'total': 181587}",21.3,2130.0,9659.9,∞,8d3566bf,"refactor(docs): code analysis engine
+
+changes:
+  - file: endpoint_detector.py
+    area: analyzer
+    modified: [EndpointDetector, _parse_decorator]
+
+stats:
+  lines: ""+1015/-323 (net +692)""
+  files: 17
+  complexity: ""-100% complexity (refactor win)""",Tom Softreck,2026-03-07T19:18:48+01:00
+0.356677,$0.3567,openrouter/qwen/qwen3-coder-next,local,"{'input': 83924, 'output': 209810, 'total': 293734}",45.08,4508.0,12638.9,∞,8d5786f0,"refactor(docs): code analysis engine
+
+changes:
+  - file: badges.py
+    area: docs
+    added: [_make_badge, generate_badges]
+  - file: markdown.py
+    area: docs
+    added: [inline_code, paragraph, bold, link, render, __init__, +8 more]
+  - file: toc.py
+    area: docs
+    added: [extract_headings, _slugify, generate_toc]
+  - file: api_reference_gen.py
+    area: api
+    added: [_get_class_methods, __init__, ApiReferenceGenerator, _generate_module_api, generate_all, write_all, +2 more]
+  - file: architecture_gen.py
+    area: docs
+    added: [_detect_layers, _generate_class_diagram, generate, __init__, _generate_module_graph, _generate_metrics_table, +1 more]
+  - file: changelog_gen.py
+    area: docs
+    added: [__init__, generate, _render, ChangelogGenerator, _group_by_type, _classify_message, +2 more]
+  - file: examples_gen.py
+    area: docs
+    added: [ExamplesGenerator, _generate_entry_point_examples, __init__, _generate_class_examples, _get_major_classes, write_all, +4 more]
+  - file: module_docs_gen.py
+    area: docs
+    added: [_get_module_docstring, _get_class_methods, __init__, write_all, generate_all, _generate_module, +6 more]
+  - file: readme_gen.py
+    area: docs
+    added: [_build_context, __init__, generate, generate_readme, ReadmeGenerator, write, +3 more]
+  - file: differ.py
+    area: docs
+    added: [__str__, detect_changes, __init__, _compute_state, ChangeInfo, save_state, +3 more]
+  - file: updater.py
+    area: docs
+    added: [Updater, apply, __init__]
+  - file: watcher.py
+    area: docs
+    added: [on_modified, DocsHandler, start_watcher, __init__]
+  - file: test_analyzers.py
+    area: analyzer
+    added: [TestDependencyScanner, TestDocstringExtractor, TestEndpointDetector]
+    new_tests: 10
+  - file: test_config.py
+    area: config
+    added: [TestCode2DocsConfig]
+    new_tests: 5
+  - file: test_formatters.py
+    area: test
+    added: [TestToc, TestBadges, TestMarkdownFormatter]
+    new_tests: 14
+  - file: test_sync.py
+    area: test
+    added: [TestDiffer]
+    new_tests: 6
+
+testing:
+  new_tests: 35
+  scenarios:
+    - parse_pyproject_toml
+    - no_match
+    - empty_project
+    - parse_fastapi_decorator
+    - parse_flask_decorator
+    - parse_with_params
+    - coverage_report
+    - parse_requirements_txt
+    - parse_simple
+    - parse_empty
+    # +25 more
+
+dependencies:
+  flow: ""watcher→differ""
+  - updater.py -> differ.py
+  - watcher.py -> differ.py
+  - watcher.py -> updater.py
+
+stats:
+  lines: ""+4412/-3 (net +4409)""
+  files: 40
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:14:09+01:00
+0.1256895,$0.1257,openrouter/qwen/qwen3-coder-next,local,"{'input': 29574, 'output': 73935, 'total': 103509}",17.2,1720.0,13684.5,∞,80a513d8,"refactor(docs): CLI interface improvements
+
+changes:
+  - file: __init__.py
+    area: docs
+    added: [__getattr__]
+  - file: dependency_scanner.py
+    area: analyzer
+    added: [_parse_pyproject_regex, _parse_requirements_txt, _parse_dep_string, ProjectDependencies, DependencyScanner, scan, +3 more]
+  - file: docstring_extractor.py
+    area: analyzer
+    added: [DocstringExtractor, extract_all, parse, coverage_report, DocstringInfo]
+  - file: endpoint_detector.py
+    area: analyzer
+    added: [detect, _scan_django_urls, Endpoint, EndpointDetector, _parse_decorator]
+  - file: project_scanner.py
+    area: analyzer
+    added: [_build_llm_config, ProjectScanner, analyze_and_document, analyze, __init__]
+  - file: cli.py
+    area: cli
+    added: [init, sync, _run_sync, _run_watch, main, _load_config, +2 more]
+  - file: config.py
+    area: config
+    added: [to_yaml, ExamplesConfig, from_yaml, DocsConfig, ReadmeConfig, Code2DocsConfig, +1 more]
+  - file: test_code2docs.py
+    area: test
+    new_tests: 2
+
+testing:
+  new_tests: 2
+  scenarios:
+    - placeholder
+    - import
+
+dependencies:
+  flow: ""__main__→cli→config""
+  - __main__.py -> cli.py
+  - cli.py -> config.py
+
+stats:
+  lines: ""+1658/-0 (net +1658)""
+  files: 16
+  complexity: ""Large structural change (normalized)""",Tom Softreck,2026-03-07T19:08:00+01:00
+0.0001,$0.0001,openrouter/qwen/qwen3-coder-next,local,"{'input': 2, 'output': 5, 'total': 7}",0.01,1.0,10000.0,∞,85d44dfd,Initial commit,Tom Sapletta,2026-03-07T19:00:11+01:00

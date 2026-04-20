@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.1.50] - 2026-04-20
+
+### Other
+- Update ai_costs.csv
+
 ## [0.1.49] - 2026-04-20
 
 ### Docs

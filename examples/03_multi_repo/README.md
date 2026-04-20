@@ -14,13 +14,6 @@ Analyze costs across multiple repositories and aggregate results.
 - `run.sh` - Run the example
 - `repos.txt` - List of repositories to analyze (template)
 
-## Usage
-
-```bash
-# Edit repos.txt with your repository paths
-./run.sh
-```
-
 ## Configuration
 
 Edit `repos.txt` to list your repositories:

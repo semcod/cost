@@ -12,18 +12,10 @@ Generate cost badges and reports for your README.
 
 - `run.sh` - Demonstrates badge and report generation commands
 
-## Usage
-
-```bash
-# View the commands
-./run.sh --help
-
 # Or run individual commands
 costs badge --repo . --all
 costs report --repo . --format both
 ```
-
-## Commands Demonstrated
 
 ### 1. Manual badge generation
 ```bash

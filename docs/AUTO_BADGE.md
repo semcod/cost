@@ -99,8 +99,6 @@ fi
 
 ---
 
-## Method 4: Package Scripts
-
 ### Python (pyproject.toml)
 
 ```toml
@@ -133,8 +131,6 @@ build: badge
 
 ---
 
-## Method 5: IDE Integration
-
 ### VS Code
 
 Add to `.vscode/tasks.json`:
@@ -155,15 +151,10 @@ Add to `.vscode/tasks.json`:
 
 ---
 
-## Configuration Options
-
 ### pyproject.toml [tool.costs]
 
 ```toml
 [tool.costs]
-# Enable/disable badge generation
-badge = true
-
 # Badge appearance
 badge_format = "svg"           # svg or png
 badge_style = "flat"           # flat, flat-square, plastic, for-the-badge
@@ -196,8 +187,6 @@ auto_generate_on_commit = false    # Generate on each commit
 
 ---
 
-## Best Practices
-
 ### 1. CI/CD Pipeline (Recommended for teams)
 
 Use GitHub Actions for:
@@ -211,17 +200,6 @@ Use pre-commit hook for:
 - Immediate feedback
 - Local cost tracking
 - Offline capability (with local mode)
-
-### 3. Hybrid Approach
-
-```bash
-# .github/workflows/ai-cost-badge.yml - for production
-# .git/hooks/pre-commit - for local development
-```
-
----
-
-## Troubleshooting
 
 ### Badge not updating
 
@@ -249,8 +227,6 @@ critical = 20.0 # Red above $20.00
 ```
 
 ---
-
-## Example: Complete Setup
 
 ### Step 1: Install costs
 

@@ -1,8 +1,6 @@
-# AI Cost Tracker
-
 ## AI Cost Tracking
 
-![PyPI](https://img.shields.io/badge/pypi-costs-blue) ![Version](https://img.shields.io/badge/version-0.1.31-blue) ![Python](https://img.shields.io/badge/python-3.9+-blue) ![License](https://img.shields.io/badge/license-Apache--2.0-green)
+![PyPI](https://img.shields.io/badge/pypi-costs-blue) ![Version](https://img.shields.io/badge/version-0.1.49-blue) ![Python](https://img.shields.io/badge/python-3.9+-blue) ![License](https://img.shields.io/badge/license-Apache--2.0-green)
 ![AI Cost](https://img.shields.io/badge/AI%20Cost-$0.81-orange) ![Human Time](https://img.shields.io/badge/Human%20Time-6.2h-blue) ![Model](https://img.shields.io/badge/Model-openrouter%2Fqwen%2Fqwen3--coder--next-lightgrey)
 
 - 🤖 **LLM usage:** $0.8077 (47 commits)
@@ -57,19 +55,10 @@ input_tokens = tokenizer.count_tokens(prompt, model)
 pip install costs
 ```
 
-## Quick Start
-
-### 1. Initialize Configuration
-
-```bash
-costs init
 # Edit .env file to add your OpenRouter API key
 echo "OPENROUTER_API_KEY=YOUR_KEY" >> .env
 ```
 
-### 2. Run Analysis
-
-```bash
 # Uses defaults from .env (Qwen3 Coder Next)
 costs analyze --repo .
 
@@ -96,8 +85,6 @@ Or use the built-in init command:
 costs init
 ```
 
-## Three Usage Options (Zero Config Required)
-
 ### Option 1: BYOK (Bring Your Own Key) - Free
 
 Use your own API key via OpenRouter. Costs calculated locally with real provider pricing.
@@ -116,7 +103,7 @@ costs analyze --repo . --api-key YOUR_KEY
 - `anthropic/claude-3.5-sonnet`
 - `anthropic/claude-3.5-haiku`
 - `openai/gpt-4o`
-- `openai/gpt-4o-mini`
+- `openai/gpt-5.4-mini`
 - 100+ more via liteLLM
 
 ### Option 2: Local/Ollama - Zero API Costs
@@ -170,9 +157,6 @@ costs badge --repo . --all
 
 This adds a badge section to README showing total cost, AI commits, and model used.
 
-### Report Generation
-
-```bash
 # Generate markdown report with charts
 costs report --repo . --format markdown
 
@@ -229,12 +213,6 @@ Enterprise managed solution with dashboard and invoicing.
 ```bash
 costs --repo . --saas-token PLACEHOLDER
 ```
-
-## Usage Examples
-
-```bash
-# Initialize .env config
-costs init
 
 # Analyze last 50 commits (uses .env defaults)
 costs analyze --repo . -n 50
@@ -326,7 +304,7 @@ git commit -m "[ai:anthropic/claude-3.5-sonnet] Add payment integration"
 | anthropic/claude-3.5-sonnet | $3/M | $15/M | Anthropic |
 | anthropic/claude-3.5-haiku | $0.8/M | $4/M | Anthropic |
 | openai/gpt-4o | $5/M | $15/M | tiktoken |
-| openai/gpt-4o-mini | $0.15/M | $0.6/M | tiktoken |
+| openai/gpt-5.4-mini | $0.15/M | $0.6/M | tiktoken |
 | openrouter/qwen/qwen3-coder-next | $0.50/M | $1.50/M | tiktoken |
 | ollama/* | ~$0.0001/M | ~$0.0001/M | tiktoken |
 
@@ -336,12 +314,6 @@ git commit -m "[ai:anthropic/claude-3.5-sonnet] Add payment integration"
 |------|-------|----------|
 | **BYOK** | Free | Use your own OpenRouter API key |
 | **SaaS** | $9/month | Unlimited, managed keys, dashboard, EU invoicing |
-
-## Development
-
-```bash
-# Install with poetry
-poetry install
 
 # Run CLI
 poetry run costs analyze --repo ..
@@ -395,21 +367,11 @@ Tests automatically validate the cost calculation pipeline:
 # Run all tests including auto-badge test
 pytest tests/test_cost.py -v
 
-# Test will:
-# - Check if [tool.costs] is configured
-# - Run costs auto-badge
-# - Verify badge was updated
-```
-
 ### GitHub Actions
 
 The repository includes a workflow that runs on push/PR:
 
 ```yaml
-# .github/workflows/ai-cost-badge.yml
-# Automatically updates badge on main branch
-```
-
 ## CLI Commands
 
 | Command | Description | Key Options |

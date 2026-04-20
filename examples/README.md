@@ -64,18 +64,9 @@ examples/
 └── README.md
 ```
 
-## Quick Start
-
-### API Examples
-
-```bash
 # Run basic tokenizer example
 cd examples/01_tokenizer_basic
 ./run.sh
-
-# Or run directly
-python3 main.py
-```
 
 ### CLI Examples
 
@@ -84,9 +75,6 @@ cd examples/04_basic_usage
 ./run.sh
 ```
 
-### Integration Examples
-
-```bash
 # Install pre-commit hook
 cd examples/07_pre-commit-hook
 ./install.sh

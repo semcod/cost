@@ -1,9 +1,11 @@
-import os
 from pathlib import Path
 import typer
 import git
 from ..calculator import batch_calculate_costs
 from ..git_parser import parse_commits, get_repo_name
+
+CONSTANT_50 = 50
+
 
 def report_logic(
     repo: Path,
@@ -62,11 +64,11 @@ def report_logic(
     # Print summary
     summary = results["summary"]
     typer.echo()
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)
     typer.echo("📊 COST REPORT SUMMARY")
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)
     typer.echo(f"   Total Cost: {summary['total_cost_formatted']}")
     typer.echo(f"   AI Commits: {summary['total_commits']}")
     typer.echo(f"   Hours Saved: {summary['total_hours_saved']:.1f}h")
     typer.echo(f"   ROI: {summary['average_roi']}")
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)

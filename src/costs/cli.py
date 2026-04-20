@@ -7,14 +7,15 @@ from typing import Optional
 import typer
 from dotenv import load_dotenv
 
-from .models import DEFAULT_MODEL
 from .commands.analyze import analyze_logic
 from .commands.report import report_logic
 from .commands.badge import badge_logic, auto_badge_logic
 from .commands.utils import estimate_logic, stats_logic, init_logic
 
 # Load .env for CLI defaults
-load_dotenv()
+
+if __name__ == "__main__":
+    load_dotenv()
 
 app = typer.Typer(help="AI Cost Tracker - Zero-config AI cost calculator per commit/model")
 

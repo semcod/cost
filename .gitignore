@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 .env.example
-.idea/cost.iml
+.idea
 .idea/inspectionProfiles/Project_Default.xml
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/misc.xml

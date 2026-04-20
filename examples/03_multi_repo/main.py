@@ -11,9 +11,11 @@ REPOSITORIES = [
     "/path/to/repo3",
 ]
 
-print("=" * 60)
-print("Advanced Example: Multi-Repository Analysis")
-print("=" * 60)
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("Advanced Example: Multi-Repository Analysis")
+    print("=" * 60)
 
 def analyze_repository(repo_path):
     """Analyze a single repository."""
@@ -58,9 +60,9 @@ def analyze_repository(repo_path):
         return None
 
 # Analyze all repositories
-print("\nAnalyzing repositories...")
-print(f"{'Repository':<30} {'Commits':>8} {'Tokens':>10} {'Cost':>12}")
-print("-" * 70)
+    print("\nAnalyzing repositories...")
+    print(f"{'Repository':<30} {'Commits':>8} {'Tokens':>10} {'Cost':>12}")
+    print("-" * 70)
 
 total_cost = 0
 total_tokens = 0
@@ -77,7 +79,7 @@ for repo in REPOSITORIES:
     else:
         print(f"{repo_name:<30} {'N/A':>8} {'N/A':>10} {'N/A':>12}")
 
-print("-" * 70)
-print(f"{'TOTAL':<30} {'':8} {total_tokens:>10} ${total_cost:>10.4f}")
+    print("-" * 70)
+    print(f"{'TOTAL':<30} {'':8} {total_tokens:>10} ${total_cost:>10.4f}")
 
-print("\nNote: Update REPOSITORIES list in main.py with actual paths")
+    print("\nNote: Update REPOSITORIES list in main.py with actual paths")

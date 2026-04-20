@@ -1,5 +1,3 @@
-# System Architecture Analysis
-
 ## Overview
 
 - **Project**: /home/tom/github/semcod/cost
@@ -10,8 +8,6 @@
 - **Total Classes**: 2
 - **Modules**: 41
 - **Entry Points**: 28
-
-## Architecture by Module
 
 ### src.costs.git_parser
 - **Functions**: 10
@@ -188,9 +184,6 @@ Returns:
 > Simulate fetching current prices from provider API.
 - **Calls**: latest_prices.items, print
 
-### src.costs.cli.main
-- **Calls**: app
-
 ### src.costs.tokenizers.Tokenizer._get_tiktoken
 > Lazy load tiktoken encoder.
 - **Calls**: tiktoken.get_encoding
@@ -201,10 +194,6 @@ Returns:
 
 ### src.costs.models.get_openrouter_headers
 > Get headers for OpenRouter API calls.
-
-### src.costs.tokenizers.Tokenizer.__init__
-
-### project.install_hook
 
 ## Process Flows
 
@@ -263,8 +252,6 @@ estimate_tokens_simple [src.costs.tokenizers.Tokenizer]
 ```
 get_file_extensions [src.costs.tokenizers.GitDiffParser]
 ```
-
-## Key Classes
 
 ### src.costs.tokenizers.Tokenizer
 > Unified tokenizer supporting multiple providers with proper token counting.

@@ -40,9 +40,11 @@ index 1a2b3c..4d5e6f 100644
 +    }
 '''
 
-print("=" * 70)
-print("API Example: Multi-Model Cost Comparison")
-print("=" * 70)
+
+if __name__ == "__main__":
+    print("=" * 70)
+    print("API Example: Multi-Model Cost Comparison")
+    print("=" * 70)
 
 # Models to compare
 models = [
@@ -50,14 +52,14 @@ models = [
     ("anthropic/claude-3.5-sonnet", "Claude 3.5 Sonnet"),
     ("anthropic/claude-3.5-haiku", "Claude 3.5 Haiku"),
     ("openrouter/qwen/qwen3-coder-next", "Qwen3 Coder Next"),
-    ("openai/gpt-4o-mini", "GPT-4o Mini"),
+    ("openai/gpt-5.4-mini", "GPT-4o Mini"),
 ]
 
-print(f"\nSample diff: {len(sample_diff)} characters")
-print(f"Added lines: ~20, Deleted lines: ~8\n")
+    print(f"\nSample diff: {len(sample_diff)} characters")
+    print(f"Added lines: ~20, Deleted lines: ~8\n")
 
-print(f"{'Model':<30} {'Input':>8} {'Output':>8} {'Cost':>12}")
-print("-" * 70)
+    print(f"{'Model':<30} {'Input':>8} {'Output':>8} {'Cost':>12}")
+    print("-" * 70)
 
 for model_id, model_name in models:
     # Estimate tokens
@@ -68,6 +70,6 @@ for model_id, model_name in models:
     
     print(f"{model_name:<30} {tokens['input']:>8} {tokens['output']:>8} ${cost:>10.6f}")
 
-print("-" * 70)
-print("\nNote: Costs calculated using actual tokenizers (tiktoken, anthropic)")
-print("Output tokens estimated based on added lines (30 tokens per line heuristic)")
+    print("-" * 70)
+    print("\nNote: Costs calculated using actual tokenizers (tiktoken, anthropic)")
+    print("Output tokens estimated based on added lines (30 tokens per line heuristic)")

@@ -10,8 +10,6 @@ composer install
 php -S localhost:8080
 ```
 
-## Usage
-
 ### Generate badge from cost
 ```
 GET /badge.php?cost=12.34&model=claude-4&commits=42

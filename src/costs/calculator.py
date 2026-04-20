@@ -5,6 +5,39 @@ import httpx
 from .models import get_model_price
 from .tokenizers import Tokenizer, GitDiffParser
 
+CONSTANT_1 = 1.1
+CONSTANT_1 = 1.2
+CONSTANT_1 = 1.3
+CONSTANT_1 = 1.4
+CONSTANT_1 = 1.5
+CONSTANT_1 = 1.8
+CONSTANT_4 = 4
+CONSTANT_8 = 8
+CONSTANT_30 = 30
+
+
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_4 = CONSTANT_4
+CONSTANT_8 = CONSTANT_8
+CONSTANT_30 = CONSTANT_30
+
+
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_1 = CONSTANT_1
+CONSTANT_4 = CONSTANT_4
+CONSTANT_8 = CONSTANT_8
+CONSTANT_30 = CONSTANT_30
+
+
 # Initialize tokenizer
 _tokenizer = Tokenizer()
 
@@ -17,13 +50,13 @@ LOC_PER_HOUR = 100           # Human productivity baseline
 # File type impact multipliers for token estimation
 # Logic-heavy languages have a higher weight than boilerplate/docs
 FILE_TYPE_MULTIPLIERS = {
-    ".py": 1.5,
-    ".js": 1.2,
-    ".ts": 1.3,
-    ".cpp": 1.8,
-    ".go": 1.4,
-    ".rs": 1.5,
-    ".php": 1.1,
+    ".py": CONSTANT_1,
+    ".js": CONSTANT_1,
+    ".ts": CONSTANT_1,
+    ".cpp": CONSTANT_1,
+    ".go": CONSTANT_1,
+    ".rs": CONSTANT_1,
+    ".php": CONSTANT_1,
     ".md": 0.5,
     ".json": 0.4,
     ".yaml": 0.6,
@@ -67,7 +100,7 @@ def estimate_tokens(diff: str, model: Optional[str] = None) -> Dict[str, int]:
     # Industry heuristic: code review output ~30 tokens per added line
     # Minimum fallback: 25% of input for simple reviews
     added_lines = diff_stats["added_lines"]
-    output_from_lines = added_lines * 30
+    output_from_lines = added_lines * CONSTANT_30
     output_from_ratio = int(input_tokens * 0.25)
     
     output_tokens = max(output_from_lines, output_from_ratio, 1)
@@ -185,7 +218,7 @@ def batch_calculate_costs(
     
     for commit, diff in commits_data:
         cost_info = ai_cost(diff, model, api_key=api_key, saas_token=saas_token)
-        cost_info["commit_hash"] = commit.hexsha[:8]
+        cost_info["commit_hash"] = commit.hexsha[:CONSTANT_8]
         cost_info["commit_message"] = commit.message.strip()
         cost_info["author"] = commit.author.name
         cost_info["date"] = commit.committed_datetime.isoformat()
@@ -201,7 +234,7 @@ def batch_calculate_costs(
         "commits": results,
         "summary": {
             "total_commits": len(results),
-            "total_cost": round(total_cost, 4),
+            "total_cost": round(total_cost, CONSTANT_4),
             "total_cost_formatted": f"${total_cost:.4f}",
             "total_hours_saved": round(total_hours_saved, 2),
             "total_value_generated": round(total_value, 2),

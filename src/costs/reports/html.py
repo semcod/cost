@@ -5,6 +5,21 @@ from typing import Dict, Any
 from datetime import datetime
 import json
 
+CONSTANT_30 = 30
+CONSTANT_50 = 50
+CONSTANT_60 = 60
+
+
+CONSTANT_30 = CONSTANT_30
+CONSTANT_50 = CONSTANT_50
+CONSTANT_60 = CONSTANT_60
+
+
+CONSTANT_30 = CONSTANT_30
+CONSTANT_50 = CONSTANT_50
+CONSTANT_60 = CONSTANT_60
+
+
 
 def generate_html_report(results: Dict[str, Any], output_path: Path) -> str:
     """Generate interactive HTML report with visualizations."""
@@ -191,8 +206,8 @@ def generate_html_report(results: Dict[str, Any], output_path: Path) -> str:
 """
     
     # Add commit rows
-    for c in commits[:50]:
-        msg = c["commit_message"][:60].replace("<", "&lt;").replace(">", "&gt;")
+    for c in commits[:CONSTANT_50]:
+        msg = c["commit_message"][:CONSTANT_60].replace("<", "&lt;").replace(">", "&gt;")
         html_content += f"""                <tr>
                     <td><code>{c['commit_hash']}</code></td>
                     <td>{c['date'][:10]}</td>
@@ -215,10 +230,10 @@ def generate_html_report(results: Dict[str, Any], output_path: Path) -> str:
         const dailyChart = new Chart(dailyCtx, {{
             type: 'bar',
             data: {{
-                labels: {json.dumps(sorted_dates[-30:])},
+                labels: {json.dumps(sorted_dates[-CONSTANT_30:])},
                 datasets: [{{
                     label: 'Daily Cost ($)',
-                    data: {[daily_costs.get(d, 0) for d in sorted_dates[-30:]]},
+                    data: {[daily_costs.get(d, 0) for d in sorted_dates[-CONSTANT_30:]]},
                     backgroundColor: 'rgba(102, 126, 234, 0.6)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1

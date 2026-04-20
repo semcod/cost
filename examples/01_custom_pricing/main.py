@@ -3,17 +3,19 @@
 from costs.models import PRICES, get_model_price
 from costs.calculator import calculate_cost
 
-print("=" * 60)
-print("Advanced Example: Custom Model Pricing")
-print("=" * 60)
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("Advanced Example: Custom Model Pricing")
+    print("=" * 60)
 
 # Show built-in prices
-print("\nBuilt-in prices:")
+    print("\nBuilt-in prices:")
 for model, prices in list(PRICES.items())[:5]:
     print(f"  {model}: input=${prices['input']:.2e}, output=${prices['output']:.2e}")
 
 # Add custom model pricing
-print("\nAdding custom model...")
+    print("\nAdding custom model...")
 PRICES["custom/gpt-custom"] = {
     "input": 1.0e-6,   # $1 per million tokens
     "output": 2.0e-6   # $2 per million tokens
@@ -21,16 +23,16 @@ PRICES["custom/gpt-custom"] = {
 
 # Use custom model
 custom_price = get_model_price("custom/gpt-custom")
-print(f"Custom model price: input=${custom_price['input']:.2e}, output=${custom_price['output']:.2e}")
+    print(f"Custom model price: input=${custom_price['input']:.2e}, output=${custom_price['output']:.2e}")
 
 # Calculate cost with custom model
 tokens = {"input": 1000, "output": 500}
 cost = calculate_cost(tokens, "custom/gpt-custom")
-print(f"\nCost for 1000 input + 500 output tokens: ${cost:.6f}")
+    print(f"\nCost for 1000 input + 500 output tokens: ${cost:.6f}")
 
 # Dynamic pricing update
-print("\n" + "-" * 60)
-print("Dynamic pricing update example:")
+    print("\n" + "-" * 60)
+    print("Dynamic pricing update example:")
 
 def update_prices_from_api():
     """Simulate fetching current prices from provider API."""
@@ -42,4 +44,4 @@ def update_prices_from_api():
         PRICES[model] = prices
         print(f"  Updated {model}: input=${prices['input']:.2e}")
 
-update_prices_from_api()
+    update_prices_from_api()

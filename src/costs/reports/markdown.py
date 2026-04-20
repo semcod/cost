@@ -5,6 +5,21 @@ from typing import Dict, Any
 from datetime import datetime
 from .base import get_cost_color
 
+CONSTANT_14 = 14
+CONSTANT_30 = 30
+CONSTANT_40 = 40
+
+
+CONSTANT_14 = CONSTANT_14
+CONSTANT_30 = CONSTANT_30
+CONSTANT_40 = CONSTANT_40
+
+
+CONSTANT_14 = CONSTANT_14
+CONSTANT_30 = CONSTANT_30
+CONSTANT_40 = CONSTANT_40
+
+
 
 def generate_markdown_report(results: Dict[str, Any], output_path: Path) -> str:
     """Generate markdown report with cost visualizations."""
@@ -53,9 +68,9 @@ def generate_markdown_report(results: Dict[str, Any], output_path: Path) -> str:
     # Generate ASCII bar chart for daily costs
     if sorted_dates:
         max_cost = max(daily_costs.values())
-        chart_width = 40
+        chart_width = CONSTANT_40
         
-        for date in sorted_dates[-14:]:  # Last 14 days
+        for date in sorted_dates[-CONSTANT_14:]:  # Last CONSTANT_14 days
             cost = daily_costs[date]
             bar_length = int((cost / max_cost) * chart_width) if max_cost > 0 else 0
             bar = "█" * bar_length
@@ -72,7 +87,7 @@ def generate_markdown_report(results: Dict[str, Any], output_path: Path) -> str:
     cumulative = 0
     for date in sorted_dates:
         cumulative += daily_costs[date]
-        bar_length = int((cumulative / total_cost) * 30) if total_cost > 0 else 0
+        bar_length = int((cumulative / total_cost) * CONSTANT_30) if total_cost > 0 else 0
         bar = "█" * bar_length
         md_content += f"{date} | {bar} ${cumulative:.4f}\n"
     
@@ -86,7 +101,7 @@ def generate_markdown_report(results: Dict[str, Any], output_path: Path) -> str:
     
     # Add last 10 commits
     for c in commits[:10]:
-        msg = c["commit_message"][:40].replace("\n", " ").replace("|", "\\|")
+        msg = c["commit_message"][:CONSTANT_40].replace("\n", " ").replace("|", "\\|")
         md_content += f"| {c['commit_hash']} | {c['date'][:10]} | {c['cost_formatted']} | {msg} |\n"
     
     md_content += f"""

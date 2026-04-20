@@ -1,6 +1,6 @@
 """Tokenizers for accurate LLM token counting."""
 
-from typing import Optional, Dict, Union
+from typing import Optional, Dict
 import re
 
 

@@ -5,7 +5,7 @@ from .models import PRICES, DEFAULT_MODEL, DEFAULT_OPENROUTER_API_KEY, get_litel
 from .metrics import calculate_human_time
 from .reports.badge import update_readme_badge
 
-__version__ = "0.1.48"
+__version__ = "0.1.49"
 __all__ = [
     "ai_cost", 
     "estimate_tokens", 

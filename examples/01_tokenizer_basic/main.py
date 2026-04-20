@@ -2,6 +2,9 @@
 """Basic Tokenizer Usage - count tokens for different models."""
 from costs.tokenizers import Tokenizer, count_tokens
 
+CONSTANT_60 = 60
+
+
 # Initialize tokenizer
 tokenizer = Tokenizer()
 
@@ -28,9 +31,11 @@ class DataProcessor:
 ''',
 }
 
-print("=" * 60)
-print("API Example: Basic Tokenizer Usage")
-print("=" * 60)
+
+if __name__ == "__main__":
+    print("=" * CONSTANT_60)
+    print("API Example: Basic Tokenizer Usage")
+    print("=" * CONSTANT_60)
 
 for name, code in code_snippets.items():
     print(f"\n{name}:")
@@ -45,9 +50,9 @@ for name, code in code_snippets.items():
     print(f"  Difference:      {abs(gpt_tokens - claude_tokens):3d}")
 
 # Using convenience function
-print("\n" + "-" * 60)
-print("Using count_tokens() convenience function:")
-print("-" * 60)
+    print("\n" + "-" * CONSTANT_60)
+    print("Using count_tokens() convenience function:")
+    print("-" * CONSTANT_60)
 
 text = "Hello, World! This is a test."
 models = ["gpt-4", "claude-3-opus", "openrouter/qwen/qwen3-coder-next"]

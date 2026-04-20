@@ -6,6 +6,10 @@ from ..calculator import ai_cost
 from ..git_parser import get_repo_stats
 from ..models import get_litellm_model_name
 
+CONSTANT_40 = 40
+CONSTANT_50 = 50
+
+
 def estimate_logic(
     diff_file: Path,
     model: str,
@@ -47,14 +51,14 @@ def stats_logic(
     
     typer.echo()
     typer.echo("📊 Repository Statistics")
-    typer.echo("=" * 40)
+    typer.echo("=" * CONSTANT_40)
     typer.echo(f"   Repository: {repo_stats['repo_name']}")
     typer.echo(f"   Total commits: {repo_stats['total_commits']}")
     if repo_stats['first_commit_date']:
         typer.echo(f"   First commit: {repo_stats['first_commit_date']}")
     if repo_stats['last_commit_date']:
         typer.echo(f"   Last commit: {repo_stats['last_commit_date']}")
-    typer.echo("=" * 40)
+    typer.echo("=" * CONSTANT_40)
 
 
 def init_logic(
@@ -122,10 +126,10 @@ badge_color_thresholds = { low = 1.0, medium = 5.0, high = 10.0, critical = 50.0
     
     # --- Summary ---
     typer.echo()
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)
     typer.echo("🤖 AI Cost Tracking initialized!")
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)
     typer.echo("Next steps:")
     typer.echo("1. Edit .env and add your OPENROUTER_API_KEY")
     typer.echo("2. Run: costs auto-badge --repo . --all")
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)

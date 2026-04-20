@@ -28,8 +28,6 @@ git commit -m "Add AI cost tracking CI"
 1. Add `CI_TOKEN` as a GitLab CI/CD variable (for pushing badge updates)
 2. Optional: Add `OPENROUTER_API_KEY` if using BYOK mode
 
-## Pipeline Jobs
-
 ### `ai-cost-badge`
 - Runs on every commit to main/master
 - Updates badge in README.md

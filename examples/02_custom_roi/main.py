@@ -2,9 +2,11 @@
 """Custom ROI Analysis - customize ROI calculations with different parameters."""
 from costs.calculator import calculate_roi
 
-print("=" * 60)
-print("Advanced Example: Custom ROI Analysis")
-print("=" * 60)
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("Advanced Example: Custom ROI Analysis")
+    print("=" * 60)
 
 # Scenario parameters
 scenarios = [
@@ -34,8 +36,8 @@ scenarios = [
     },
 ]
 
-print(f"\n{'Scenario':<20} {'Cost':>8} {'Hours Saved':>12} {'Value':>12} {'ROI':>8}")
-print("-" * 70)
+    print(f"\n{'Scenario':<20} {'Cost':>8} {'Hours Saved':>12} {'Value':>12} {'ROI':>8}")
+    print("-" * 70)
 
 for scenario in scenarios:
     roi = calculate_roi(
@@ -54,5 +56,5 @@ for scenario in scenarios:
     print(f"{scenario['name']:<20} ${scenario['cost']:>6.2f} {hours_saved_net:>10.1f}h "
           f"${value:>10.2f} {roi['roi_formatted']:>8}")
 
-print("\n" + "-" * 70)
-print("Key insight: Higher hourly rates = higher ROI, even with same AI cost")
+    print("\n" + "-" * 70)
+    print("Key insight: Higher hourly rates = higher ROI, even with same AI cost")

@@ -3,12 +3,27 @@
 from typing import Dict, Any, List
 from datetime import datetime, timedelta
 
+MIN_5 = 5
+MIN_30 = 30
+CONSTANT_3600 = 3600.0
+
+
+MIN_5 = MIN_5
+MIN_30 = MIN_30
+CONSTANT_3600 = CONSTANT_3600
+
+
+MIN_5 = MIN_5
+MIN_30 = MIN_30
+CONSTANT_3600 = CONSTANT_3600
+
+
 
 # Advanced estimation constants
 SESSION_GAP_THRESHOLD = timedelta(hours=2)    # Gaps > 2h define a new session
-CONTEXT_SWITCH_PENALTY = timedelta(minutes=5)  # Penalty for significant interruptions (5m)
-MIN_SESSION_DURATION = timedelta(minutes=30) # Minimum work block (30 min)
-DAILY_PREP_BUFFER = timedelta(minutes=30)     # Setup/Research overhead per author/day
+CONTEXT_SWITCH_PENALTY = timedelta(minutes=MIN_5)  # Penalty for significant interruptions (5m)
+MIN_SESSION_DURATION = timedelta(minutes=MIN_30) # Minimum work block (MIN_30 min)
+DAILY_PREP_BUFFER = timedelta(minutes=MIN_30)     # Setup/Research overhead per author/day
 
 
 def _group_commits_by_author(commits: List[Dict[str, Any]]) -> Dict[str, List[datetime]]:
@@ -57,7 +72,7 @@ def _calculate_author_time(dates: List[datetime]) -> float:
             # End session and start new
             author_session_seconds += _calculate_session_duration(session_start, session_last)
             session_start = dates[i]
-        elif gap > timedelta(minutes=30):
+        elif gap > timedelta(minutes=MIN_30):
             # Apply context switch penalty
             author_session_seconds += CONTEXT_SWITCH_PENALTY.total_seconds()
         
@@ -84,4 +99,4 @@ def calculate_human_time(commits: List[Dict[str, Any]]) -> float:
     authors_data = _group_commits_by_author(commits)
     total_seconds = sum(_calculate_author_time(dates) for dates in authors_data.values())
     
-    return total_seconds / 3600.0
+    return total_seconds / CONSTANT_3600

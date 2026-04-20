@@ -9,16 +9,6 @@ Demonstrates how to use the Tokenizer class for accurate token counting across d
 - Comparing token counts between providers
 - Using the convenience `count_tokens()` function
 
-## Usage
-
-```bash
-# Run the example
-./run.sh
-
-# Or run directly
-python3 main.py
-```
-
 ## Output
 
 Example output showing token counts for different code snippets:

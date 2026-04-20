@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Cost Trends and Analytics - track cost trends with projections."""
 from datetime import datetime, timedelta
-from collections import defaultdict
 import random
 
-print("=" * 60)
-print("Advanced Example: Cost Trends and Analytics")
-print("=" * 60)
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("Advanced Example: Cost Trends and Analytics")
+    print("=" * 60)
 
 def generate_sample_data(days=30):
     """Generate sample daily cost data."""
@@ -45,13 +46,13 @@ def moving_average(data, window=7):
 
 ma7 = moving_average(data)
 
-print(f"\nSummary (Last 30 days):")
-print(f"  Total cost: ${total_cost:.4f}")
-print(f"  Total commits: {total_commits}")
-print(f"  Average daily: ${avg_daily:.4f}")
-print(f"  Cost per commit: ${total_cost/total_commits:.4f}")
+    print(f"\nSummary (Last 30 days):")
+    print(f"  Total cost: ${total_cost:.4f}")
+    print(f"  Total commits: {total_commits}")
+    print(f"  Average daily: ${avg_daily:.4f}")
+    print(f"  Cost per commit: ${total_cost/total_commits:.4f}")
 
-print(f"\nRecent 7-day trend:")
+    print(f"\nRecent 7-day trend:")
 recent_7 = data[-7:]
 for i, day in enumerate(recent_7):
     ma = ma7[-7+i]
@@ -60,11 +61,11 @@ for i, day in enumerate(recent_7):
           f"({day['commits']} commits) {indicator}")
 
 # Projection
-print(f"\nProjection (based on 30-day average):")
+    print(f"\nProjection (based on 30-day average):")
 monthly_projection = avg_daily * 30
 yearly_projection = avg_daily * 365
-print(f"  Next month estimate: ${monthly_projection:.2f}")
-print(f"  Annual estimate: ${yearly_projection:.2f}")
+    print(f"  Next month estimate: ${monthly_projection:.2f}")
+    print(f"  Annual estimate: ${yearly_projection:.2f}")
 
 # Budget alert simulation
 BUDGET_THRESHOLD = 20.0

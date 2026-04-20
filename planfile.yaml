@@ -1,1059 +1,4748 @@
-name: Code Quality Improvement
-project_name: ''
-project_type: prefactoring
-domain: dev-tools
-goal: Improve code quality using prefact
-goals:
-- Fix all prefact-detected issues
-- Improve code maintainability
-- Ensure consistent code style
-quality_gates:
-- metric: Prefact Issues
-  threshold: '0'
-sprints:
-- id: sprint-1
-  name: Code Quality Improvements
-  duration: 2 weeks
-  objectives:
-  - Fix code quality issues
-  task_patterns:
-  - id: ticket-29184732
-    name: Fix relative-imports issues
-    description: Resolve 4 relative-imports issues in src/ai_cost_tracker/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/calculator.py
-    rule_id: relative-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-7532dd33
-    name: Fix string-concat issues
-    description: Resolve 1 string-concat issues in src/ai_cost_tracker/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/ai_cost_tracker/calculator.py
-    rule_id: string-concat
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-297efbf1
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/calculator.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-163a7b6b
-    name: Fix relative-imports issues
-    description: Resolve 4 relative-imports issues in src/ai_cost_tracker/__init__.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/__init__.py
-    rule_id: relative-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-647992ca
-    name: Fix relative-imports issues
-    description: Resolve 14 relative-imports issues in src/ai_cost_tracker/cli.py
-    task_type: prefactor
+project:
+  name: costs
+  version: 0.1.1
+  source: docval-scan
+  generated_at: '2026-04-13T15:13:50.299070Z'
+integrations:
+  github:
+    enabled: false
+    owner: ''
+    repo: ''
+    label_prefix: doc-
+    auto_sync: false
+  gitlab:
+    enabled: false
+    project_id: null
+    auto_sync: false
+current_sprint:
+  id: doc-cleanup
+  goal: Clean up documentation based on docval validation
+  start_date: '2026-04-13'
+  end_date: ''
+  status: active
+tickets:
+  DOC-001:
+    id: DOC-001
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 3d
-    files:
-    - src/ai_cost_tracker/cli.py
-    rule_id: relative-imports
-    count: 14
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-90824935
-    name: Fix smart-return-type issues
-    description: Resolve 9 smart-return-type issues in src/ai_cost_tracker/cli.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 8
+      line_end: 9
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-002:
+    id: DOC-002
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/cli.py
-    rule_id: smart-return-type
-    count: 9
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-76bb83e7
-    name: Fix unused-imports issues
-    description: Resolve 8 unused-imports issues in src/ai_cost_tracker/cli.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 47
+      line_end: 48
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-003:
+    id: DOC-003
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/cli.py
-    rule_id: unused-imports
-    count: 8
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-66f1f1ee
-    name: Fix duplicate-imports issues
-    description: Resolve 1 duplicate-imports issues in src/ai_cost_tracker/cli.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/ai_cost_tracker/cli.py
-    rule_id: duplicate-imports
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-683e70e6
-    name: Fix magic-numbers issues
-    description: Resolve 9 magic-numbers issues in src/ai_cost_tracker/cli.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 53
+      line_end: 54
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-004:
+    id: DOC-004
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/cli.py
-    rule_id: magic-numbers
-    count: 9
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-d0dccb11
-    name: Fix ai-boilerplate issues
-    description: Resolve 2 ai-boilerplate issues in src/ai_cost_tracker/cli.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/ai_cost_tracker/cli.py
-    rule_id: ai-boilerplate
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-19653a92
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/models.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/models.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-8a517c47
-    name: Fix string-concat issues
-    description: Resolve 5 string-concat issues in src/ai_cost_tracker/reports.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/reports.py
-    rule_id: string-concat
-    count: 5
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-7120d7f2
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/reports.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/reports.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-2f344f07
-    name: Fix magic-numbers issues
-    description: Resolve 11 magic-numbers issues in src/ai_cost_tracker/reports.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 58
+      line_end: 59
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-005:
+    id: DOC-005
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 3d
-    files:
-    - src/ai_cost_tracker/reports.py
-    rule_id: magic-numbers
-    count: 11
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-752cdfe3
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/ai_cost_tracker/git_parser.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/ai_cost_tracker/git_parser.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-7c8d1d82
-    name: Fix llm-generated-code issues
-    description: Resolve 2 llm-generated-code issues in src/ai_cost_tracker/git_parser.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/ai_cost_tracker/git_parser.py
-    rule_id: llm-generated-code
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-f7e7aa3f
-    name: Fix relative-imports issues
-    description: Resolve 4 relative-imports issues in src/costs/__init__.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/__init__.py
-    rule_id: relative-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-a7c82e86
-    name: Fix relative-imports issues
-    description: Resolve 4 relative-imports issues in src/costs/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/calculator.py
-    rule_id: relative-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-c2bd9822
-    name: Fix string-concat issues
-    description: Resolve 1 string-concat issues in src/costs/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/calculator.py
-    rule_id: string-concat
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-402c41c0
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/calculator.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-b071236e
-    name: Fix relative-imports issues
-    description: Resolve 16 relative-imports issues in src/costs/cli.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 71
+      line_end: 72
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-006:
+    id: DOC-006
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 3d
-    files:
-    - src/costs/cli.py
-    rule_id: relative-imports
-    count: 16
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-d6db1c96
-    name: Fix smart-return-type issues
-    description: Resolve 10 smart-return-type issues in src/costs/cli.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 76
+      line_end: 77
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-007:
+    id: DOC-007
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/costs/cli.py
-    rule_id: smart-return-type
-    count: 10
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-4f6464d2
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/cli.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/cli.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-61598616
-    name: Fix duplicate-imports issues
-    description: Resolve 2 duplicate-imports issues in src/costs/cli.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/cli.py
-    rule_id: duplicate-imports
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-197df09a
-    name: Fix magic-numbers issues
-    description: Resolve 9 magic-numbers issues in src/costs/cli.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 96
+      line_end: 97
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-008:
+    id: DOC-008
+    title: 'Remove empty section: [Unreleased]'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/costs/cli.py
-    rule_id: magic-numbers
-    count: 9
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-74b3cb5d
-    name: Fix ai-boilerplate issues
-    description: Resolve 2 ai-boilerplate issues in src/costs/cli.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/cli.py
-    rule_id: ai-boilerplate
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-9822ce44
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/models.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/models.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-658a9323
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/git_parser.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/git_parser.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-8e89a195
-    name: Fix llm-generated-code issues
-    description: Resolve 2 llm-generated-code issues in src/costs/git_parser.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/git_parser.py
-    rule_id: llm-generated-code
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-32509e95
-    name: Fix string-concat issues
-    description: Resolve 5 string-concat issues in src/costs/reports.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/reports.py
-    rule_id: string-concat
-    count: 5
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-eaccc31f
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/reports.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/reports.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-2f97726c
-    name: Fix magic-numbers issues
-    description: Resolve 11 magic-numbers issues in src/costs/reports.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 116
+      line_end: 117
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-009:
+    id: DOC-009
+    title: 'Remove empty section: [0.1.48] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 3d
-    files:
-    - src/costs/reports.py
-    rule_id: magic-numbers
-    count: 11
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-5d184752
-    name: Fix relative-imports issues
-    description: Resolve 2 relative-imports issues in src/costs/reports.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports.py
-    rule_id: relative-imports
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-d402519d
-    name: Fix magic-numbers issues
-    description: Resolve 2 magic-numbers issues in src/costs/metrics.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/metrics.py
-    rule_id: magic-numbers
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-678fb46a
-    name: Fix relative-imports issues
-    description: Resolve 4 relative-imports issues in src/costs/reports/badge.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/reports/badge.py
-    rule_id: relative-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-080a1719
-    name: Fix string-concat issues
-    description: Resolve 2 string-concat issues in src/costs/reports/badge.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports/badge.py
-    rule_id: string-concat
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-898cd3df
-    name: Fix magic-numbers issues
-    description: Resolve 2 magic-numbers issues in src/costs/reports/base.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports/base.py
-    rule_id: magic-numbers
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-6ea47a33
-    name: Fix string-concat issues
-    description: Resolve 2 string-concat issues in src/costs/reports/html.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports/html.py
-    rule_id: string-concat
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-2ecb58d8
-    name: Fix magic-numbers issues
-    description: Resolve 3 magic-numbers issues in src/costs/reports/html.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports/html.py
-    rule_id: magic-numbers
-    count: 3
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-740bf07b
-    name: Fix relative-imports issues
-    description: Resolve 2 relative-imports issues in src/costs/reports/markdown.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports/markdown.py
-    rule_id: relative-imports
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-641dd221
-    name: Fix string-concat issues
-    description: Resolve 1 string-concat issues in src/costs/reports/markdown.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports/markdown.py
-    rule_id: string-concat
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-605a5b2f
-    name: Fix magic-numbers issues
-    description: Resolve 4 magic-numbers issues in src/costs/reports/markdown.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/reports/markdown.py
-    rule_id: magic-numbers
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-3a8886ad
-    name: Fix relative-imports issues
-    description: Resolve 10 relative-imports issues in src/costs/reports/__init__.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 118
+      line_end: 119
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-010:
+    id: DOC-010
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 120
+      line_end: 123
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-011:
+    id: DOC-011
+    title: 'Remove empty section: [0.1.47] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/costs/reports/__init__.py
-    rule_id: relative-imports
-    count: 10
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-0967ecb2
-    name: Fix string-concat issues
-    description: Resolve 2 string-concat issues in src/costs/cli.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/cli.py
-    rule_id: string-concat
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-5c9c519e
-    name: Fix magic-numbers issues
-    description: Resolve 2 magic-numbers issues in src/costs/reports/badge.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/reports/badge.py
-    rule_id: magic-numbers
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-86a6c8e7
-    name: Fix smart-return-type issues
-    description: Resolve 1 smart-return-type issues in examples/01_custom_pricing/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/01_custom_pricing/main.py
-    rule_id: smart-return-type
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-6f810ec1
-    name: Fix string-concat issues
-    description: Resolve 1 string-concat issues in examples/01_custom_pricing/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/01_custom_pricing/main.py
-    rule_id: string-concat
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-ab903482
-    name: Fix magic-numbers issues
-    description: Resolve 1 magic-numbers issues in examples/01_custom_pricing/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/01_custom_pricing/main.py
-    rule_id: magic-numbers
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-54d6fbf2
-    name: Fix string-concat issues
-    description: Resolve 1 string-concat issues in examples/01_tokenizer_basic/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/01_tokenizer_basic/main.py
-    rule_id: string-concat
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-2638d3da
-    name: Fix magic-numbers issues
-    description: Resolve 4 magic-numbers issues in examples/02_multi_model_cost/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - examples/02_multi_model_cost/main.py
-    rule_id: magic-numbers
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-8c41bc33
-    name: Fix string-concat issues
-    description: Resolve 1 string-concat issues in examples/02_custom_roi/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/02_custom_roi/main.py
-    rule_id: string-concat
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-038ee286
-    name: Fix magic-numbers issues
-    description: Resolve 10 magic-numbers issues in examples/02_custom_roi/main.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 127
+      line_end: 128
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-012:
+    id: DOC-012
+    title: 'Remove empty section: [0.1.46] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - examples/02_custom_roi/main.py
-    rule_id: magic-numbers
-    count: 10
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-dbc88434
-    name: Fix magic-numbers issues
-    description: Resolve 4 magic-numbers issues in examples/03_batch_processing/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - examples/03_batch_processing/main.py
-    rule_id: magic-numbers
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-fb791caa
-    name: Fix smart-return-type issues
-    description: Resolve 1 smart-return-type issues in examples/03_multi_repo/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/03_multi_repo/main.py
-    rule_id: smart-return-type
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-7fc33e6d
-    name: Fix magic-numbers issues
-    description: Resolve 2 magic-numbers issues in examples/03_multi_repo/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/03_multi_repo/main.py
-    rule_id: magic-numbers
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-d641fe90
-    name: Fix smart-return-type issues
-    description: Resolve 2 smart-return-type issues in examples/04_cost_trends/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - examples/04_cost_trends/main.py
-    rule_id: smart-return-type
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-89d38862
-    name: Fix string-concat issues
-    description: Resolve 5 string-concat issues in examples/04_cost_trends/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - examples/04_cost_trends/main.py
-    rule_id: string-concat
-    count: 5
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-7bcc8f97
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in examples/04_cost_trends/main.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - examples/04_cost_trends/main.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-bf655f1d
-    name: Fix magic-numbers issues
-    description: Resolve 6 magic-numbers issues in examples/04_cost_trends/main.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 141
+      line_end: 142
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-013:
+    id: DOC-013
+    title: 'Remove empty section: [0.1.45] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - examples/04_cost_trends/main.py
-    rule_id: magic-numbers
-    count: 6
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-394ebd9d
-    name: Fix relative-imports issues
-    description: Resolve 6 relative-imports issues in src/costs/commands/analyze.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 157
+      line_end: 158
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-014:
+    id: DOC-014
+    title: 'Remove empty section: [0.1.44] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/costs/commands/analyze.py
-    rule_id: relative-imports
-    count: 6
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-b442ee8f
-    name: Fix smart-return-type issues
-    description: Resolve 1 smart-return-type issues in src/costs/commands/analyze.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/commands/analyze.py
-    rule_id: smart-return-type
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-3ffec5b8
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/commands/analyze.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/commands/analyze.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-2d4335ce
-    name: Fix magic-numbers issues
-    description: Resolve 4 magic-numbers issues in src/costs/commands/analyze.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/commands/analyze.py
-    rule_id: magic-numbers
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-a1d0b702
-    name: Fix relative-imports issues
-    description: Resolve 10 relative-imports issues in src/costs/commands/badge.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 162
+      line_end: 163
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-015:
+    id: DOC-015
+    title: 'Remove empty section: [0.1.43] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/costs/commands/badge.py
-    rule_id: relative-imports
-    count: 10
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-27b4ad2a
-    name: Fix smart-return-type issues
-    description: Resolve 2 smart-return-type issues in src/costs/commands/badge.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/commands/badge.py
-    rule_id: smart-return-type
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-5ef31250
-    name: Fix duplicate-imports issues
-    description: Resolve 1 duplicate-imports issues in src/costs/commands/badge.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/commands/badge.py
-    rule_id: duplicate-imports
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-ac3e6718
-    name: Fix magic-numbers issues
-    description: Resolve 1 magic-numbers issues in src/costs/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/calculator.py
-    rule_id: magic-numbers
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-ef1a8284
-    name: Fix llm-generated-code issues
-    description: Resolve 1 llm-generated-code issues in src/costs/calculator.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/calculator.py
-    rule_id: llm-generated-code
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-8701a6f7
-    name: Fix relative-imports issues
-    description: Resolve 10 relative-imports issues in src/costs/commands/report.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 190
+      line_end: 191
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-016:
+    id: DOC-016
+    title: 'Remove empty section: Other'
+    description: Section has no meaningful content
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/costs/commands/report.py
-    rule_id: relative-imports
-    count: 10
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-ae1af87a
-    name: Fix smart-return-type issues
-    description: Resolve 1 smart-return-type issues in src/costs/commands/report.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/commands/report.py
-    rule_id: smart-return-type
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-3fa490f2
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/commands/report.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/commands/report.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-2dacd769
-    name: Fix magic-numbers issues
-    description: Resolve 3 magic-numbers issues in src/costs/commands/report.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/commands/report.py
-    rule_id: magic-numbers
-    count: 3
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-2ad117e4
-    name: Fix relative-imports issues
-    description: Resolve 6 relative-imports issues in src/costs/commands/utils.py
-    task_type: prefactor
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 192
+      line_end: 194
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-017:
+    id: DOC-017
+    title: 'Remove empty section: [0.1.41] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
     priority: high
-    estimate: 2d
-    files:
-    - src/costs/commands/utils.py
-    rule_id: relative-imports
-    count: 6
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-ca37f11e
-    name: Fix smart-return-type issues
-    description: Resolve 3 smart-return-type issues in src/costs/commands/utils.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/commands/utils.py
-    rule_id: smart-return-type
-    count: 3
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-42b49135
-    name: Fix string-concat issues
-    description: Resolve 2 string-concat issues in src/costs/commands/utils.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/commands/utils.py
-    rule_id: string-concat
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-69c69af6
-    name: Fix magic-numbers issues
-    description: Resolve 5 magic-numbers issues in src/costs/commands/utils.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/commands/utils.py
-    rule_id: magic-numbers
-    count: 5
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-665a97a5
-    name: Fix string-concat issues
-    description: Resolve 1 string-concat issues in src/costs/metrics.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/metrics.py
-    rule_id: string-concat
-    count: 1
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-9c38e1c3
-    name: Fix string-concat issues
-    description: Resolve 2 string-concat issues in src/costs/tokenizers.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/tokenizers.py
-    rule_id: string-concat
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-4d883f27
-    name: Fix unused-imports issues
-    description: Resolve 4 unused-imports issues in src/costs/tokenizers.py
-    task_type: prefactor
-    priority: medium
-    estimate: 2d
-    files:
-    - src/costs/tokenizers.py
-    rule_id: unused-imports
-    count: 4
-    model_hints:
-      planning: balanced
-      implementation: balanced
-  - id: ticket-419f32ba
-    name: Fix llm-generated-code issues
-    description: Resolve 2 llm-generated-code issues in src/costs/tokenizers.py
-    task_type: prefactor
-    priority: medium
-    estimate: 1d
-    files:
-    - src/costs/tokenizers.py
-    rule_id: llm-generated-code
-    count: 2
-    model_hints:
-      planning: balanced
-      implementation: balanced
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 195
+      line_end: 196
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-018:
+    id: DOC-018
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 197
+      line_end: 202
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-019:
+    id: DOC-019
+    title: 'Remove empty section: [0.1.40] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 215
+      line_end: 216
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-020:
+    id: DOC-020
+    title: 'Remove empty section: [0.1.39] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 217
+      line_end: 218
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-021:
+    id: DOC-021
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 219
+      line_end: 225
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-022:
+    id: DOC-022
+    title: 'Remove empty section: [0.1.38] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 239
+      line_end: 240
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-023:
+    id: DOC-023
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 241
+      line_end: 243
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-024:
+    id: DOC-024
+    title: 'Remove empty section: [0.1.37] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 244
+      line_end: 245
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-025:
+    id: DOC-025
+    title: 'Remove empty section: [0.1.36] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 246
+      line_end: 247
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-026:
+    id: DOC-026
+    title: 'Remove empty section: [0.1.35] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 248
+      line_end: 249
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-027:
+    id: DOC-027
+    title: 'Remove empty section: [0.1.34] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 250
+      line_end: 251
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-028:
+    id: DOC-028
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 252
+      line_end: 259
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-029:
+    id: DOC-029
+    title: 'Remove duplicate: Other'
+    description: ~83% similar to /home/tom/github/semcod/costs/CHANGELOG.md:226
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - duplicate
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Consider removing — duplicate of section 'Other'
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 260
+      line_end: 272
+      issue_type: duplicate
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.827893175074184
+    sync: {}
+  DOC-030:
+    id: DOC-030
+    title: 'Remove empty section: [0.1.33] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 273
+      line_end: 274
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-031:
+    id: DOC-031
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 275
+      line_end: 279
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-032:
+    id: DOC-032
+    title: 'Remove empty section: [0.1.32] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 286
+      line_end: 287
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-033:
+    id: DOC-033
+    title: 'Remove empty section: [0.1.31] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 307
+      line_end: 308
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-034:
+    id: DOC-034
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 309
+      line_end: 311
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-035:
+    id: DOC-035
+    title: 'Remove empty section: [0.1.30] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 316
+      line_end: 317
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-036:
+    id: DOC-036
+    title: 'Remove empty section: [0.1.29] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 321
+      line_end: 322
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-037:
+    id: DOC-037
+    title: 'Remove empty section: [0.1.28] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 327
+      line_end: 328
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-038:
+    id: DOC-038
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 329
+      line_end: 336
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-039:
+    id: DOC-039
+    title: 'Remove empty section: [0.1.27] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 350
+      line_end: 351
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-040:
+    id: DOC-040
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 352
+      line_end: 356
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-041:
+    id: DOC-041
+    title: 'Remove empty section: [0.1.26] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 364
+      line_end: 365
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-042:
+    id: DOC-042
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 366
+      line_end: 368
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-043:
+    id: DOC-043
+    title: 'Remove empty section: [0.1.25] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 369
+      line_end: 370
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-044:
+    id: DOC-044
+    title: 'Remove duplicate: Other'
+    description: ~93% similar to /home/tom/github/semcod/costs/CHANGELOG.md:294
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - duplicate
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Consider removing — duplicate of section 'Other'
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 377
+      line_end: 389
+      issue_type: duplicate
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.9298245614035088
+    sync: {}
+  DOC-045:
+    id: DOC-045
+    title: 'Remove empty section: [0.1.24] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 390
+      line_end: 391
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-046:
+    id: DOC-046
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 392
+      line_end: 394
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-047:
+    id: DOC-047
+    title: 'Remove empty section: [0.1.23] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 395
+      line_end: 396
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-048:
+    id: DOC-048
+    title: 'Remove empty section: [0.1.22] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 407
+      line_end: 408
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-049:
+    id: DOC-049
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 409
+      line_end: 411
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-050:
+    id: DOC-050
+    title: 'Remove empty section: Other'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 412
+      line_end: 414
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-051:
+    id: DOC-051
+    title: 'Remove empty section: [0.1.21] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 415
+      line_end: 416
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-052:
+    id: DOC-052
+    title: 'Remove empty section: [0.1.20] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 423
+      line_end: 424
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-053:
+    id: DOC-053
+    title: 'Remove empty section: [0.1.19] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 428
+      line_end: 429
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-054:
+    id: DOC-054
+    title: 'Remove empty section: [0.1.18] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 430
+      line_end: 431
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-055:
+    id: DOC-055
+    title: 'Remove empty section: [0.1.17] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 439
+      line_end: 440
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-056:
+    id: DOC-056
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 441
+      line_end: 443
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-057:
+    id: DOC-057
+    title: 'Remove empty section: [0.1.16] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 444
+      line_end: 445
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-058:
+    id: DOC-058
+    title: 'Fix documentation issue: Docs'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 446
+      line_end: 453
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-059:
+    id: DOC-059
+    title: 'Remove duplicate: Other'
+    description: ~86% similar to /home/tom/github/semcod/costs/CHANGELOG.md:337
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - duplicate
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Consider removing — duplicate of section 'Other'
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 454
+      line_end: 466
+      issue_type: duplicate
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.8622754491017964
+    sync: {}
+  DOC-060:
+    id: DOC-060
+    title: 'Remove empty section: [0.1.15] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 467
+      line_end: 468
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-061:
+    id: DOC-061
+    title: 'Remove empty section: [0.1.14] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 472
+      line_end: 473
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-062:
+    id: DOC-062
+    title: 'Remove empty section: [0.1.13] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 474
+      line_end: 475
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-063:
+    id: DOC-063
+    title: 'Remove empty section: [0.1.12] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 476
+      line_end: 477
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-064:
+    id: DOC-064
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 478
+      line_end: 480
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-065:
+    id: DOC-065
+    title: 'Remove empty section: [0.1.11] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 481
+      line_end: 482
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-066:
+    id: DOC-066
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 483
+      line_end: 485
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-067:
+    id: DOC-067
+    title: 'Remove empty section: [0.1.10] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 486
+      line_end: 487
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-068:
+    id: DOC-068
+    title: 'Remove empty section: [0.1.9] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 488
+      line_end: 489
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-069:
+    id: DOC-069
+    title: 'Remove empty section: [0.1.8] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 490
+      line_end: 491
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-070:
+    id: DOC-070
+    title: 'Remove empty section: [0.1.7] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 492
+      line_end: 493
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-071:
+    id: DOC-071
+    title: 'Remove empty section: [0.1.6] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 494
+      line_end: 495
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-072:
+    id: DOC-072
+    title: 'Remove empty section: [0.1.5] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 496
+      line_end: 497
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-073:
+    id: DOC-073
+    title: 'Remove empty section: [0.1.4] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 498
+      line_end: 499
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-074:
+    id: DOC-074
+    title: 'Remove empty section: [0.1.3] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 500
+      line_end: 501
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-075:
+    id: DOC-075
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 502
+      line_end: 504
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-076:
+    id: DOC-076
+    title: 'Remove empty section: [0.1.2] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 505
+      line_end: 506
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-077:
+    id: DOC-077
+    title: 'Remove empty section: [0.1.1] - 2026-03-29'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 507
+      line_end: 508
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-078:
+    id: DOC-078
+    title: 'Remove empty section: Docs'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/CHANGELOG.md
+      line_start: 509
+      line_end: 511
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-079:
+    id: DOC-079
+    title: 'Remove empty section: AI Cost Tracker'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 1
+      line_end: 2
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-080:
+    id: DOC-080
+    title: 'Remove empty section: Quick Start'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 60
+      line_end: 61
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-081:
+    id: DOC-081
+    title: 'Remove empty section: 1. Initialize Configuration'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 62
+      line_end: 65
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-082:
+    id: DOC-082
+    title: 'Remove empty section: 2. Run Analysis'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 70
+      line_end: 72
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-083:
+    id: DOC-083
+    title: 'Remove empty section: Three Usage Options (Zero Config Required)'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 99
+      line_end: 100
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-084:
+    id: DOC-084
+    title: 'Remove empty section: Report Generation'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 173
+      line_end: 175
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-085:
+    id: DOC-085
+    title: 'Remove empty section: Usage Examples'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 233
+      line_end: 235
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-086:
+    id: DOC-086
+    title: 'Remove empty section: Initialize .env config'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 236
+      line_end: 238
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-087:
+    id: DOC-087
+    title: 'Fix code reference: CSV Export Format'
+    description: 'References 12 unknown code symbol(s): commit_hash, commit_message,
+      author, date, cost'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 304
+      line_end: 320
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-088:
+    id: DOC-088
+    title: 'Remove empty section: Development'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 340
+      line_end: 342
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-089:
+    id: DOC-089
+    title: 'Remove empty section: Install with poetry'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 343
+      line_end: 345
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-090:
+    id: DOC-090
+    title: 'Remove empty section: Test will:'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 398
+      line_end: 398
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-091:
+    id: DOC-091
+    title: 'Remove empty section: - Check if [tool.costs] is configured'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 399
+      line_end: 399
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-092:
+    id: DOC-092
+    title: 'Remove empty section: - Run costs auto-badge'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 400
+      line_end: 400
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-093:
+    id: DOC-093
+    title: 'Remove empty section: - Verify badge was updated'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 401
+      line_end: 403
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-094:
+    id: DOC-094
+    title: 'Remove empty section: .github/workflows/ai-cost-badge.yml'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 409
+      line_end: 409
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-095:
+    id: DOC-095
+    title: 'Remove empty section: Automatically updates badge on main branch'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 410
+      line_end: 412
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-096:
+    id: DOC-096
+    title: 'Fix code reference: Environment Variables'
+    description: 'References 2 unknown code symbol(s): OPENROUTER_API_KEY, LLM_MODEL'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/README.md
+      line_start: 427
+      line_end: 433
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-097:
+    id: DOC-097
+    title: 'Fix documentation issue: TODO'
+    description: Contains 1 TODO/FIXME marker(s)
+    status: open
+    priority: normal
+    sprint: doc-cleanup
+    labels:
+    - todo_marker
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/TODO.md
+      line_start: 1
+      line_end: 8
+      issue_type: todo_marker
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.0
+    sync: {}
+  DOC-098:
+    id: DOC-098
+    title: 'Fix code reference: Setup'
+    description: 'References 2 unknown code symbol(s): OPENROUTER_API_KEY, OPENROUTER_API_KEY'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 20
+      line_end: 38
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-099:
+    id: DOC-099
+    title: 'Remove empty section: Method 4: Package Scripts'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 102
+      line_end: 103
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-100:
+    id: DOC-100
+    title: 'Remove empty section: Method 5: IDE Integration'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 136
+      line_end: 137
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-101:
+    id: DOC-101
+    title: 'Remove empty section: Configuration Options'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 158
+      line_end: 159
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-102:
+    id: DOC-102
+    title: 'Remove empty section: Enable/disable badge generation'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 164
+      line_end: 166
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-103:
+    id: DOC-103
+    title: 'Remove empty section: Best Practices'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 199
+      line_end: 200
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-104:
+    id: DOC-104
+    title: 'Remove empty section: 3. Hybrid Approach'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 215
+      line_end: 217
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-105:
+    id: DOC-105
+    title: 'Remove empty section: .github/workflows/ai-cost-badge.yml - for production'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 218
+      line_end: 218
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-106:
+    id: DOC-106
+    title: 'Remove empty section: .git/hooks/pre-commit - for local development'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 219
+      line_end: 223
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-107:
+    id: DOC-107
+    title: 'Remove empty section: Troubleshooting'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 224
+      line_end: 225
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-108:
+    id: DOC-108
+    title: 'Remove empty section: Example: Complete Setup'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/AUTO_BADGE.md
+      line_start: 253
+      line_end: 254
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-109:
+    id: DOC-109
+    title: 'Fix broken link: (preamble)'
+    description: 'Internal link target not found: ./LICENSE'
+    status: open
+    priority: critical
+    sprint: doc-cleanup
+    labels:
+    - broken_link
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Check if './LICENSE' was moved or deleted
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 1
+      line_end: 11
+      issue_type: broken_link
+      issue_count: 1
+    actions:
+    - type: fix
+      confidence: 0.85
+    sync: {}
+  DOC-110:
+    id: DOC-110
+    title: 'Remove empty section: Installation'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 12
+      line_end: 13
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-111:
+    id: DOC-111
+    title: 'Remove empty section: Quick Start'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 29
+      line_end: 30
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-112:
+    id: DOC-112
+    title: 'Remove empty section: CLI Usage'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 31
+      line_end: 33
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-113:
+    id: DOC-113
+    title: 'Remove empty section: Generate full documentation for your project'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 34
+      line_end: 36
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-114:
+    id: DOC-114
+    title: 'Remove empty section: API Overview'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 146
+      line_end: 147
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-115:
+    id: DOC-115
+    title: 'Fix code reference: Project Structure'
+    description: 'References 11 unknown code symbol(s): examples.01_basic_usage.run,
+      examples.01_custom_pricing.run, examples.01_tokenizer_basic.run, examples.02_badge_generation.run,
+      examples.02_custom_roi.run'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 207
+      line_end: 250
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-116:
+    id: DOC-116
+    title: 'Fix broken link: Contributing'
+    description: 'Internal link target not found: ./CONTRIBUTING.md'
+    status: open
+    priority: critical
+    sprint: doc-cleanup
+    labels:
+    - broken_link
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Check if './CONTRIBUTING.md' was moved or deleted
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 256
+      line_end: 263
+      issue_type: broken_link
+      issue_count: 1
+    actions:
+    - type: fix
+      confidence: 0.85
+    sync: {}
+  DOC-117:
+    id: DOC-117
+    title: 'Remove empty section: Development Setup'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 264
+      line_end: 266
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-118:
+    id: DOC-118
+    title: 'Remove empty section: Run tests'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 274
+      line_end: 277
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-119:
+    id: DOC-119
+    title: 'Fix broken link: Documentation'
+    description: 'Internal link target not found: ./examples'
+    status: open
+    priority: critical
+    sprint: doc-cleanup
+    labels:
+    - broken_link
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Check if './examples' was moved or deleted
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 278
+      line_end: 285
+      issue_type: broken_link
+      issue_count: 1
+    actions:
+    - type: fix
+      confidence: 0.85
+    sync: {}
+  DOC-120:
+    id: DOC-120
+    title: 'Fix broken link: Generated Files'
+    description: 'Internal link target not found: ./docs/api.md
+
+      Internal link target not found: ./docs/modules.md
+
+      Internal link target not found: ./docs/architecture.md
+
+      Internal link target not found: ./docs/dependency-graph.md
+
+      Internal link target not found: ./docs/coverage.md
+
+      Internal link target not found: ./docs/getting-started.md
+
+      Internal link target not found: ./docs/configuration.md
+
+      Internal link target not found: ./docs/api-changelog.md
+
+      Internal link target not found: ./CONTRIBUTING.md
+
+      Internal link target not found: ./examples
+
+      References 3 unknown code symbol(s): README.md, CONTRIBUTING.md, mkdocs.yml'
+    status: open
+    priority: critical
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - broken_link
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Check if './docs/api.md' was moved or deleted
+    - Check if './docs/modules.md' was moved or deleted
+    - Check if './docs/architecture.md' was moved or deleted
+    - Check if './docs/dependency-graph.md' was moved or deleted
+    - Check if './docs/coverage.md' was moved or deleted
+    - Check if './docs/getting-started.md' was moved or deleted
+    - Check if './docs/configuration.md' was moved or deleted
+    - Check if './docs/api-changelog.md' was moved or deleted
+    - Check if './CONTRIBUTING.md' was moved or deleted
+    - Check if './examples' was moved or deleted
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/docs/README.md
+      line_start: 286
+      line_end: 303
+      issue_type: broken_link
+      issue_count: 11
+    actions:
+    - type: fix
+      confidence: 0.85
+    sync: {}
+  DOC-121:
+    id: DOC-121
+    title: 'Remove empty section: Usage'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/01_basic_usage/README.md
+      line_start: 16
+      line_end: 18
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-122:
+    id: DOC-122
+    title: 'Remove empty section: View the commands'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/01_basic_usage/README.md
+      line_start: 19
+      line_end: 21
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-123:
+    id: DOC-123
+    title: 'Remove empty section: Commands Demonstrated'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/01_basic_usage/README.md
+      line_start: 27
+      line_end: 28
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-124:
+    id: DOC-124
+    title: 'Remove empty section: Usage'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/01_tokenizer_basic/README.md
+      line_start: 12
+      line_end: 14
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-125:
+    id: DOC-125
+    title: 'Remove empty section: Run the example'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/01_tokenizer_basic/README.md
+      line_start: 15
+      line_end: 17
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-126:
+    id: DOC-126
+    title: 'Remove empty section: Or run directly'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/01_tokenizer_basic/README.md
+      line_start: 18
+      line_end: 21
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-127:
+    id: DOC-127
+    title: 'Remove empty section: Usage'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/02_badge_generation/README.md
+      line_start: 15
+      line_end: 17
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-128:
+    id: DOC-128
+    title: 'Remove empty section: View the commands'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/02_badge_generation/README.md
+      line_start: 18
+      line_end: 20
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-129:
+    id: DOC-129
+    title: 'Remove empty section: Commands Demonstrated'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/02_badge_generation/README.md
+      line_start: 26
+      line_end: 27
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-130:
+    id: DOC-130
+    title: 'Remove empty section: Usage'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_diff_estimation/README.md
+      line_start: 15
+      line_end: 17
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-131:
+    id: DOC-131
+    title: 'Remove empty section: View the commands'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_diff_estimation/README.md
+      line_start: 18
+      line_end: 20
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-132:
+    id: DOC-132
+    title: 'Remove empty section: Commands Demonstrated'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_diff_estimation/README.md
+      line_start: 26
+      line_end: 27
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-133:
+    id: DOC-133
+    title: 'Remove empty section: 3. Compare models'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_diff_estimation/README.md
+      line_start: 41
+      line_end: 42
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-134:
+    id: DOC-134
+    title: 'Remove empty section: Save diff and compare'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_diff_estimation/README.md
+      line_start: 43
+      line_end: 46
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-135:
+    id: DOC-135
+    title: 'Remove empty section: Commands Demonstrated'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_diff_estimation/README.md
+      line_start: 47
+      line_end: 48
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-136:
+    id: DOC-136
+    title: 'Remove empty section: 3. Compare models'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_diff_estimation/README.md
+      line_start: 62
+      line_end: 63
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-137:
+    id: DOC-137
+    title: 'Remove empty section: Usage'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_multi_repo/README.md
+      line_start: 17
+      line_end: 19
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-138:
+    id: DOC-138
+    title: 'Remove empty section: Edit repos.txt with your repository paths'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/03_multi_repo/README.md
+      line_start: 20
+      line_end: 23
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-139:
+    id: DOC-139
+    title: 'Remove empty section: Quick Start'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/README.md
+      line_start: 67
+      line_end: 68
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-140:
+    id: DOC-140
+    title: 'Remove empty section: API Examples'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/README.md
+      line_start: 69
+      line_end: 71
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-141:
+    id: DOC-141
+    title: 'Remove empty section: Or run directly'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/README.md
+      line_start: 76
+      line_end: 79
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-142:
+    id: DOC-142
+    title: 'Remove empty section: Integration Examples'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/README.md
+      line_start: 87
+      line_end: 89
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-143:
+    id: DOC-143
+    title: 'Fix code reference: Setup'
+    description: 'References 2 unknown code symbol(s): OPENROUTER_API_KEY, pyproject.toml'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/github-actions/README.md
+      line_start: 25
+      line_end: 32
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-144:
+    id: DOC-144
+    title: 'Fix code reference: Setup'
+    description: 'References 2 unknown code symbol(s): CI_TOKEN, OPENROUTER_API_KEY'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/gitlab-ci/README.md
+      line_start: 26
+      line_end: 30
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-145:
+    id: DOC-145
+    title: 'Remove empty section: Pipeline Jobs'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/examples/gitlab-ci/README.md
+      line_start: 31
+      line_end: 32
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-146:
+    id: DOC-146
+    title: 'Fix code reference: 🎯 Core Analysis Files'
+    description: 'References 2 unknown code symbol(s): evolution.toon.yaml, map.toon.yaml'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 9
+      line_end: 15
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-147:
+    id: DOC-147
+    title: 'Fix code reference: 🤖 LLM-Ready Documentation'
+    description: 'References 2 unknown code symbol(s): prompt.txt, context.md'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 16
+      line_end: 22
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-148:
+    id: DOC-148
+    title: 'Fix code reference: 📊 Visualizations'
+    description: 'References 3 unknown code symbol(s): flow.mmd, calls.mmd, compact_flow.mmd'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 23
+      line_end: 30
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-149:
+    id: DOC-149
+    title: 'Remove empty section: 🚀 Quick Start Commands'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 31
+      line_end: 32
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-150:
+    id: DOC-150
+    title: 'Remove empty section: Basic Analysis'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 33
+      line_end: 34
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-151:
+    id: DOC-151
+    title: 'Remove empty section: Quick health check (TOON format only)'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 35
+      line_end: 37
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-152:
+    id: DOC-152
+    title: 'Remove empty section: Generate all formats (what created these files)'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 38
+      line_end: 40
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-153:
+    id: DOC-153
+    title: 'Remove empty section: Performance Options'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 45
+      line_end: 46
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-154:
+    id: DOC-154
+    title: 'Remove empty section: Refactoring Focus'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 57
+      line_end: 58
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-155:
+    id: DOC-155
+    title: 'Remove empty section: 📖 Understanding Each File'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 69
+      line_end: 70
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-156:
+    id: DOC-156
+    title: 'Fix code reference: `prompt.txt` - Ready-to-Send LLM Prompt'
+    description: 'References 4 unknown code symbol(s): prompt.txt, code2llm, code2logic,
+      project.toon.yaml'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 152
+      line_end: 164
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-157:
+    id: DOC-157
+    title: 'Remove empty section: View the prompt'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 165
+      line_end: 167
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-158:
+    id: DOC-158
+    title: 'Remove empty section: Use with Claude/ChatGPT for code analysis'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 187
+      line_end: 189
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-159:
+    id: DOC-159
+    title: 'Fix code reference: Visualization Files (`*.mmd`, `*.png`)'
+    description: 'References 3 unknown code symbol(s): flow.mmd, calls.mmd, compact_flow.mmd'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 190
+      line_end: 199
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-160:
+    id: DOC-160
+    title: 'Remove empty section: Edit in Mermaid Live Editor'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 204
+      line_end: 204
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-161:
+    id: DOC-161
+    title: 'Remove empty section: Copy content of .mmd files to https://mermaid.live'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 205
+      line_end: 207
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-162:
+    id: DOC-162
+    title: 'Remove empty section: 🔍 Common Analysis Patterns'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 208
+      line_end: 209
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-163:
+    id: DOC-163
+    title: 'Remove empty section: 1. Code Health Assessment'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 210
+      line_end: 211
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-164:
+    id: DOC-164
+    title: 'Remove empty section: 2. Refactoring Planning'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 217
+      line_end: 218
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-165:
+    id: DOC-165
+    title: 'Remove empty section: 3. LLM Assistance'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 227
+      line_end: 228
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-166:
+    id: DOC-166
+    title: 'Remove empty section: Use with Claude: "Based on this context, help me
+      refactor the god modules"'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 233
+      line_end: 235
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-167:
+    id: DOC-167
+    title: 'Remove empty section: 4. Team Documentation'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 236
+      line_end: 237
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-168:
+    id: DOC-168
+    title: 'Remove empty section: 📊 Interpreting Metrics'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 245
+      line_end: 246
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-169:
+    id: DOC-169
+    title: 'Remove empty section: 🛠️ Integration Examples'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 265
+      line_end: 266
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-170:
+    id: DOC-170
+    title: 'Remove empty section: CI/CD Pipeline'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 267
+      line_end: 269
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-171:
+    id: DOC-171
+    title: 'Remove empty section: Pre-commit Hook'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 278
+      line_end: 280
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-172:
+    id: DOC-172
+    title: 'Remove empty section: Documentation Generation'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 289
+      line_end: 290
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-173:
+    id: DOC-173
+    title: 'Fix code reference: 📚 Next Steps'
+    description: 'References 3 unknown code symbol(s): analysis.toon, evolution.toon.yaml,
+      context.md'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - orphaned_code_ref
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - These may be outdated API references or typos
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 297
+      line_end: 304
+      issue_type: orphaned_code_ref
+      issue_count: 1
+    actions:
+    - type: keep
+      confidence: 0.5
+    sync: {}
+  DOC-174:
+    id: DOC-174
+    title: 'Remove empty section: 🔧 Advanced Usage'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 305
+      line_end: 306
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-175:
+    id: DOC-175
+    title: 'Remove empty section: Custom Analysis'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 307
+      line_end: 308
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-176:
+    id: DOC-176
+    title: 'Remove empty section: Output Customization'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/README.md
+      line_start: 319
+      line_end: 320
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-177:
+    id: DOC-177
+    title: 'Remove empty section: System Architecture Analysis'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/context.md
+      line_start: 1
+      line_end: 2
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-178:
+    id: DOC-178
+    title: 'Remove empty section: Architecture by Module'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/context.md
+      line_start: 14
+      line_end: 15
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-179:
+    id: DOC-179
+    title: 'Remove empty section: src.costs.cli.main'
+    description: Section has no meaningful content
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/context.md
+      line_start: 191
+      line_end: 193
+      issue_type: empty
+      issue_count: 1
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-180:
+    id: DOC-180
+    title: 'Remove empty section: src.costs.tokenizers.Tokenizer.__init__'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/context.md
+      line_start: 205
+      line_end: 206
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-181:
+    id: DOC-181
+    title: 'Remove empty section: project.install_hook'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/context.md
+      line_start: 207
+      line_end: 208
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-182:
+    id: DOC-182
+    title: 'Remove empty section: Key Classes'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/project/context.md
+      line_start: 267
+      line_end: 268
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+  DOC-183:
+    id: DOC-183
+    title: 'Remove empty section: Usage'
+    description: 'Section has no meaningful content
+
+      Section contains only a heading with no body text'
+    status: open
+    priority: high
+    sprint: doc-cleanup
+    labels:
+    - empty
+    - heading_only
+    - documentation
+    - auto-generated
+    acceptance_criteria:
+    - Issue is resolved
+    source:
+      tool: docval
+      file: /home/tom/github/semcod/costs/services/badge-service/README.md
+      line_start: 13
+      line_end: 14
+      issue_type: empty
+      issue_count: 2
+    actions:
+    - type: delete
+      confidence: 0.95
+    sync: {}
+backlog: []
+sync:
+  github:
+    enabled: false
+    last_sync: null
+    ticket_map: {}
+  gitlab:
+    enabled: false
+    last_sync: null
+    ticket_map: {}
+metadata:
+  docval_version: 0.1.1
+  scan_date: '2026-04-13'
+  files_scanned: 22
+  total_issues: 546
+  health_score: 0.69
+  issues_by_type:
+    empty: 155
+    heading_only: 91
+    todo_marker: 9
+    duplicate: 3
+    orphaned_code_ref: 13
+    broken_link: 13

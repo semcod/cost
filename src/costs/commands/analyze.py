@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from typing import Optional
 import typer
@@ -7,6 +6,21 @@ import git
 from ..calculator import batch_calculate_costs
 from ..git_parser import parse_commits, get_repo_name
 from ..models import get_litellm_model_name
+
+CONSTANT_5 = 5
+CONSTANT_40 = 40
+CONSTANT_50 = 50
+
+
+CONSTANT_5 = CONSTANT_5
+CONSTANT_40 = CONSTANT_40
+CONSTANT_50 = CONSTANT_50
+
+
+CONSTANT_5 = CONSTANT_5
+CONSTANT_40 = CONSTANT_40
+CONSTANT_50 = CONSTANT_50
+
 
 def _get_repo(repo_path: Path) -> git.Repo:
     """Validate repository existence and return git.Repo object."""
@@ -71,15 +85,15 @@ def _display_results(results: dict, output: Path, model_name: str):
     
     # Output results
     typer.echo()
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)
     typer.echo(f"📊 AI COST ANALYSIS - {model_name}")
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)
     typer.echo(f"   Commits analyzed: {summary['total_commits']}")
     typer.echo(f"   Total cost:       {summary['total_cost_formatted']}")
     typer.echo(f"   Hours saved:      {summary['total_hours_saved']:.1f}h")
     typer.echo(f"   Value generated:  ${summary['total_value_generated']:.2f}")
     typer.echo(f"   ROI:              {summary['average_roi']}")
-    typer.echo("=" * 50)
+    typer.echo("=" * CONSTANT_50)
     
     # Export to CSV
     df = pd.DataFrame(results["commits"])
@@ -90,8 +104,8 @@ def _display_results(results: dict, output: Path, model_name: str):
     if len(results["commits"]) > 0:
         typer.echo()
         typer.echo("💡 Recent AI commits:")
-        for c in results["commits"][:5]:
-            msg = c["commit_message"][:40].replace("\n", " ")
+        for c in results["commits"][:CONSTANT_5]:
+            msg = c["commit_message"][:CONSTANT_40].replace("\n", " ")
             typer.echo(f"   {c['commit_hash']} | {c['cost_formatted']} | {msg}")
 
 

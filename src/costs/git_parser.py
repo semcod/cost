@@ -1,7 +1,7 @@
 """Git commit parsing utilities."""
 
 import re
-from datetime import datetime, date, timedelta
+from datetime import datetime, date
 from typing import List, Optional, Tuple, Union
 import git
 
@@ -145,7 +145,6 @@ def parse_commits(
         commits.append((commit, diff))
     
     return commits
-
 
 
 def get_repo_name(repo: git.Repo) -> str:

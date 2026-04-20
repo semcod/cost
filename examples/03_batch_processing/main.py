@@ -59,17 +59,19 @@ commits = [
     }
 ]
 
-print("=" * 70)
-print("API Example: Batch Processing")
-print("=" * 70)
+
+if __name__ == "__main__":
+    print("=" * 70)
+    print("API Example: Batch Processing")
+    print("=" * 70)
 
 model = "claude-3.5-sonnet"
 total_cost = 0
 total_tokens = 0
 
-print(f"\nModel: {model}\n")
-print(f"{'Commit':<10} {'Message':<25} {'Tokens':>8} {'Cost':>12}")
-print("-" * 70)
+    print(f"\nModel: {model}\n")
+    print(f"{'Commit':<10} {'Message':<25} {'Tokens':>8} {'Cost':>12}")
+    print("-" * 70)
 
 for commit in commits:
     result = ai_cost(
@@ -83,8 +85,8 @@ for commit in commits:
     print(f"{commit['hash']:<10} {commit['message']:<25} "
           f"{result['tokens']['total']:>8} ${result['cost']:>10.6f}")
 
-print("-" * 70)
-print(f"{'TOTAL':<36} {total_tokens:>8} ${total_cost:>10.6f}")
+    print("-" * 70)
+    print(f"{'TOTAL':<36} {total_tokens:>8} ${total_cost:>10.6f}")
 
-print(f"\nValue generated: ${total_cost * 100:.2f} (100x ROI assumption)")
-print(f"Average per commit: ${total_cost / len(commits):.6f}")
+    print(f"\nValue generated: ${total_cost * 100:.2f} (100x ROI assumption)")
+    print(f"Average per commit: ${total_cost / len(commits):.6f}")

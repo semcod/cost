@@ -1,11 +1,13 @@
 """Model pricing definitions with liteLLM integration."""
 
 import os
-from typing import Dict, Optional
+from typing import Dict
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+
+if __name__ == "__main__":
+    load_dotenv()
 
 # Default configuration from .env
 DEFAULT_OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
@@ -23,10 +25,10 @@ PRICES: Dict[str, Dict[str, float]] = {
     "anthropic/claude-3.5-haiku": {"input": 0.8e-6, "output": 4e-6},
     # OpenAI
     "gpt-4o": {"input": 5e-6, "output": 15e-6},
-    "gpt-4o-mini": {"input": 0.15e-6, "output": 0.6e-6},
+    "gpt-5.4-mini": {"input": 0.15e-6, "output": 0.6e-6},
     "gpt-4": {"input": 30e-6, "output": 60e-6},
     "openai/gpt-4o": {"input": 5e-6, "output": 15e-6},
-    "openai/gpt-4o-mini": {"input": 0.15e-6, "output": 0.6e-6},
+    "openai/gpt-5.4-mini": {"input": 0.15e-6, "output": 0.6e-6},
     # OpenRouter / Qwen
     "openrouter/qwen/qwen3-coder-next": {"input": 0.5e-6, "output": 1.5e-6},
     "openrouter/qwen/qwen3-coder": {"input": 0.5e-6, "output": 1.5e-6},

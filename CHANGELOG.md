@@ -1,11 +1,40 @@
 # Changelog
 
+## [Unreleased]
+
+## [0.1.49] - 2026-04-20
+
+### Docs
+- Update CHANGELOG.md
+- Update README.md
+- Update TODO.md
+- Update docs/AUTO_BADGE.md
+- Update docs/README.md
+- Update examples/01_basic_usage/README.md
+- Update examples/01_custom_pricing/README.md
+- Update examples/01_tokenizer_basic/README.md
+- Update examples/02_badge_generation/README.md
+- Update examples/02_custom_roi/README.md
+- ... and 11 more files
+
+### Other
+- Update .gitignore
+- Update .pyqual/coverage.json
+- Update .pyqual/llx_history.jsonl
+- Update .pyqual/pipeline.db
+- Update Taskfile.yml
+- Update app.doql.css
+- Update examples/01_custom_pricing/main.py
+- Update examples/01_tokenizer_basic/main.py
+- Update examples/02_custom_roi/main.py
+- Update examples/02_multi_model_cost/main.py
+- ... and 6 more files
+
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [0.1.10] - 2026-03-29
 
 ### Fixed
 - Fix smart-return-type issues (ticket-86a6c8e7)
@@ -44,18 +73,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix unused-imports issues (ticket-4d883f27)
 - Fix llm-generated-code issues (ticket-419f32ba)
 
-## [0.1.10] - 2026-03-29
-
 ### Fixed
 - Fix string-concat issues (ticket-0967ecb2)
 - Fix magic-numbers issues (ticket-5c9c519e)
 
-## [0.1.10] - 2026-03-29
-
 ### Fixed
 - Fix relative-imports issues (ticket-3a8886ad)
-
-## [0.1.10] - 2026-03-29
 
 ### Fixed
 - Fix magic-numbers issues (ticket-d402519d)
@@ -68,12 +91,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix string-concat issues (ticket-641dd221)
 - Fix magic-numbers issues (ticket-605a5b2f)
 
-## [0.1.10] - 2026-03-29
-
 ### Fixed
 - Fix relative-imports issues (ticket-5d184752)
-
-## [0.1.10] - 2026-03-29
 
 ### Fixed
 - Fix relative-imports issues (ticket-f7e7aa3f)
@@ -93,8 +112,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix unused-imports issues (ticket-eaccc31f)
 - Fix magic-numbers issues (ticket-2f97726c)
 
-## [0.1.10] - 2026-03-29
-
 ### Fixed
 - Fix relative-imports issues (ticket-29184732)
 - Fix string-concat issues (ticket-7532dd33)
@@ -113,18 +130,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix unused-imports issues (ticket-752cdfe3)
 - Fix llm-generated-code issues (ticket-7c8d1d82)
 
-## [Unreleased]
-
-## [0.1.48] - 2026-03-29
-
 ### Docs
 - Update CHANGELOG.md
 - Update TODO.md
 
 ### Other
 - Update planfile.yaml
-
-## [0.1.47] - 2026-03-29
 
 ### Docs
 - Update README.md
@@ -137,8 +148,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update project/project.toon.yaml
 - Update project/prompt.txt
 - Update project/validation.toon.yaml
-
-## [0.1.46] - 2026-03-29
 
 ### Docs
 - Update project/context.md
@@ -154,12 +163,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update project/flow.png
 - Update project/map.toon.yaml
 
-## [0.1.45] - 2026-03-29
-
 ### Docs
 - Update examples/README.md
-
-## [0.1.44] - 2026-03-29
 
 ### Docs
 - Update README.md
@@ -187,13 +192,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update examples/02_multi_model_cost/run.sh
 - ... and 14 more files
 
-## [0.1.43] - 2026-03-29
-
-### Other
-- Update VERSION
-
-## [0.1.41] - 2026-03-29
-
 ### Docs
 - Update README.md
 - Update TODO.md
@@ -211,10 +209,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update project/index.html
 - Update project/map.toon.yaml
 - Update project/project.toon.yaml
-
-## [0.1.40] - 2026-03-29
-
-## [0.1.39] - 2026-03-29
 
 ### Docs
 - Update CHANGELOG.md
@@ -235,19 +229,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update project/index.html
 - Update project/map.toon.yaml
 - ... and 1 more files
-
-## [0.1.38] - 2026-03-29
-
-### Docs
-- Update README.md
-
-## [0.1.37] - 2026-03-29
-
-## [0.1.36] - 2026-03-29
-
-## [0.1.35] - 2026-03-29
-
-## [0.1.34] - 2026-03-29
 
 ### Docs
 - Update CHANGELOG.md
@@ -256,21 +237,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update docs/README.md
 - Update project/README.md
 - Update project/context.md
-
-### Other
-- Update planfile.yaml
-- Update project/analysis.toon.yaml
-- Update project/calls.mmd
-- Update project/duplication.toon.yaml
-- Update project/evolution.toon.yaml
-- Update project/flow.mmd
-- Update project/index.html
-- Update project/map.toon.yaml
-- Update project/project.toon.yaml
-- Update project/prompt.txt
-- ... and 1 more files
-
-## [0.1.33] - 2026-03-29
 
 ### Docs
 - Update CHANGELOG.md
@@ -282,8 +248,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update planfile.yaml
 - Update project/project.toon.yaml
 - Update project/validation.toon.yaml
-
-## [0.1.32] - 2026-03-29
 
 ### Docs
 - Update README.md
@@ -304,27 +268,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update project/flow.png
 - ... and 3 more files
 
-## [0.1.31] - 2026-03-29
-
-### Docs
-- Update README.md
-
 ### Other
 - Update ai_costs.csv
 - Update project/project.toon.yaml
-
-## [0.1.30] - 2026-03-29
 
 ### Docs
 - Update project/context.md
 
-## [0.1.29] - 2026-03-29
-
 ### Other
 - Update ai_costs.csv
 - Update project/project.toon.yaml
-
-## [0.1.28] - 2026-03-29
 
 ### Docs
 - Update CHANGELOG.md
@@ -347,8 +300,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update project/evolution.toon.yaml
 - ... and 7 more files
 
-## [0.1.27] - 2026-03-29
-
 ### Docs
 - Update CHANGELOG.md
 - Update README.md
@@ -361,39 +312,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update project/project.toon.yaml
 - Update project/validation.toon.yaml
 
-## [0.1.26] - 2026-03-29
-
-### Docs
-- Update README.md
-
-## [0.1.25] - 2026-03-29
-
 ### Docs
 - Update README.md
 - Update docs/README.md
 - Update project/README.md
 - Update project/context.md
 
-### Other
-- Update project/analysis.toon.yaml
-- Update project/calls.mmd
-- Update project/calls.png
-- Update project/compact_flow.mmd
-- Update project/compact_flow.png
-- Update project/duplication.toon.yaml
-- Update project/evolution.toon.yaml
-- Update project/flow.mmd
-- Update project/flow.png
-- Update project/index.html
-- ... and 3 more files
-
-## [0.1.24] - 2026-03-29
-
-### Docs
-- Update README.md
-
-## [0.1.23] - 2026-03-29
-
 ### Docs
 - Update README.md
 - Update docs/AUTO_BADGE.md
@@ -404,44 +328,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Other
 - Update hooks/pre-commit
 
-## [0.1.22] - 2026-03-29
-
-### Docs
-- Update README.md
-
-### Other
-- Update project.sh
-
-## [0.1.21] - 2026-03-29
-
 ### Test
 - Update tests/test_cost.py
 
 ### Other
 - Update hooks/pre-commit
-
-## [0.1.20] - 2026-03-29
 
 ### Docs
 - Update docs/README.md
 
-## [0.1.19] - 2026-03-29
-
-## [0.1.18] - 2026-03-29
-
 ### Docs
 - Update README.md
 - Update docs/AUTO_BADGE.md
 
 ### Other
 - Update hooks/pre-commit
-
-## [0.1.17] - 2026-03-29
-
-### Docs
-- Update README.md
-
-## [0.1.16] - 2026-03-29
 
 ### Docs
 - Update CHANGELOG.md
@@ -452,62 +353,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update services/badge-service/README.md
 
 ### Other
-- Update planfile.yaml
-- Update prefact.yaml
-- Update project.sh
-- Update project/analysis.toon.yaml
-- Update project/calls.mmd
-- Update project/calls.png
-- Update project/compact_flow.mmd
-- Update project/compact_flow.png
-- Update project/duplication.toon.yaml
-- Update project/evolution.toon.yaml
-- ... and 9 more files
-
-## [0.1.15] - 2026-03-29
-
-### Other
 - Update services/badge-service/badge.php
-
-## [0.1.14] - 2026-03-29
-
-## [0.1.13] - 2026-03-29
-
-## [0.1.12] - 2026-03-29
-
-### Docs
-- Update README.md
-
-## [0.1.11] - 2026-03-29
-
-### Docs
-- Update README.md
-
-## [0.1.10] - 2026-03-29
-
-## [0.1.9] - 2026-03-29
-
-## [0.1.8] - 2026-03-29
-
-## [0.1.7] - 2026-03-29
-
-## [0.1.6] - 2026-03-29
-
-## [0.1.5] - 2026-03-29
-
-## [0.1.4] - 2026-03-29
-
-## [0.1.3] - 2026-03-29
-
-### Docs
-- Update README.md
-
-## [0.1.2] - 2026-03-29
-
-## [0.1.1] - 2026-03-29
-
-### Docs
-- Update README.md
 
 ### Test
 - Update tests/test_cost.py

@@ -13,18 +13,10 @@ Common command-line usage patterns for the costs tool.
 
 - `run.sh` - Demonstrates common CLI commands
 
-## Usage
-
-```bash
-# View the commands
-./run.sh --help
-
 # Or run individual commands
 costs init
 costs analyze --repo . -n 50
 ```
-
-## Commands Demonstrated
 
 ### 1. Initialize configuration
 ```bash

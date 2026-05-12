@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+
+- feat(config): add configuration management system
+- feat(analysis): introduce deep code analysis engine
+- feat(cli): improve CLI interface and UX
+- feat(examples): add commit-message generator example
+- feat(docs): add multi-language documentation support
+- feat(api): expose new API capabilities
+- refactor(output): improve output formatting and presentation
+- test(commit-message): add tests for commit-message generator
+
+## [0.1.51] - 2026-05-12
+
+### Docs
+- Update CHANGELOG.md
+- Update README.md
+- Update TODO.md
+
+### Other
+- Update .taskill/state.json
+- Update uv.lock
+
 ## [0.1.50] - 2026-04-20
 
 ### Other

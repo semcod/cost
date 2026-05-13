@@ -36,11 +36,15 @@ def test_aicost_auto_badge():
 
     # Find costs command
     costs_cmd = None
-    for cmd in ["costs", str(repo_root / ".venv" / "bin" / "costs"),
-                str(repo_root / "venv" / "bin" / "costs")]:
+    for cmd in [
+        "costs",
+        str(repo_root / ".venv" / "bin" / "costs"),
+        str(repo_root / "venv" / "bin" / "costs"),
+    ]:
         result = subprocess.run(
             ["which", cmd] if "/" not in cmd else ["test", "-f", cmd],
-            capture_output=True, shell=False if "/" not in cmd else True
+            capture_output=True,
+            shell=False if "/" not in cmd else True,
         )
         if result.returncode == 0 or Path(cmd).exists():
             costs_cmd = cmd
@@ -49,17 +53,24 @@ def test_aicost_auto_badge():
     if not costs_cmd:
         # Try to use python -m
         result = subprocess.run(
-            [sys.executable, "-m", "src.costs.cli", "auto-badge", "--repo", str(repo_root)],
+            [
+                sys.executable,
+                "-m",
+                "src.costs.cli",
+                "auto-badge",
+                "--repo",
+                str(repo_root),
+            ],
             cwd=str(repo_root),
             capture_output=True,
-            text=True
+            text=True,
         )
     else:
         result = subprocess.run(
             [costs_cmd, "auto-badge", "--repo", str(repo_root)],
             cwd=str(repo_root),
             capture_output=True,
-            text=True
+            text=True,
         )
 
     # Command should succeed (exit code 0) or exit with 0 if no AI commits
